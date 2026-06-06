@@ -1,8 +1,8 @@
 import BrowserMockup from '../ui/BrowserMockup'
 import PhoneMockup from '../ui/PhoneMockup'
-import MobileAppPreview from '../ui/MobileAppPreview'
 import { ArrowRight, Play, Check, Lock, Star } from '../ui/icons'
 import adminOverview from '../../assets/screenshots/admin-overview.png'
+import mobileScreen from '../../assets/screenshots/mobile.jpg'
 
 export default function Hero() {
   return (
@@ -90,7 +90,7 @@ export default function Hero() {
               {/* Phone mockup overlapping bottom-right */}
               <div className="absolute -bottom-4 right-2 sm:right-0 lg:-right-10 z-20 w-[120px] sm:w-[138px] lg:w-[155px]">
                 <PhoneMockup>
-                  <MobileAppPreview />
+                  <img src={mobileScreen} alt="MojUlaz mobilna aplikacija" className="w-full block" draggable={false} />
                 </PhoneMockup>
               </div>
             </div>
