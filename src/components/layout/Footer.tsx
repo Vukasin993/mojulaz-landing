@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import logoImg from '../../assets/logo-icon.png'
 
 const platform = [
@@ -7,10 +8,10 @@ const platform = [
 ]
 
 const company = [
-  { href: '#', label: 'O nama'              },
-  { href: '#', label: 'Politika privatnosti' },
-  { href: '#', label: 'Uslovi korišćenja'   },
-  { href: '#', label: 'Kontakt'             },
+  { href: '#',                       label: 'O nama'              },
+  { href: '/politika-privatnosti',   label: 'Politika privatnosti' },
+  { href: '#',                       label: 'Uslovi korišćenja'   },
+  { href: '#',                       label: 'Kontakt'             },
 ]
 
 export default function Footer() {
@@ -52,7 +53,11 @@ export default function Footer() {
             <ul className="space-y-2.5">
               {company.map(({ href, label }) => (
                 <li key={label}>
-                  <a href={href} className="text-sm text-slate-400 hover:text-primary-400 transition-colors">{label}</a>
+                  {href.startsWith('/') ? (
+                    <Link to={href} className="text-sm text-slate-400 hover:text-primary-400 transition-colors">{label}</Link>
+                  ) : (
+                    <a href={href} className="text-sm text-slate-400 hover:text-primary-400 transition-colors">{label}</a>
+                  )}
                 </li>
               ))}
             </ul>
@@ -63,7 +68,7 @@ export default function Footer() {
         <div className="pt-6 border-t border-slate-800 flex flex-col sm:flex-row justify-between items-center gap-3">
           <p className="text-xs text-slate-500">© 2025 MojUlaz. Sva prava zadržana.</p>
           <div className="flex gap-5">
-            <a href="#" className="text-xs text-slate-500 hover:text-primary-400 transition-colors">Politika privatnosti</a>
+            <Link to="/politika-privatnosti" className="text-xs text-slate-500 hover:text-primary-400 transition-colors">Politika privatnosti</Link>
             <a href="#" className="text-xs text-slate-500 hover:text-primary-400 transition-colors">Uslovi korišćenja</a>
           </div>
         </div>

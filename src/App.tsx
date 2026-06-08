@@ -1,3 +1,4 @@
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { useScrollReveal } from './hooks/useScrollReveal'
 import Navbar from './components/layout/Navbar'
 import Footer from './components/layout/Footer'
@@ -8,8 +9,9 @@ import HowItWorks from './components/sections/HowItWorks'
 import Pricing from './components/sections/Pricing'
 import Testimonials from './components/sections/Testimonials'
 import CTABanner from './components/sections/CTABanner'
+import PrivacyPolicy from './pages/PrivacyPolicy'
 
-export default function App() {
+function LandingPage() {
   useScrollReveal()
 
   return (
@@ -26,5 +28,16 @@ export default function App() {
       </main>
       <Footer />
     </div>
+  )
+}
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/politika-privatnosti" element={<PrivacyPolicy />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
