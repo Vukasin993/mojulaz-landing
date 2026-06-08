@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { HashRouter, Routes, Route } from 'react-router-dom'
 import { useScrollReveal } from './hooks/useScrollReveal'
 import Navbar from './components/layout/Navbar'
 import Footer from './components/layout/Footer'
@@ -10,6 +10,7 @@ import Pricing from './components/sections/Pricing'
 import Testimonials from './components/sections/Testimonials'
 import CTABanner from './components/sections/CTABanner'
 import PrivacyPolicy from './pages/PrivacyPolicy'
+import TermsOfService from './pages/TermsOfService'
 
 function LandingPage() {
   useScrollReveal()
@@ -33,11 +34,12 @@ function LandingPage() {
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/politika-privatnosti" element={<PrivacyPolicy />} />
+        <Route path="/uslovi-koriscenja" element={<TermsOfService />} />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   )
 }

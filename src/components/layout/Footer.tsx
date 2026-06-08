@@ -10,7 +10,7 @@ const platform = [
 const company = [
   { href: '#',                       label: 'O nama'              },
   { href: '/politika-privatnosti',   label: 'Politika privatnosti' },
-  { href: '#',                       label: 'Uslovi korišćenja'   },
+  { href: '/uslovi-koriscenja',      label: 'Uslovi korišćenja'   },
   { href: '#',                       label: 'Kontakt'             },
 ]
 
@@ -69,7 +69,7 @@ export default function Footer() {
           <p className="text-xs text-slate-500">© 2025 MojUlaz. Sva prava zadržana.</p>
           <div className="flex gap-5">
             <Link to="/politika-privatnosti" className="text-xs text-slate-500 hover:text-primary-400 transition-colors">Politika privatnosti</Link>
-            <a href="#" className="text-xs text-slate-500 hover:text-primary-400 transition-colors">Uslovi korišćenja</a>
+            <Link to="/uslovi-koriscenja" className="text-xs text-slate-500 hover:text-primary-400 transition-colors">Uslovi korišćenja</Link>
           </div>
         </div>
 
