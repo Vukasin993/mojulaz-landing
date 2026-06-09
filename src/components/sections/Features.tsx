@@ -7,44 +7,65 @@ interface Feature {
   Icon: IconComponent
   title: string
   desc: string
+  emoji: string
+  accentBg: string
+  accentIcon: string
 }
 
 const features: Feature[] = [
   {
     Icon: Wrench,
+    emoji: '🔧',
     title: 'Prijave kvarova',
-    desc: 'Stanari prijavljuju kvar u sekundi putem mobilne aplikacije. Upravnik prati status od prijave do rešenja, dodaje napomene i obaveštava stanare.',
+    desc: 'Stanari prijavljuju kvar u sekundi putem mobilne aplikacije. Upravnik prati status od prijave do rešenja.',
+    accentBg: '#fff7ed',
+    accentIcon: '#d97706',
   },
   {
     Icon: Bell,
+    emoji: '📢',
     title: 'Obaveštenja i ankete',
-    desc: 'Šaljite hitna obaveštenja ili organizujte glasanja po stanu i kvadraturi. Rezultati anketa dostupni su svim stanarima u realnom vremenu.',
+    desc: 'Šaljite hitna obaveštenja ili organizujte glasanja. Rezultati anketa dostupni svima u realnom vremenu.',
+    accentBg: '#eef2ff',
+    accentIcon: '#4f46e5',
   },
   {
     Icon: BarChart,
+    emoji: '💰',
     title: 'Finansije i fond',
-    desc: 'Pratite prihode, rashode i rezervni fond. Generišite izveštaje i šaljite stanarima pregled dugovanja jednim klikom iz admin panela.',
+    desc: 'Pratite prihode, rashode i rezervni fond. Generišite izveštaje jednim klikom iz admin panela.',
+    accentBg: '#f0fdfa',
+    accentIcon: '#0d9488',
   },
   {
     Icon: FileText,
+    emoji: '📄',
     title: 'Dokumenti',
-    desc: 'Uploadujte ugovore, zapisnike i ponude. Kontrolišite pristup — samo vlasnici, svi stanari ili isključivo menadžeri.',
+    desc: 'Uploadujte ugovore, zapisnike i ponude. Kontrolišite pristup — stanari, vlasnici ili samo menadžeri.',
+    accentBg: '#f0fdf4',
+    accentIcon: '#16a34a',
   },
   {
     Icon: MessageSquare,
+    emoji: '💬',
     title: 'Grupni chat',
-    desc: 'Direktna komunikacija između stanara i upravnika u jednom chatu. Podržava slanje slika i fajlova unutar razgovora.',
+    desc: 'Direktna komunikacija između stanara i upravnika. Podrška za slike i fajlove unutar razgovora.',
+    accentBg: '#fdf4ff',
+    accentIcon: '#9333ea',
   },
   {
     Icon: Smartphone,
+    emoji: '📱',
     title: 'Mobilna aplikacija',
-    desc: 'Dostupna na iOS i Android. Stanari dobijaju push notifikacije za svaki važan događaj u zgradi — kvar, glasanje, obaveštenje.',
+    desc: 'Dostupna na iOS i Android. Push notifikacije za svaki važan događaj — kvar, glasanje, obaveštenje.',
+    accentBg: '#f0fdfa',
+    accentIcon: '#0d9488',
   },
 ]
 
 export default function Features() {
   return (
-    <section id="features" className="py-24 lg:py-32 bg-white">
+    <section className="py-24 lg:py-32 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Header */}
@@ -56,22 +77,58 @@ export default function Features() {
             Sve što vam treba za modernu zgradu
           </h2>
           <p className="reveal reveal-d2 text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
-            MojUlaz pokriva sve aspekte upravljanja stambenom zgradom — od tehničkih zahteva do finansijskog praćenja.
+            MojUlaz pokriva sve aspekte upravljanja — od tehničkih zahteva do finansijskog praćenja.
           </p>
         </div>
 
         {/* Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {features.map(({ Icon, title, desc }, i) => (
+          {features.map(({ Icon, title, desc, emoji, accentBg, accentIcon }, i) => (
             <div
               key={title}
-              className={`reveal ${i > 0 ? `reveal-d${Math.min(i, 5)}` : ''} group p-7 rounded-2xl border border-slate-200 bg-white hover:bg-slate-50 hover:shadow-[0_8px_24px_rgba(13,148,136,0.09)] hover:-translate-y-1 transition-all duration-200`}
+              className={`reveal-scale reveal-d${Math.min(i + 1, 5)} group relative p-7 rounded-2xl border border-slate-200 bg-white overflow-hidden cursor-default`}
+              style={{
+                transition: `
+                  opacity 0.72s cubic-bezier(0.22,1,0.36,1) ${i * 0.08}s,
+                  transform 0.72s cubic-bezier(0.22,1,0.36,1) ${i * 0.08}s,
+                  box-shadow 0.3s ease,
+                  border-color 0.3s ease
+                `,
+              }}
+              onMouseEnter={(e) => {
+                const el = e.currentTarget
+                el.style.transform = 'translateY(-6px) scale(1.01)'
+                el.style.boxShadow = `0 20px 40px ${accentIcon}18, 0 8px 16px rgba(0,0,0,0.06)`
+                el.style.borderColor = `${accentIcon}40`
+              }}
+              onMouseLeave={(e) => {
+                const el = e.currentTarget
+                el.style.transform = ''
+                el.style.boxShadow = ''
+                el.style.borderColor = ''
+              }}
             >
-              <div className="w-12 h-12 rounded-xl bg-primary-50 flex items-center justify-center mb-5 group-hover:bg-primary-100 transition-colors">
-                <Icon className="w-5 h-5 text-primary-600" />
+              {/* Accent blob on hover */}
+              <div
+                className="absolute -top-12 -right-12 w-32 h-32 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                style={{ background: `radial-gradient(circle, ${accentBg} 0%, transparent 70%)` }}
+              />
+
+              <div
+                className="relative w-12 h-12 rounded-xl flex items-center justify-center mb-5 transition-all duration-300 group-hover:scale-110"
+                style={{ background: accentBg }}
+              >
+                <Icon className="w-5 h-5" style={{ color: accentIcon }} />
+                {/* Emoji float on hover */}
+                <span
+                  className="absolute -top-3 -right-3 text-lg opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:-translate-y-1"
+                >
+                  {emoji}
+                </span>
               </div>
-              <h3 className="text-base font-bold text-ink mb-2">{title}</h3>
-              <p className="text-sm text-slate-600 leading-relaxed">{desc}</p>
+
+              <h3 className="relative text-base font-bold text-ink mb-2">{title}</h3>
+              <p className="relative text-sm text-slate-600 leading-relaxed">{desc}</p>
             </div>
           ))}
         </div>

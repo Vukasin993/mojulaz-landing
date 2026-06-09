@@ -6,7 +6,7 @@ interface Testimonial {
   name: string
   role: string
   quote: string
-  delay: string
+  revealClass: string
 }
 
 const testimonials: Testimonial[] = [
@@ -16,7 +16,7 @@ const testimonials: Testimonial[] = [
     name: 'Miroslav Jovanović',
     role: 'Upravnik stambene zgrade, Beograd',
     quote: 'Pre MojUlaza sve je bilo na papiru i WhatsApp grupama. Sada imam pregled svakog zahteva i mogu odmah da odgovorim stanarima. Neverovatno koliko se administrativni posao smanjio.',
-    delay: '',
+    revealClass: 'reveal-left',
   },
   {
     initials: 'AN',
@@ -24,7 +24,7 @@ const testimonials: Testimonial[] = [
     name: 'Ana Nikolić',
     role: 'Predsednik skupštine stanara, Novi Sad',
     quote: 'Organizovati skupštinu stanara je bilo pravo mučenje. Sada koristimo ankete u aplikaciji — za sat vremena skupim glasove svih 32 stana. Sistem je intuitivan i stanari su ga odmah prihvatili.',
-    delay: 'reveal-d2',
+    revealClass: 'reveal reveal-d2',
   },
   {
     initials: 'SD',
@@ -32,7 +32,7 @@ const testimonials: Testimonial[] = [
     name: 'Stefan Đorđević',
     role: 'Stanar, Niš',
     quote: 'Konačno znam kada će kvar biti rešen. Prijavim problem u aplikaciji, odmah dobijam potvrdu i pratim status. Više ne moram da zvam upravnika — sve je transparentno.',
-    delay: 'reveal-d4',
+    revealClass: 'reveal-right',
   },
 ]
 
@@ -48,7 +48,7 @@ function Stars() {
 
 export default function Testimonials() {
   return (
-    <section className="py-24 lg:py-32 bg-slate-50">
+    <section className="py-24 lg:py-32 bg-slate-50 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Header */}
@@ -63,13 +63,26 @@ export default function Testimonials() {
 
         {/* Cards */}
         <div className="grid md:grid-cols-3 gap-5">
-          {testimonials.map(({ initials, color, name, role, quote, delay }) => (
+          {testimonials.map(({ initials, color, name, role, quote, revealClass }) => (
             <div
               key={name}
-              className={`reveal ${delay} p-7 rounded-2xl border border-slate-200 bg-white hover:shadow-[0_8px_28px_rgba(13,148,136,0.1)] hover:-translate-y-1 transition-all duration-200`}
+              className={`${revealClass} group relative p-7 rounded-2xl border border-slate-200 bg-white overflow-hidden`}
+              style={{ transition: 'transform 0.35s cubic-bezier(0.22,1,0.36,1), box-shadow 0.35s ease' }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translateY(-8px) scale(1.01)'
+                e.currentTarget.style.boxShadow = '0 24px 48px rgba(13,148,136,0.12), 0 8px 16px rgba(0,0,0,0.06)'
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = ''
+                e.currentTarget.style.boxShadow = ''
+              }}
             >
+              {/* Subtle glow on hover */}
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                style={{ background: 'radial-gradient(ellipse at top left, rgba(13,148,136,0.05) 0%, transparent 60%)' }} />
+
               <Stars />
-              <p className="text-sm text-slate-600 leading-relaxed mb-6">"{quote}"</p>
+              <p className="relative text-sm text-slate-600 leading-relaxed mb-6">"{quote}"</p>
               <div className="flex items-center gap-3">
                 <div className={`w-10 h-10 rounded-full bg-gradient-to-br ${color} flex items-center justify-center text-sm font-bold text-white flex-shrink-0`}>
                   {initials}

@@ -12,11 +12,19 @@ const links = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
+  const [hidden, setHidden] = useState(false)
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20)
     window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
+
+    const onFullscreen = (e: Event) => setHidden((e as CustomEvent<boolean>).detail)
+    window.addEventListener('phone-fullscreen', onFullscreen)
+
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('phone-fullscreen', onFullscreen)
+    }
   }, [])
 
   const close = () => setOpen(false)
@@ -31,11 +39,16 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
           ? 'bg-white/95 backdrop-blur-md shadow-[0_1px_3px_rgba(0,0,0,0.07)]'
           : 'bg-white/80'
       }`}
+      style={{
+        transform: hidden ? 'translateY(-100%)' : 'translateY(0)',
+        opacity: hidden ? 0 : 1,
+        pointerEvents: hidden ? 'none' : 'auto',
+      }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">

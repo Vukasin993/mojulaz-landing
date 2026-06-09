@@ -2,10 +2,8 @@ import { HashRouter, Routes, Route } from 'react-router-dom'
 import { useScrollReveal } from './hooks/useScrollReveal'
 import Navbar from './components/layout/Navbar'
 import Footer from './components/layout/Footer'
-import Hero from './components/sections/Hero'
-import Stats from './components/sections/Stats'
-import Features from './components/sections/Features'
-import HowItWorks from './components/sections/HowItWorks'
+import BuildingSection from './components/sections/BuildingSection'
+import PhoneScrollSection from './components/sections/PhoneScrollSection'
 import Pricing from './components/sections/Pricing'
 import Testimonials from './components/sections/Testimonials'
 import CTABanner from './components/sections/CTABanner'
@@ -19,10 +17,8 @@ function LandingPage() {
     <div className="bg-white">
       <Navbar />
       <main>
-        <Hero />
-        <Stats />
-        <Features />
-        <HowItWorks />
+        <BuildingSection />
+        <PhoneScrollSection />
         <Pricing />
         <Testimonials />
         <CTABanner />
