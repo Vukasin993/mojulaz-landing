@@ -3,7 +3,7 @@ import BrowserMockup from '../ui/BrowserMockup'
 import PhoneMockup from '../ui/PhoneMockup'
 import { ArrowRight, Play, Check, Lock, Star } from '../ui/icons'
 import MobileAppPreview from '../ui/MobileAppPreview'
-import adminOverview from '../../assets/screenshots/admin-overview.png'
+const adminOverview = '/screenshots/admin-overview.png'
 
 /* ── Floating particles ─────────────────────────────────────────────── */
 const PARTICLES = Array.from({ length: 18 }, (_, i) => ({

@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react'
 import { X, Menu } from '../ui/icons'
-import logoImg from '../../assets/logo-icon.png'
+const logoImg = '/logo-icon.png'
+import { REGISTER_URL, LOGIN_URL } from '../../constants/marketing'
 
 const links = [
   { href: '#features',  label: 'Funkcionalnosti' },
   { href: '#how',       label: 'Kako radi'        },
   { href: '#pricing',   label: 'Cene'             },
-  { href: '#footer',    label: 'Kontakt'          },
+  { href: '#faq',       label: 'FAQ'              },
 ]
 
 export default function Navbar() {
@@ -54,7 +55,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16">
 
           {/* Logo */}
-          <a href="#" onClick={() => scrollTo('#')} className="flex items-center flex-shrink-0">
+          <a href="/" className="flex items-center flex-shrink-0">
             <img src={logoImg} alt="MojUlaz" className="h-9 w-auto object-contain" />
           </a>
 
@@ -73,9 +74,17 @@ export default function Navbar() {
           </div>
 
           {/* Desktop CTA */}
-          <div className="hidden md:flex">
+          <div className="hidden md:flex items-center gap-3">
             <a
-              href="#"
+              href={LOGIN_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm font-medium text-slate-500 hover:text-primary-600 transition-colors"
+            >
+              Prijava
+            </a>
+            <a
+              href={REGISTER_URL}
               className="text-sm font-semibold text-white bg-primary-600 hover:bg-primary-700 rounded-full px-5 py-2.5 transition-all hover:shadow-[0_4px_14px_rgba(13,148,136,0.32)] hover:-translate-y-px"
             >
               Počnite besplatno
@@ -110,9 +119,22 @@ export default function Navbar() {
               {label}
             </a>
           ))}
-          <div className="pt-3 border-t border-slate-100 mt-2">
-            <a href="#" className="block text-center text-sm font-semibold text-white bg-primary-600 rounded-full px-5 py-3 hover:bg-primary-700 transition-colors">
+          <div className="pt-3 border-t border-slate-100 mt-2 flex flex-col gap-2">
+            <a
+              href={REGISTER_URL}
+              onClick={close}
+              className="block w-full text-center text-sm font-semibold text-white bg-primary-600 rounded-full px-5 py-3 hover:bg-primary-700 transition-colors"
+            >
               Počnite besplatno
+            </a>
+            <a
+              href={LOGIN_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={close}
+              className="block w-full text-center text-sm font-medium text-slate-500 hover:text-primary-600 py-1 transition-colors"
+            >
+              Već imate nalog? Prijavite se
             </a>
           </div>
         </div>

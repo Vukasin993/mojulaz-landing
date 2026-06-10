@@ -3,11 +3,165 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="MojUlaz — platforma za upravljanje stambenim zgradama i kondominijumima." />
-    <title>MojUlaz — Upravljanje zgradom. Jednostavno.</title>
+
+    <!-- Primary meta -->
+    <title>MojUlaz — Aplikacija za upravljanje stambenom zgradom</title>
+    <meta name="description" content="MojUlaz je aplikacija za upravljanje stambenim zgradama u Srbiji. Zamenjuje WhatsApp grupe — prijava kvarova, obaveštenja, glasanje, fond i dokumenta na jednom mestu. Besplatno 30 dana, bez kreditne kartice." />
+    <meta name="keywords" content="aplikacija za upravljanje zgradom, upravljanje stambenom zgradom, softver za upravnika zgrade, prijava kvarova zgrada, aplikacija za stanare, fond zgrade, skupština stanara glasanje, MojUlaz Srbija" />
+    <meta name="author" content="MojUlaz" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://mojulaz.rs/" />
+    <link rel="alternate" hreflang="sr" href="https://mojulaz.rs/" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://mojulaz.rs/" />
+    <meta property="og:title" content="MojUlaz — Aplikacija za upravljanje stambenom zgradom" />
+    <meta property="og:description" content="Zamenjuje WhatsApp grupe jednom aplikacijom. Kvarovi, obaveštenja, fond i dokumenta — sve na jednom mestu. 270+ zgrada u Srbiji. Besplatno 30 dana, bez kreditne kartice." />
+    <meta property="og:image" content="https://mojulaz.rs/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="sr_RS" />
+    <meta property="og:site_name" content="MojUlaz" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="MojUlaz — Upravljanje zgradom. Jednostavno." />
+    <meta name="twitter:description" content="Zamenjuje WhatsApp grupe jednom aplikacijom. Besplatno 30 dana." />
+    <meta name="twitter:image" content="https://mojulaz.rs/og-image.png" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Theme color (browser chrome on mobile) -->
+    <meta name="theme-color" content="#0d9488" />
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "SoftwareApplication",
+          "name": "MojUlaz",
+          "applicationCategory": "BusinessApplication",
+          "operatingSystem": "iOS, Android, Web",
+          "description": "Platforma za upravljanje stambenim zgradama u Srbiji. Prijava kvarova, obaveštenja za stanare, upravljanje fondovima i dokumentima.",
+          "url": "https://mojulaz.rs",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "RSD",
+            "description": "30 dana besplatno, zatim od 4.999 RSD godišnje po zgradi"
+          },
+          "provider": {
+            "@type": "Organization",
+            "name": "MojUlaz",
+            "url": "https://mojulaz.rs",
+            "email": "zdravo@mojulaz.rs",
+            "areaServed": "RS"
+          }
+        },
+        {
+          "@type": "Organization",
+          "name": "MojUlaz",
+          "url": "https://mojulaz.rs",
+          "logo": "https://mojulaz.rs/favicon.svg",
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "contactType": "customer support",
+            "email": "zdravo@mojulaz.rs",
+            "availableLanguage": "Serbian"
+          },
+          "areaServed": { "@type": "Country", "name": "Serbia" }
+        },
+        {
+          "@type": "WebSite",
+          "name": "MojUlaz",
+          "url": "https://mojulaz.rs"
+        }
+      ]
+    }
+    </script>
+
+    <!-- FAQPage structured data for rich results -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Za koga je MojUlaz namenjen?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "MojUlaz je namenjen upravnicima stambenih zgrada, predsednicima skupštine stanara i profesionalnim agencijama za upravljanje nekretninama. Koriste ga i sami stanari za prijavu kvarova, glasanje i pregled obaveštenja."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Kako funkcioniše probni period od 30 dana?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Nakon registracije dobijate potpun pristup svim funkcijama bez ikakvih ograničenja. Nema kreditne kartice, nema automatskog naplaćivanja. Nakon 30 dana možete nastaviti sa plaćenom licencom ili odustati — bez ikakvih troškova."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Koliko košta MojUlaz?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Cena zavisi od broja zgrada: 7.600 RSD godišnje po zgradi za 1–5 zgrada, 6.600 RSD/god za 6–20 zgrada i 4.999 RSD/god za 21 ili više zgrada. Probni period od 30 dana je potpuno besplatan."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Da li stanari moraju da instaliraju aplikaciju?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Stanari mogu koristiti MojUlaz putem mobilne aplikacije (iOS i Android) ili putem web pregledača — bez instalacije. Aplikacija je potpuno opcionalna, što znači da se i stariji stanari lako snalaze."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Kako se prijavljuju kvarovi u aplikaciji?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Stanar otvori aplikaciju, tapne 'Prijavi kvar', dodá foto i kratak opis — za manje od 30 sekundi. Upravnik odmah dobija notifikaciju, može dodeliti tehničara i ažurirati status. Svi zainteresovani prate napredak u realnom vremenu."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Da li su podaci bezbedni?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sve informacije se čuvaju na serverima u EU, šifrovane su u prenosu i mirovanju (TLS 1.3 + AES-256). Usklađeni smo sa GDPR regulativom i Zakonom o zaštiti podataka o ličnosti Republike Srbije."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Mogu li upravljati više zgrada iz jednog naloga?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Da. Nalog podržava neograničen broj zgrada. Svaka zgrada ima sopstvenu ploču, stanare i istoriju. Agencije i veći upravljači posebno cene pregled svih zgrada na jednom mestu."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Šta ako imam pitanje ili problem tokom korišćenja?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Podrška je dostupna na srpskom jeziku putem emaila i chata, radnim danima od 8 do 18h. Korisnici sa aktivnom licencom imaju prioritetnu podršku sa garantovanim odgovorom u roku od 4 sata."
+          }
+        }
+      ]
+    }
+    </script>
+
+    <!-- Fonts — add weight 900 for headings -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   </head>
   <body>
     <div id="root"></div>

@@ -1,0 +1,1 @@
+self.__REACT_LOADABLE_MANIFEST="{\"pages/index.tsx -> ../src/components/sections/PhoneScrollSection\":{\"id\":\"pages/index.tsx -> ../src/components/sections/PhoneScrollSection\",\"files\":[\"static/chunks/src_components_sections_PhoneScrollSection_tsx.js\"]}}"

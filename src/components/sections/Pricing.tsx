@@ -1,4 +1,5 @@
 import { Check, Star } from '../ui/icons'
+import { REGISTER_URL } from '../../constants/marketing'
 
 const freeFeatures = [
   'Sve funkcionalnosti uključene',
@@ -8,9 +9,9 @@ const freeFeatures = [
 ]
 
 const tiers = [
-  { range: '1–5 zgrada',  price: '7.600', highlight: false },
-  { range: '6–20 zgrada', price: '6.600', highlight: true  },
-  { range: '21+ zgrada',  price: '4.999', highlight: false },
+  { range: '1–5 zgrada',  price: '7.600', monthly: '633', highlight: false },
+  { range: '6–20 zgrada', price: '6.600', monthly: '550', highlight: true  },
+  { range: '21+ zgrada',  price: '4.999', monthly: '416', highlight: false },
 ]
 
 const paidFeatures = [
@@ -24,8 +25,20 @@ export default function Pricing() {
     <section id="pricing" className="py-24 lg:py-32 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
+        {/* Promo banner */}
+        <div className="reveal max-w-3xl mx-auto mb-10">
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10, padding: '14px 24px', borderRadius: 14, background: 'linear-gradient(135deg, #fef3c7, #fff7ed)', border: '1px solid rgba(245,158,11,0.3)', boxShadow: '0 2px 12px rgba(245,158,11,0.1)' }}>
+            <span style={{ fontSize: 18 }}>🎁</span>
+            <span style={{ fontSize: 13, fontWeight: 700, color: '#92400e' }}>
+              Počnite sa{' '}
+              <span style={{ fontWeight: 800, color: '#d97706' }}>30 dana potpuno besplatno</span>
+              {' '}— bez kreditne kartice, bez rizika.
+            </span>
+          </div>
+        </div>
+
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-12">
           <div className="reveal inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold mb-4 bg-primary-50 text-primary-700 border border-primary-100">
             Cene
           </div>
@@ -33,7 +46,7 @@ export default function Pricing() {
             Transparentno i fer
           </h2>
           <p className="reveal reveal-d2 text-lg text-slate-600 max-w-md mx-auto leading-relaxed">
-            Počnite besplatno. Pretplatite se kada ste zadovoljni.
+            Počnite besplatno. Bez kreditne kartice. Pretplatite se samo ako ste zadovoljni.
           </p>
         </div>
 
@@ -69,10 +82,11 @@ export default function Pricing() {
             </ul>
 
             <a
-              href="#"
-              className="block text-center text-sm font-semibold text-white bg-primary-600 hover:bg-primary-700 rounded-full px-6 py-3.5 transition-all hover:shadow-[0_4px_14px_rgba(13,148,136,0.32)] hover:-translate-y-px"
+              href={REGISTER_URL}
+              className="block w-full text-center text-sm font-bold text-white bg-primary-600 hover:bg-primary-700 rounded-full px-6 py-4 transition-all hover:shadow-[0_6px_20px_rgba(13,148,136,0.38)] hover:-translate-y-0.5 active:translate-y-0"
+              style={{ fontSize: 15 }}
             >
-              Počnite besplatno — 30 dana
+              Počnite besplatno — bez kartice →
             </a>
           </div>
 
@@ -85,7 +99,7 @@ export default function Pricing() {
 
             {/* Tier table */}
             <div className="rounded-xl overflow-hidden border border-slate-200 mb-5">
-              {tiers.map(({ range, price, highlight }) => (
+              {tiers.map(({ range, price, monthly, highlight }) => (
                 <div
                   key={range}
                   className={`flex items-center justify-between px-4 py-3 border-b border-slate-200 last:border-b-0 ${
@@ -96,10 +110,13 @@ export default function Pricing() {
                     {range}
                   </span>
                   <div className="text-right">
-                    <span className={`text-base font-extrabold ${highlight ? 'text-primary-600' : 'text-ink'}`}>
-                      {price}
-                    </span>
-                    <span className="text-xs text-slate-400 ml-1">RSD / god</span>
+                    <div>
+                      <span className={`text-base font-extrabold ${highlight ? 'text-primary-600' : 'text-ink'}`}>
+                        {price}
+                      </span>
+                      <span className="text-xs text-slate-400 ml-1">RSD / god</span>
+                    </div>
+                    <div className="text-[11px] text-slate-400">= {monthly} RSD / mes.</div>
                   </div>
                 </div>
               ))}
@@ -117,8 +134,8 @@ export default function Pricing() {
             </ul>
 
             <a
-              href="#"
-              className="block text-center text-sm font-semibold text-primary-600 bg-white hover:bg-primary-50 border border-primary-300 rounded-full px-6 py-3.5 transition-colors"
+              href={REGISTER_URL}
+              className="block w-full text-center text-sm font-semibold text-primary-600 bg-white hover:bg-primary-50 border border-primary-300 rounded-full px-6 py-3.5 transition-colors"
             >
               Počnite besplatno — bez kartice
             </a>
