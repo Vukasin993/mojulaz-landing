@@ -1,39 +1,11 @@
 import { Star } from '../ui/icons'
+import { useLang } from '../../i18n/LanguageContext'
 
-interface Testimonial {
-  initials: string
-  color: string
-  name: string
-  role: string
-  quote: string
-  revealClass: string
-}
-
-const testimonials: Testimonial[] = [
-  {
-    initials: 'MV',
-    color: 'from-primary-600 to-primary-700',
-    name: 'Milorad Veličković',
-    role: 'Upravnik stambene zgrade, Beograd',
-    quote: 'Pre MojUlaza sve je bilo na papiru i po Viber grupama. Sada imam pregled svakog zahteva i mogu odmah da odgovorim stanarima. Neverovatno koliko se administrativni posao smanjio.',
-    revealClass: 'reveal-left',
-  },
-  {
-    initials: 'AV',
-    color: 'from-indigo-500 to-indigo-600',
-    name: 'Aleksa Vukadinović',
-    role: 'Predsednik skupštine stanara, Novi Sad',
-    quote: 'Organizovati skupštinu stanara je bilo pravo mučenje. Sada koristimo ankete u aplikaciji — za sat vremena skupim glasove svih 32 stana. Sistem je intuitivan i stanari su ga odmah prihvatili.',
-    revealClass: 'reveal reveal-d2',
-  },
-  {
-    initials: 'SD',
-    color: 'from-amber-500 to-amber-600',
-    name: 'Stefan Đorđević',
-    role: 'Stanar, Niš',
-    quote: 'Konačno znam kada će kvar biti rešen. Prijavim problem u aplikaciji, odmah dobijam potvrdu i pratim status. Više ne moram da zvam upravnika — sve je transparentno.',
-    revealClass: 'reveal-right',
-  },
+/* Names and visuals here — roles and quotes in i18n/translations.ts */
+const testimonialMeta = [
+  { initials: 'MV', color: 'from-primary-600 to-primary-700', name: 'Milorad Veličković', revealClass: 'reveal-left' },
+  { initials: 'AV', color: 'from-indigo-500 to-indigo-600',   name: 'Aleksa Vukadinović', revealClass: 'reveal reveal-d2' },
+  { initials: 'SD', color: 'from-amber-500 to-amber-600',     name: 'Stefan Đorđević',    revealClass: 'reveal-right' },
 ]
 
 function Stars() {
@@ -47,6 +19,8 @@ function Stars() {
 }
 
 export default function Testimonials() {
+  const { t } = useLang()
+  const testimonials = testimonialMeta.map((m, i) => ({ ...m, ...t.testimonials.items[i] }))
   return (
     <section className="py-24 lg:py-32 bg-slate-50 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -54,10 +28,10 @@ export default function Testimonials() {
         {/* Header */}
         <div className="text-center mb-16">
           <div className="reveal inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold mb-4 bg-primary-50 text-primary-700 border border-primary-100">
-            Iskustva korisnika
+            {t.testimonials.badge}
           </div>
           <h2 className="reveal reveal-d1 text-4xl sm:text-5xl font-extrabold text-ink tracking-tight">
-            Šta kažu naši korisnici
+            {t.testimonials.title}
           </h2>
         </div>
 

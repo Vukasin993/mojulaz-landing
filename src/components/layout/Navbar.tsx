@@ -2,18 +2,21 @@ import { useState, useEffect } from 'react'
 import { X, Menu } from '../ui/icons'
 import logoImg from '../../assets/logo-icon.png'
 import { ADMIN_PANEL_URL } from '../../lib/links'
-
-const links = [
-  { href: '#features',  label: 'Funkcionalnosti' },
-  { href: '#how',       label: 'Kako radi'        },
-  { href: '#pricing',   label: 'Cene'             },
-  { href: '#contact',   label: 'Kontakt'          },
-]
+import { useLang } from '../../i18n/LanguageContext'
+import LangSwitcher from '../ui/LangSwitcher'
 
 export default function Navbar() {
+  const { t } = useLang()
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
   const [hidden, setHidden] = useState(false)
+
+  const links = [
+    { href: '#features', label: t.navbar.links.features },
+    { href: '#how',      label: t.navbar.links.how      },
+    { href: '#pricing',  label: t.navbar.links.pricing  },
+    { href: '#contact',  label: t.navbar.links.contact  },
+  ]
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20)
@@ -58,9 +61,9 @@ export default function Navbar() {
         rel="noopener noreferrer"
         className="block bg-ink text-center px-4 py-2 text-xs sm:text-sm text-slate-300 hover:text-white transition-colors"
       >
-        <span className="font-medium">Upravnik ste?</span>{' '}
-        Registrujte svoju zgradu u admin panelu — prvih 30 dana besplatno{' '}
-        <span className="font-bold text-primary-400">Otvorite panel →</span>
+        <span className="font-medium">{t.navbar.announcementPrefix}</span>{' '}
+        {t.navbar.announcementText}{' '}
+        <span className="font-bold text-primary-400">{t.navbar.announcementCta}</span>
       </a>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -86,14 +89,15 @@ export default function Navbar() {
           </div>
 
           {/* Desktop CTA */}
-          <div className="hidden md:flex">
+          <div className="hidden md:flex items-center gap-3">
+            <LangSwitcher />
             <a
               href={ADMIN_PANEL_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="text-sm font-semibold text-white bg-primary-600 hover:bg-primary-700 rounded-full px-5 py-2.5 transition-all hover:shadow-[0_4px_14px_rgba(13,148,136,0.32)] hover:-translate-y-px"
             >
-              Počnite besplatno
+              {t.navbar.cta}
             </a>
           </div>
 
@@ -125,9 +129,10 @@ export default function Navbar() {
               {label}
             </a>
           ))}
-          <div className="pt-3 border-t border-slate-100 mt-2">
+          <div className="pt-3 border-t border-slate-100 mt-2 flex flex-col gap-3">
+            <LangSwitcher className="self-center" />
             <a href={ADMIN_PANEL_URL} target="_blank" rel="noopener noreferrer" className="block text-center text-sm font-semibold text-white bg-primary-600 rounded-full px-5 py-3 hover:bg-primary-700 transition-colors">
-              Počnite besplatno
+              {t.navbar.cta}
             </a>
           </div>
         </div>

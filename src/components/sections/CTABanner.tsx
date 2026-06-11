@@ -1,7 +1,9 @@
 import { ArrowRight } from '../ui/icons'
 import { ADMIN_PANEL_URL } from '../../lib/links'
+import { useLang } from '../../i18n/LanguageContext'
 
 export default function CTABanner() {
+  const { t } = useLang()
   return (
     <section
       className="relative py-24 lg:py-28 overflow-hidden"
@@ -28,11 +30,10 @@ export default function CTABanner() {
 
       <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h2 className="reveal text-[clamp(28px,5vw,48px)] font-extrabold text-white tracking-tight leading-[1.15] mb-5">
-          Spremni ste da modernizujete vašu zgradu?
+          {t.ctaBanner.title}
         </h2>
         <p className="reveal reveal-d1 text-lg text-white/80 mb-10 leading-relaxed">
-          Pridružite se stotinama upravnika koji su transformisali upravljanje zgradom.
-          Bez kreditne kartice, bez rizika.
+          {t.ctaBanner.sub}
         </p>
 
         <div className="reveal reveal-d2">
@@ -49,18 +50,19 @@ export default function CTABanner() {
                 background: 'linear-gradient(90deg, transparent 0%, rgba(13,148,136,0.08) 50%, transparent 100%)',
               }}
             />
-            <span className="relative">Počnite 30-dnevni probni period</span>
+            <span className="relative">{t.ctaBanner.cta}</span>
             <ArrowRight className="relative w-4 h-4 transition-transform group-hover:translate-x-1" />
           </a>
         </div>
 
         {/* Social proof row */}
         <div className="reveal reveal-d3 flex flex-wrap items-center justify-center gap-6 mt-10 text-sm text-white/65">
-          <span>✓ Bez kreditne kartice</span>
-          <span className="hidden sm:block text-white/30">·</span>
-          <span>✓ 30 dana besplatno</span>
-          <span className="hidden sm:block text-white/30">·</span>
-          <span>✓ Otkazivanje u bilo kom trenutku</span>
+          {t.ctaBanner.proof.map((p, i) => (
+            <span key={p} className="contents">
+              {i > 0 && <span className="hidden sm:block text-white/30">·</span>}
+              <span>{p}</span>
+            </span>
+          ))}
         </div>
       </div>
     </section>

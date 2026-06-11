@@ -1,6 +1,7 @@
 import { useRef, useEffect, useState } from 'react'
 import PhoneMockup from '../ui/PhoneMockup'
 import { useScrollProgress } from '../../hooks/useScrollProgress'
+import { useLang } from '../../i18n/LanguageContext'
 import homeDashboardImg from '../../assets/section/home-dashbaord.png'
 import zahtev2Img from '../../assets/section/zahtev2.png'
 import obavestenjaImg from '../../assets/section/obavestenja.png'
@@ -18,52 +19,13 @@ const NotificationsScreen = () => <ScreenImage src={obavestenjaImg} alt="MojUlaz
 const FinancesScreen      = () => <ScreenImage src={finance2Img} alt="MojUlaz — finansije sa stanjem fonda i mesečnim pregledom" />
 const PollScreen          = () => <ScreenImage src={pollImg} alt="MojUlaz — anketa sa glasanjem stanara" />
 
-const steps = [
-  {
-    painLabel: 'Čest problem',
-    painQuote: '"Koliko imamo u fondu? Šta je sa liftom? Kad je sastanak? — svi pitaju mene."',
-    emoji: '🏠', label: 'Pregled',
-    title: 'Ceo ulaz u jednom pogledu.',
-    desc: 'Otvorite aplikaciju i odmah vidite šta se dešava: nova obaveštenja, aktivni zahtevi, ankete u toku i stanje fonda.',
-    bullets: ['Obaveštenja, zahtevi i ankete na broju', 'Stanje fonda na početnom ekranu', 'Brzi pristup održavanju i dokumentima'],
-    accent: '#0d9488', bg: '#f0fdfa', screen: DashboardScreen,
-  },
-  {
-    painLabel: 'Što kažu stanari',
-    painQuote: '"Prijavio sam kvar pre mesec dana. Niko se nije javio."',
-    emoji: '🔧', label: 'Zahtevi',
-    title: 'Svaki zahtev praćen do rešenja.',
-    desc: 'Stanar prijavi problem za par sekundi, a status se prati od prijave do rešenja — uz istoriju i komentare.',
-    bullets: ['Istorija statusa za svaki zahtev', 'Komentari i dogovor na jednom mestu', 'Status vidljiv svim stanarima'],
-    accent: '#f59e0b', bg: '#fffbeb', screen: RequestsScreen,
-  },
-  {
-    painLabel: 'Čujemo ih često',
-    painQuote: '"Važno obaveštenje — a niko ga nije video."',
-    emoji: '📢', label: 'Obaveštenja',
-    title: 'Poruka koja stigne do svakog stanara.',
-    desc: 'Jedno obaveštenje i svi ga prime istog trenutka — uz jasnu oznaku koliko je hitno.',
-    bullets: ['Push notifikacije na iOS i Android', 'Oznake važnosti: kritično, važno, normalno', 'Kategorije — održavanje, sastanci, rokovi'],
-    accent: '#6366f1', bg: '#f5f3ff', screen: NotificationsScreen,
-  },
-  {
-    painLabel: 'Pitanje na skupštini',
-    painQuote: '"Gde ide novac od stanarine? Niko nam ne odgovara."',
-    emoji: '💰', label: 'Finansije',
-    title: 'Transparentnost koja gradi poverenje.',
-    desc: 'Stanje fonda, prihodi i rashodi u realnom vremenu. Svaki stanar vidi na šta novac odlazi.',
-    bullets: ['Stanje fonda vidljivo svim stanarima', 'Prihodi i rashodi jasno razdvojeni', 'Mesečni pregled za celu godinu'],
-    accent: '#10b981', bg: '#f0fdf4', screen: FinancesScreen,
-  },
-  {
-    painLabel: 'Klasična skupština',
-    painQuote: '"Skupština traje 3 sata. Niko se ne dogovori ni oko čega."',
-    emoji: '🗳️', label: 'Ankete',
-    title: 'Odluke bez sazivanja skupštine.',
-    desc: 'Pokrenete anketu, stanari glasaju sa telefona, a rezultati stižu odmah — bez tročasovnih sastanaka.',
-    bullets: ['Glasanje direktno iz aplikacije', 'Rezultati vidljivi u realnom vremenu', 'Anketa iz zahteva — kad treba odluka stanara'],
-    accent: '#8b5cf6', bg: '#faf5ff', screen: PollScreen,
-  },
+/* Visual structure only — all copy lives in i18n/translations.ts (phone.steps) */
+const stepMeta = [
+  { emoji: '🏠', accent: '#0d9488', bg: '#f0fdfa', screen: DashboardScreen },
+  { emoji: '🔧', accent: '#f59e0b', bg: '#fffbeb', screen: RequestsScreen },
+  { emoji: '📢', accent: '#6366f1', bg: '#f5f3ff', screen: NotificationsScreen },
+  { emoji: '💰', accent: '#10b981', bg: '#f0fdf4', screen: FinancesScreen },
+  { emoji: '🗳️', accent: '#8b5cf6', bg: '#faf5ff', screen: PollScreen },
 ]
 
 const TILTS = [
@@ -75,6 +37,8 @@ const TILTS = [
 ]
 
 export default function PhoneScrollSection() {
+  const { t } = useLang()
+  const steps = stepMeta.map((m, i) => ({ ...m, ...t.phone.steps[i] }))
   const sectionRef   = useRef<HTMLElement>(null)
   const containerRef = useRef<HTMLDivElement>(null)
   const { activeStep, isActive } = useScrollProgress(containerRef, steps.length)
@@ -127,17 +91,17 @@ export default function PhoneScrollSection() {
         <div style={{ position: 'relative', zIndex: 1 }}>
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '5px 16px', borderRadius: 99, border: '1px solid rgba(20,184,166,0.3)', background: 'rgba(20,184,166,0.08)', marginBottom: 32 }}>
             <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#14b8a6', display: 'inline-block', animation: 'chapterPulse 2s ease-in-out infinite' }} />
-            <span style={{ fontSize: 11, fontWeight: 800, color: '#14b8a6', letterSpacing: '0.18em', textTransform: 'uppercase' }}>Rešenje</span>
+            <span style={{ fontSize: 11, fontWeight: 800, color: '#14b8a6', letterSpacing: '0.18em', textTransform: 'uppercase' }}>{t.phone.chapterBadge}</span>
           </div>
 
           <h2 style={{ fontSize: 'clamp(40px, 7vw, 88px)', fontWeight: 900, lineHeight: 1.0, letterSpacing: '-3px', color: '#fff', marginBottom: 20, animation: 'chapterFadeUp 0.9s cubic-bezier(0.22,1,0.36,1) both' }}>
-            Jedna aplikacija.
+            {t.phone.chapterTitle1}
           </h2>
           <h2 style={{ fontSize: 'clamp(40px, 7vw, 88px)', fontWeight: 900, lineHeight: 1.0, letterSpacing: '-3px', marginBottom: 32, background: 'linear-gradient(135deg, #2dd4bf 0%, #14b8a6 50%, #0d9488 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text', animation: 'chapterFadeUp 0.9s cubic-bezier(0.22,1,0.36,1) 0.12s both' }}>
-            Sve pod kontrolom.
+            {t.phone.chapterTitle2}
           </h2>
           <p style={{ fontSize: 'clamp(16px, 2vw, 20px)', color: 'rgba(255,255,255,0.5)', maxWidth: 500, margin: '0 auto 48px', lineHeight: 1.7, animation: 'chapterFadeUp 0.9s cubic-bezier(0.22,1,0.36,1) 0.24s both' }}>
-            Pogledajte kako MojUlaz rešava sve što vas muči.
+            {t.phone.chapterSub}
           </p>
 
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 12, animation: 'chapterFadeUp 0.9s cubic-bezier(0.22,1,0.36,1) 0.36s both' }}>
@@ -146,7 +110,7 @@ export default function PhoneScrollSection() {
                 <div key={i} style={{ width: 7, height: 7, borderRadius: '50%', background: s.accent, opacity: 0.5 }} />
               ))}
             </div>
-            <span style={{ fontSize: 12, fontWeight: 600, color: 'rgba(255,255,255,0.3)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>{steps.length} funkcija</span>
+            <span style={{ fontSize: 12, fontWeight: 600, color: 'rgba(255,255,255,0.3)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>{steps.length} {t.phone.featuresCount}</span>
           </div>
 
           {/* Scroll arrow */}
@@ -272,7 +236,7 @@ export default function PhoneScrollSection() {
           {/* Scroll hint */}
           {activeStep === 0 && (
             <div style={{ position: 'absolute', bottom: 28, left: '50%', transform: 'translateX(-50%)', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6, opacity: 0.45, animation: 'fadeInUp 1s ease 1s both' }}>
-              <span style={{ fontSize: 11, fontWeight: 600, color: '#64748b', letterSpacing: '0.08em', textTransform: 'uppercase' }}>Skrolujte</span>
+              <span style={{ fontSize: 11, fontWeight: 600, color: '#64748b', letterSpacing: '0.08em', textTransform: 'uppercase' }}>{t.phone.scrollHint}</span>
               <div style={{ width: 1, height: 28, background: 'linear-gradient(to bottom, #64748b, transparent)' }} />
             </div>
           )}

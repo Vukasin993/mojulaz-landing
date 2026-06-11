@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { LanguageProvider } from './i18n/LanguageContext'
 import { useScrollReveal } from './hooks/useScrollReveal'
 import Navbar from './components/layout/Navbar'
 import Footer from './components/layout/Footer'
@@ -33,13 +34,15 @@ function LandingPage() {
 
 export default function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/politika-privatnosti" element={<PrivacyPolicy />} />
-        <Route path="/uslovi-koriscenja" element={<TermsOfService />} />
-        <Route path="/o-nama" element={<AboutUs />} />
-      </Routes>
-    </BrowserRouter>
+    <LanguageProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/politika-privatnosti" element={<PrivacyPolicy />} />
+          <Route path="/uslovi-koriscenja" element={<TermsOfService />} />
+          <Route path="/o-nama" element={<AboutUs />} />
+        </Routes>
+      </BrowserRouter>
+    </LanguageProvider>
   )
 }

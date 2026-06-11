@@ -1,26 +1,18 @@
 import { Check, Star } from '../ui/icons'
 import { ADMIN_PANEL_URL } from '../../lib/links'
+import { useLang } from '../../i18n/LanguageContext'
 
-const freeFeatures = [
-  'Sve funkcionalnosti uključene',
-  'Neograničen broj stanara',
-  'Podrška na srpskom',
-  'Bez kreditne kartice',
-]
-
-const tiers = [
-  { range: '1–5 zgrada',  price: '7.600', highlight: false },
-  { range: '6–20 zgrada', price: '6.600', highlight: true  },
-  { range: '21+ zgrada',  price: '4.999', highlight: false },
-]
-
-const paidFeatures = [
-  'Sve iz probnog perioda',
-  'Upravljanje više zgrada',
-  'Prioritetna podrška',
+const tierPrices = [
+  { price: '7.600', highlight: false },
+  { price: '6.600', highlight: true  },
+  { price: '4.999', highlight: false },
 ]
 
 export default function Pricing() {
+  const { t } = useLang()
+  const freeFeatures = t.pricing.freeFeatures
+  const paidFeatures = t.pricing.paidFeatures
+  const tiers = tierPrices.map((p, i) => ({ ...p, range: t.pricing.tierRanges[i] }))
   return (
     <section id="pricing" className="py-24 lg:py-32 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -28,13 +20,13 @@ export default function Pricing() {
         {/* Header */}
         <div className="text-center mb-16">
           <div className="reveal inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold mb-4 bg-primary-50 text-primary-700 border border-primary-100">
-            Cene
+            {t.pricing.badge}
           </div>
           <h2 className="reveal reveal-d1 text-4xl sm:text-5xl font-extrabold text-ink tracking-tight mb-4">
-            Transparentno i fer
+            {t.pricing.title}
           </h2>
           <p className="reveal reveal-d2 text-lg text-slate-600 max-w-md mx-auto leading-relaxed">
-            Počnite besplatno. Pretplatite se kada ste zadovoljni.
+            {t.pricing.sub}
           </p>
         </div>
 
@@ -46,16 +38,16 @@ export default function Pricing() {
             <div className="absolute -top-4 left-1/2 -translate-x-1/2 whitespace-nowrap">
               <span className="inline-flex items-center gap-1.5 bg-primary-600 text-white text-xs font-bold px-3 py-1.5 rounded-full">
                 <Star className="w-3 h-3" />
-                Počnite ovde
+                {t.pricing.startHere}
               </span>
             </div>
 
             <div className="mb-6">
-              <h3 className="text-xl font-bold text-ink mb-2">Probni period</h3>
+              <h3 className="text-xl font-bold text-ink mb-2">{t.pricing.trialTitle}</h3>
               <div className="flex items-baseline gap-2 mb-2">
-                <span className="text-4xl font-extrabold text-primary-600 tracking-tight">Besplatno</span>
+                <span className="text-4xl font-extrabold text-primary-600 tracking-tight">{t.pricing.trialPrice}</span>
               </div>
-              <p className="text-sm text-slate-500">30 dana · sve funkcije · bez kreditne kartice</p>
+              <p className="text-sm text-slate-500">{t.pricing.trialSub}</p>
             </div>
 
             <ul className="space-y-3 mb-8">
@@ -75,15 +67,15 @@ export default function Pricing() {
               rel="noopener noreferrer"
               className="block text-center text-sm font-semibold text-white bg-primary-600 hover:bg-primary-700 rounded-full px-6 py-3.5 transition-all hover:shadow-[0_4px_14px_rgba(13,148,136,0.32)] hover:-translate-y-px"
             >
-              Počnite besplatno — 30 dana
+              {t.pricing.trialCta}
             </a>
           </div>
 
           {/* Paid tiers */}
           <div className="reveal reveal-d2 rounded-2xl p-8 bg-slate-50 border border-slate-200">
             <div className="mb-5">
-              <h3 className="text-xl font-bold text-ink mb-1">Aktivna licenca</h3>
-              <p className="text-sm text-slate-500">Godišnja pretplata · cena po zgradi</p>
+              <h3 className="text-xl font-bold text-ink mb-1">{t.pricing.paidTitle}</h3>
+              <p className="text-sm text-slate-500">{t.pricing.paidSub}</p>
             </div>
 
             {/* Tier table */}
@@ -102,7 +94,7 @@ export default function Pricing() {
                     <span className={`text-base font-extrabold ${highlight ? 'text-primary-600' : 'text-ink'}`}>
                       {price}
                     </span>
-                    <span className="text-xs text-slate-400 ml-1">RSD / god</span>
+                    <span className="text-xs text-slate-400 ml-1">{t.pricing.perYear}</span>
                   </div>
                 </div>
               ))}
@@ -125,7 +117,7 @@ export default function Pricing() {
               rel="noopener noreferrer"
               className="block text-center text-sm font-semibold text-primary-600 bg-white hover:bg-primary-50 border border-primary-300 rounded-full px-6 py-3.5 transition-colors"
             >
-              Počnite besplatno — bez kartice
+              {t.pricing.paidCta}
             </a>
           </div>
 
