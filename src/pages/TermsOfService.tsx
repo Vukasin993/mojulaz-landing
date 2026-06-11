@@ -145,7 +145,7 @@ export default function TermsOfService() {
             <p>
               Za pitanja u vezi sa uslovima korišćenja:<br />
               <strong>MojUlaz d.o.o.</strong><br />
-              Email: <a href="mailto:info@mojulaz.com" className="text-primary-600 hover:underline">info@mojulaz.com</a>
+              Email: <a href="mailto:info@moj-ulaz.com" className="text-primary-600 hover:underline">info@moj-ulaz.com</a>
             </p>
           </section>
 

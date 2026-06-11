@@ -2,16 +2,16 @@ import { Link } from 'react-router-dom'
 import logoImg from '../../assets/logo-icon.png'
 
 const platform = [
-  { href: '#features', label: 'Funkcionalnosti' },
-  { href: '#how',      label: 'Kako radi'        },
-  { href: '#pricing',  label: 'Cene'             },
+  { href: '/#features', label: 'Funkcionalnosti' },
+  { href: '/#how',      label: 'Kako radi'        },
+  { href: '/#pricing',  label: 'Cene'             },
 ]
 
 const company = [
-  { href: '#',                       label: 'O nama'              },
+  { href: '/o-nama',                 label: 'O nama'              },
   { href: '/politika-privatnosti',   label: 'Politika privatnosti' },
   { href: '/uslovi-koriscenja',      label: 'Uslovi korišćenja'   },
-  { href: '#',                       label: 'Kontakt'             },
+  { href: '/#contact',               label: 'Kontakt'             },
 ]
 
 export default function Footer() {
@@ -53,7 +53,7 @@ export default function Footer() {
             <ul className="space-y-2.5">
               {company.map(({ href, label }) => (
                 <li key={label}>
-                  {href.startsWith('/') ? (
+                  {href.startsWith('/') && !href.includes('#') ? (
                     <Link to={href} className="text-sm text-slate-400 hover:text-primary-400 transition-colors">{label}</Link>
                   ) : (
                     <a href={href} className="text-sm text-slate-400 hover:text-primary-400 transition-colors">{label}</a>

@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react'
 import { X, Menu } from '../ui/icons'
 import logoImg from '../../assets/logo-icon.png'
+import { ADMIN_PANEL_URL } from '../../lib/links'
 
 const links = [
   { href: '#features',  label: 'Funkcionalnosti' },
   { href: '#how',       label: 'Kako radi'        },
   { href: '#pricing',   label: 'Cene'             },
-  { href: '#footer',    label: 'Kontakt'          },
+  { href: '#contact',   label: 'Kontakt'          },
 ]
 
 export default function Navbar() {
@@ -34,7 +35,7 @@ export default function Navbar() {
     if (href === '#') return
     const el = document.querySelector(href)
     if (!el) return
-    window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 68, behavior: 'smooth' })
+    window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 104, behavior: 'smooth' })
   }
 
   return (
@@ -50,6 +51,18 @@ export default function Navbar() {
         pointerEvents: hidden ? 'none' : 'auto',
       }}
     >
+      {/* Announcement bar — admin panel for managers */}
+      <a
+        href={ADMIN_PANEL_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="block bg-ink text-center px-4 py-2 text-xs sm:text-sm text-slate-300 hover:text-white transition-colors"
+      >
+        <span className="font-medium">Upravnik ste?</span>{' '}
+        Registrujte svoju zgradu u admin panelu — prvih 30 dana besplatno{' '}
+        <span className="font-bold text-primary-400">Otvorite panel →</span>
+      </a>
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
 
@@ -75,7 +88,9 @@ export default function Navbar() {
           {/* Desktop CTA */}
           <div className="hidden md:flex">
             <a
-              href="#"
+              href={ADMIN_PANEL_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-sm font-semibold text-white bg-primary-600 hover:bg-primary-700 rounded-full px-5 py-2.5 transition-all hover:shadow-[0_4px_14px_rgba(13,148,136,0.32)] hover:-translate-y-px"
             >
               Počnite besplatno
@@ -111,7 +126,7 @@ export default function Navbar() {
             </a>
           ))}
           <div className="pt-3 border-t border-slate-100 mt-2">
-            <a href="#" className="block text-center text-sm font-semibold text-white bg-primary-600 rounded-full px-5 py-3 hover:bg-primary-700 transition-colors">
+            <a href={ADMIN_PANEL_URL} target="_blank" rel="noopener noreferrer" className="block text-center text-sm font-semibold text-white bg-primary-600 rounded-full px-5 py-3 hover:bg-primary-700 transition-colors">
               Počnite besplatno
             </a>
           </div>

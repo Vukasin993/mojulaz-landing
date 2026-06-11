@@ -6,9 +6,11 @@ import BuildingSection from './components/sections/BuildingSection'
 import PhoneScrollSection from './components/sections/PhoneScrollSection'
 import Pricing from './components/sections/Pricing'
 import Testimonials from './components/sections/Testimonials'
+import Contact from './components/sections/Contact'
 import CTABanner from './components/sections/CTABanner'
 import PrivacyPolicy from './pages/PrivacyPolicy'
 import TermsOfService from './pages/TermsOfService'
+import AboutUs from './pages/AboutUs'
 
 function LandingPage() {
   useScrollReveal()
@@ -21,6 +23,7 @@ function LandingPage() {
         <PhoneScrollSection />
         <Pricing />
         <Testimonials />
+        <Contact />
         <CTABanner />
       </main>
       <Footer />
@@ -35,6 +38,7 @@ export default function App() {
         <Route path="/" element={<LandingPage />} />
         <Route path="/politika-privatnosti" element={<PrivacyPolicy />} />
         <Route path="/uslovi-koriscenja" element={<TermsOfService />} />
+        <Route path="/o-nama" element={<AboutUs />} />
       </Routes>
     </BrowserRouter>
   )

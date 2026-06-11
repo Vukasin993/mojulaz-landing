@@ -1,4 +1,5 @@
 import { ArrowRight } from '../ui/icons'
+import { ADMIN_PANEL_URL } from '../../lib/links'
 
 export default function CTABanner() {
   return (
@@ -36,7 +37,9 @@ export default function CTABanner() {
 
         <div className="reveal reveal-d2">
           <a
-            href="#"
+            href={ADMIN_PANEL_URL}
+            target="_blank"
+            rel="noopener noreferrer"
             className="group relative inline-flex items-center gap-2 text-sm font-bold text-primary-700 bg-white rounded-full px-7 py-4 overflow-hidden transition-all hover:shadow-[0_12px_32px_rgba(0,0,0,0.22)] hover:-translate-y-1"
           >
             {/* Shine sweep on hover */}

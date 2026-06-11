@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { useScrollProgress } from '../../hooks/useScrollProgress'
+import { APP_STORE_URL, PLAY_STORE_URL, ADMIN_PANEL_URL } from '../../lib/links'
 
 /* ── Chat messages ─────────────────────────────────────────────────── */
 interface ChatMsg {
@@ -13,34 +14,34 @@ const MESSAGES: ChatMsg[] = [
   { id: 2,  sender: 'Dragica K.',      text: 'KO JE PARKIRAO BELI PUNTO ISPRED RAMPE?! NE MOGU DA IZAĐEM VEĆ 20 MINUTA!!!', time: '07:31', type: 'angry',   avatar: '#dc2626' },
   { id: 3,  sender: 'Žarko M.',        text: '🎤 Glasovna poruka (0:47)', time: '07:33', type: 'normal',  avatar: '#92400e', annotation: { label: 'Niko neće slušati 47 sekundi', color: '#f59e0b' } },
   { id: 4,  sender: 'Snežana V.',      text: 'Ej da li neko ima recept za sarmu? Pitam jer moja svekrva dolazi 😬', time: '07:38', type: 'offtopic', avatar: '#db2777' },
-  { id: 5,  sender: 'Upravnik Zoran',  text: 'Dobro jutro svima! Prosleđujem Petru u vezi lifta 👍', time: '07:45', type: 'admin',   avatar: '#0d9488', own: true, annotation: { label: 'Petar je u grupi...', color: '#6366f1' } },
-  { id: 6,  sender: 'Petar K.',        text: 'Zoran, ja sam tu 😂', time: '07:45', type: 'normal',  avatar: '#0891b2' },
-  { id: 7,  sender: 'Upravnik Zoran',  text: 'A da, vidim 😅 e pa nazovi majstora Mišu', time: '07:46', type: 'admin',   avatar: '#0d9488', own: true },
+  { id: 5,  sender: 'Upravnik Zoran',  text: 'Dobro jutro svima! Prosleđujem Petru za lift 👍', time: '07:45', type: 'admin',   avatar: '#0d9488', own: true, annotation: { label: 'Petar je u grupi...', color: '#6366f1' } },
+  { id: 6,  sender: 'Petar K.',        text: 'Zorane, pa ja sam ovde 😂', time: '07:45', type: 'normal',  avatar: '#0891b2' },
+  { id: 7,  sender: 'Upravnik Zoran',  text: 'A da, vidim 😅 e pa pozovi majstora Mišu', time: '07:46', type: 'admin',   avatar: '#0d9488', own: true },
   { id: 8,  sender: 'Milica P.',       text: 'Ko je Miša i koji je njegov broj?', time: '07:47', type: 'normal',  avatar: '#7c3aed' },
-  { id: 9,  sender: 'Upravnik Zoran',  text: '0641234567, a čekaj to je broj moje žene 😳 ovo je: 0698765432', time: '07:49', type: 'admin',   avatar: '#0d9488', own: true, annotation: { label: 'Zoran šalje broj žene 💀', color: '#dc2626' } },
-  { id: 10, sender: 'Boban R.',        text: 'hahahahaha Zoran MAJSTORE 😂😂😂', time: '07:49', type: 'offtopic', avatar: '#16a34a' },
-  { id: 11, sender: 'Tatjana K.',      text: 'Molim sve da ne pišu ovde pre 9h, beba spava 🙏', time: '07:51', type: 'angry',   avatar: '#b45309' },
-  { id: 12, sender: 'Dragica K.',      text: 'TATJANA MENI NE ODGOVARA DA LI ĆE NEKO MAKNUTI TEN PUNTO', time: '07:52', type: 'angry',   avatar: '#dc2626' },
-  { id: 13, sender: 'Branko Ć.',       text: 'Ja mislim da je to Đorđeta kola iz 14ke, vidim ja svašta sa svog balkona 🧐', time: '07:54', type: 'normal',  avatar: '#475569' },
-  { id: 14, sender: 'Đorđe P.',        text: 'deda Branko to je tvoj auto', time: '07:55', type: 'normal',  avatar: '#6366f1', annotation: { label: '😭', color: '#f59e0b' } },
+  { id: 9,  sender: 'Upravnik Zoran',  text: '0641234567... a ne, čekaj, to je broj moje žene 😳 evo pravi: 0698765432', time: '07:49', type: 'admin',   avatar: '#0d9488', own: true, annotation: { label: 'Zoran šalje broj žene 💀', color: '#dc2626' } },
+  { id: 10, sender: 'Boban R.',        text: 'hahahahaha ZORANE MAJSTORE 😂😂😂', time: '07:49', type: 'offtopic', avatar: '#16a34a' },
+  { id: 11, sender: 'Tatjana K.',      text: 'Molim vas da ne pišete ovde pre 9h, beba spava 🙏', time: '07:51', type: 'angry',   avatar: '#b45309' },
+  { id: 12, sender: 'Dragica K.',      text: 'TATJANA, MENI NIKO NE ODGOVARA HOĆE LI NEKO SKLONITI TAJ PUNTO!!!', time: '07:52', type: 'angry',   avatar: '#dc2626' },
+  { id: 13, sender: 'Branko Ć.',       text: 'Ja mislim da su to Đorđetova kola iz 14-ice, vidim ja svašta sa svog balkona 🧐', time: '07:54', type: 'normal',  avatar: '#475569' },
+  { id: 14, sender: 'Đorđe P.',        text: 'deda Branko, to su tvoja kola', time: '07:55', type: 'normal',  avatar: '#6366f1', annotation: { label: '😭', color: '#f59e0b' } },
   { id: 15, sender: 'Branko Ć.',       text: 'Ah da, parkirao sam da uzmem hleb, idem odmah 😇', time: '07:55', type: 'normal',  avatar: '#475569' },
   { id: 16, sender: 'Upravnik Zoran',  text: 'U redu, u redu. Dakle: lift, parking, i... šta je još bilo?', time: '08:10', type: 'admin',   avatar: '#0d9488', own: true, annotation: { label: 'Nema evidencije — ništa se ne prati', color: '#ef4444' } },
-  { id: 17, sender: 'Milica P.',       text: 'Hodnik? Mesec i po? Metla? 🧹🧹🧹', time: '08:11', type: 'angry',   avatar: '#7c3aed' },
+  { id: 17, sender: 'Milica P.',       text: 'A hodnik? Mesec i po ga niko nije čistio! 🧹🧹🧹', time: '08:11', type: 'angry',   avatar: '#7c3aed' },
   { id: 18, sender: 'Mara B.',         text: 'I rupa na parkingu kod stuba 3, ja sam pala prošle nedelje!!!', time: '08:12', type: 'angry',   avatar: '#be185d' },
   { id: 19, sender: 'Petar K.',        text: 'I curenje u podrumu od pre 3 meseca', time: '08:12', type: 'normal',  avatar: '#0891b2' },
-  { id: 20, sender: 'Snežana V.',      text: 'I žarulje na 4. spratu', time: '08:13', type: 'normal',  avatar: '#db2777' },
+  { id: 20, sender: 'Snežana V.',      text: 'I sijalice na 4. spratu ne rade', time: '08:13', type: 'normal',  avatar: '#db2777' },
   { id: 21, sender: 'Branko Ć.',       text: 'I interfon od 2019. godine ne radi', time: '08:13', type: 'normal',  avatar: '#475569' },
-  { id: 22, sender: 'Upravnik Zoran',  text: 'Ok ok ok, zapisujem... čekajte da nađem papir', time: '08:14', type: 'admin',   avatar: '#0d9488', own: true, annotation: { label: 'Papir. 2024. godina.', color: '#6366f1' } },
+  { id: 22, sender: 'Upravnik Zoran',  text: 'Ok ok ok, zapisujem... čekajte da nađem papir', time: '08:14', type: 'admin',   avatar: '#0d9488', own: true, annotation: { label: 'Papir. 2026. godina.', color: '#6366f1' } },
   { id: 23, sender: 'Boban R.',        text: 'Ej ima li ko kartu za Zvezda-Partizan? Pitam za druga 🙈⚽', time: '08:16', type: 'offtopic', avatar: '#16a34a' },
-  { id: 24, sender: 'Dragica K.',      text: 'BOBAN NIJE OVO BUVLJAK NEGO GRUPA ZGRADE!!!', time: '08:17', type: 'angry',   avatar: '#dc2626' },
+  { id: 24, sender: 'Dragica K.',      text: 'BOBANE, OVO NIJE BUVLJAK NEGO GRUPA ZGRADE!!!', time: '08:17', type: 'angry',   avatar: '#dc2626' },
   { id: 25, sender: 'Žarko M.',        text: '🎤 Glasovna poruka (1:23)', time: '08:19', type: 'normal',  avatar: '#92400e' },
   { id: 26, sender: 'Ana T.',          text: '👀', time: '08:20', type: 'normal',  avatar: '#0d9488' },
   { id: 27, sender: 'Upravnik Zoran',  text: 'Našao papir! Dakle lift — to je bio kvar ili plansko isključenje?', time: '08:28', type: 'admin',   avatar: '#0d9488', own: true, annotation: { label: 'Lift ne radi od 07:12...', color: '#ef4444' } },
-  { id: 28, sender: 'Dragica K.',      text: 'ZORAN. JE. LI. OVO. OZBILJNO.', time: '08:28', type: 'angry',   avatar: '#dc2626' },
+  { id: 28, sender: 'Dragica K.',      text: 'ZORANE. DA. LI. SI. TI. OZBILJAN.', time: '08:28', type: 'angry',   avatar: '#dc2626' },
   { id: 29, sender: 'Tatjana K.',      text: 'Beba se probudila. Hvala svima 😤', time: '08:29', type: 'angry',   avatar: '#b45309' },
-  { id: 30, sender: 'Petar K.',        text: 'Možemo li nekako sve ovo organizovano pratiti? Ovo je haos 😩', time: '08:31', type: 'normal',  avatar: '#0891b2', annotation: { label: '8 kvarova, 0 rešenih', color: '#ef4444' } },
-  { id: 31, sender: 'Upravnik Zoran',  text: 'Imaš pravo Petare. Pravim novu grupu "KVAROVI ZGRADA" 💪', time: '08:33', type: 'admin',   avatar: '#0d9488', own: true },
-  { id: 32, sender: 'Milica P.',       text: 'Zoran već imamo 4 grupe. I sve su mrtve 🙃', time: '08:33', type: 'normal',  avatar: '#7c3aed', annotation: { label: 'Već 4 mrtve grupe 🪦', color: '#6366f1' } },
+  { id: 30, sender: 'Petar K.',        text: 'Ljudi, može li ovo nekako organizovano da se prati? Ovo je haos 😩', time: '08:31', type: 'normal',  avatar: '#0891b2', annotation: { label: '8 kvarova, 0 rešenih', color: '#ef4444' } },
+  { id: 31, sender: 'Upravnik Zoran',  text: 'U pravu si, Petre. Pravim novu grupu "KVAROVI ZGRADE" 💪', time: '08:33', type: 'admin',   avatar: '#0d9488', own: true },
+  { id: 32, sender: 'Milica P.',       text: 'Zorane, već imamo 4 grupe. I sve su mrtve 🙃', time: '08:33', type: 'normal',  avatar: '#7c3aed', annotation: { label: 'Već 4 mrtve grupe 🪦', color: '#6366f1' } },
 ]
 const INITIAL_SHOW = 6
 
@@ -151,10 +152,10 @@ function StoreButtons() {
   return (
     <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10 }}>
       {[
-        { label: 'App Store',   sub: 'Preuzmite na', icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg> },
-        { label: 'Google Play', sub: 'Dostupno na',  icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M3.18 23.76c.3.17.65.18.97.05l12.44-7.18-2.63-2.63-10.78 9.76z" fill="#EA4335"/><path d="M20.82 9.73c-.42-.57-1.02-.96-1.73-1.08L4.15.28C3.83.1 3.48.1 3.18.27L13.96 11.05l6.86-1.32z" fill="#FBBC04"/><path d="M2.01 1.14c-.13.24-.2.52-.2.82v19.08c0 .3.07.58.2.82l.14.13L13.1 11.05v-.1L2.15 1z" fill="#4285F4"/><path d="M20.82 14.27l-3.23 1.87-2.63-2.63 2.63-2.63 3.23 1.87c.92.53.92 1.99 0 2.52z" fill="#34A853"/></svg> },
-      ].map(({ label, sub, icon }) => (
-        <a key={label} href="#" style={{ display: 'inline-flex', alignItems: 'center', gap: 9, padding: '9px 16px', borderRadius: 12, background: '#0f172a', color: '#fff', textDecoration: 'none', boxShadow: '0 2px 10px rgba(0,0,0,0.14)', transition: 'transform 0.2s, box-shadow 0.2s' }}
+        { label: 'App Store',   sub: 'Preuzmite na', href: APP_STORE_URL,  icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg> },
+        { label: 'Google Play', sub: 'Dostupno na',  href: PLAY_STORE_URL, icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M3.18 23.76c.3.17.65.18.97.05l12.44-7.18-2.63-2.63-10.78 9.76z" fill="#EA4335"/><path d="M20.82 9.73c-.42-.57-1.02-.96-1.73-1.08L4.15.28C3.83.1 3.48.1 3.18.27L13.96 11.05l6.86-1.32z" fill="#FBBC04"/><path d="M2.01 1.14c-.13.24-.2.52-.2.82v19.08c0 .3.07.58.2.82l.14.13L13.1 11.05v-.1L2.15 1z" fill="#4285F4"/><path d="M20.82 14.27l-3.23 1.87-2.63-2.63 2.63-2.63 3.23 1.87c.92.53.92 1.99 0 2.52z" fill="#34A853"/></svg> },
+      ].map(({ label, sub, href, icon }) => (
+        <a key={label} href={href} target="_blank" rel="noopener noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: 9, padding: '9px 16px', borderRadius: 12, background: '#0f172a', color: '#fff', textDecoration: 'none', boxShadow: '0 2px 10px rgba(0,0,0,0.14)', transition: 'transform 0.2s, box-shadow 0.2s' }}
           onMouseEnter={e => { (e.currentTarget as HTMLElement).style.transform = 'translateY(-2px)'; (e.currentTarget as HTMLElement).style.boxShadow = '0 6px 20px rgba(0,0,0,0.2)' }}
           onMouseLeave={e => { (e.currentTarget as HTMLElement).style.transform = ''; (e.currentTarget as HTMLElement).style.boxShadow = '0 2px 10px rgba(0,0,0,0.14)' }}>
           {icon}
@@ -205,24 +206,38 @@ export default function BuildingSection() {
               <div style={{ flex: '0 0 auto', maxWidth: 520 }}>
                 <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, padding: '4px 12px', borderRadius: 99, background: 'rgba(239,68,68,0.08)', border: '1px solid rgba(239,68,68,0.2)', marginBottom: 20 }}>
                   <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#ef4444', display: 'inline-block', animation: 'pulseRed 1.5s ease-in-out infinite' }} />
-                  <span style={{ fontSize: 11, fontWeight: 800, color: '#ef4444', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Problem koji poznajete</span>
+                  <span style={{ fontSize: 11, fontWeight: 800, color: '#ef4444', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Problem koji dobro poznajete</span>
                 </div>
 
-                <h1 style={{ fontSize: 'clamp(36px, 5.5vw, 68px)', fontWeight: 900, color: '#0f172a', lineHeight: 1.05, letterSpacing: '-2px', marginBottom: 8 }}>
-                  Vi gubite vreme.
+                <h1 style={{ fontSize: 'clamp(34px, 4.8vw, 60px)', fontWeight: 900, color: '#0f172a', lineHeight: 1.05, letterSpacing: '-2px', marginBottom: 8 }}>
+                  Prestanite da vodite zgradu
                 </h1>
-                <h1 style={{ fontSize: 'clamp(36px, 5.5vw, 68px)', fontWeight: 900, lineHeight: 1.05, letterSpacing: '-2px', marginBottom: 24, background: 'linear-gradient(135deg, #14b8a6 0%, #0d9488 55%, #0f766e 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
-                  Svaki jedini dan.
+                <h1 style={{ fontSize: 'clamp(34px, 4.8vw, 60px)', fontWeight: 900, lineHeight: 1.05, letterSpacing: '-2px', marginBottom: 24, background: 'linear-gradient(135deg, #14b8a6 0%, #0d9488 55%, #0f766e 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
+                  kroz Viber grupe.
                 </h1>
 
-                <p style={{ fontSize: 17, color: '#64748b', lineHeight: 1.75, marginBottom: 32, maxWidth: 420 }}>
-                  WhatsApp grupe, Excel tabele, zagubljeni kvarovi — upravljanje zgradom bez pravog alata košta vas sate i živce.
+                <p style={{ fontSize: 17, color: '#64748b', lineHeight: 1.75, marginBottom: 28, maxWidth: 460 }}>
+                  Obaveštenja, dokumenta, finansije, prijava kvarova i glasanja na jednom mestu.
+                  Sve što stanarima i upravnicima treba za modernu stambenu zajednicu.
                 </p>
 
                 <StoreButtons />
 
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, marginTop: 20 }}>
-                  {['✓ 500+ zgrada', '✓ Besplatno 30 dana', '✓ Počnite za 5 min'].map(t => (
+                {/* Admin panel callout for managers */}
+                <a href={ADMIN_PANEL_URL} target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: 12, marginTop: 16, padding: '12px 16px', borderRadius: 14, background: 'rgba(13,148,136,0.06)', border: '1.5px solid rgba(13,148,136,0.25)', textDecoration: 'none', transition: 'transform 0.2s, box-shadow 0.2s, border-color 0.2s', maxWidth: 460 }}
+                  onMouseEnter={e => { const t = e.currentTarget as HTMLElement; t.style.transform = 'translateY(-2px)'; t.style.boxShadow = '0 8px 24px rgba(13,148,136,0.16)'; t.style.borderColor = 'rgba(13,148,136,0.5)' }}
+                  onMouseLeave={e => { const t = e.currentTarget as HTMLElement; t.style.transform = ''; t.style.boxShadow = ''; t.style.borderColor = 'rgba(13,148,136,0.25)' }}>
+                  <span style={{ fontSize: 20, flexShrink: 0 }}>🧑‍💼</span>
+                  <span style={{ flex: 1, fontSize: 13, color: '#475569', lineHeight: 1.5 }}>
+                    <strong style={{ color: '#0f172a' }}>Vi ste upravnik?</strong> Registrujte zgradu u admin panelu — besplatno 30 dana.
+                  </span>
+                  <span style={{ flexShrink: 0, fontSize: 12.5, fontWeight: 800, color: '#fff', background: '#0d9488', padding: '8px 14px', borderRadius: 99, whiteSpace: 'nowrap' }}>
+                    Admin panel →
+                  </span>
+                </a>
+
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, marginTop: 16 }}>
+                  {['✓ 500+ zgrada', '✓ 30 dana besplatno', '✓ Počnite za 5 minuta'].map(t => (
                     <div key={t} style={{ display: 'flex', alignItems: 'center', gap: 5, padding: '5px 12px', borderRadius: 99, background: '#fff', border: '1px solid rgba(13,148,136,0.15)', fontSize: 12, fontWeight: 600, color: '#0f172a', boxShadow: '0 1px 4px rgba(0,0,0,0.04)' }}>
                       <span style={{ color: '#0d9488' }}>{t.charAt(0)}</span>{t.slice(2)}
                     </div>
@@ -230,7 +245,7 @@ export default function BuildingSection() {
                 </div>
 
                 {/* Scroll hint */}
-                <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginTop: 40, opacity: 0.4 }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginTop: 24, opacity: 0.4 }}>
                   <div style={{ width: 1, height: 32, background: 'linear-gradient(to bottom, #64748b, transparent)' }} />
                   <span style={{ fontSize: 11, fontWeight: 600, color: '#64748b', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Skrolujte</span>
                 </div>
@@ -258,18 +273,18 @@ export default function BuildingSection() {
               <p style={{ fontSize: 11, fontWeight: 800, color: '#0d9488', letterSpacing: '0.18em', textTransform: 'uppercase', marginBottom: 14 }}>Počnite za 5 minuta</p>
               <h2 style={{ fontSize: 'clamp(30px, 5vw, 56px)', fontWeight: 900, color: '#0f172a', lineHeight: 1.1, letterSpacing: '-1.5px', marginBottom: 16 }}>
                 Od haosa do reda<br />
-                <span style={{ background: 'linear-gradient(135deg, #14b8a6, #0d9488)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>u jednoj registraciji.</span>
+                <span style={{ background: 'linear-gradient(135deg, #14b8a6, #0d9488)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>u tri jednostavna koraka.</span>
               </h2>
               <p style={{ fontSize: 16, color: '#64748b', maxWidth: 480, margin: '0 auto', lineHeight: 1.7 }}>
-                Bez dugog podešavanja, bez tehničkog znanja.
+                Bez komplikovanog podešavanja i bez tehničkog znanja — MojUlaz radi od prvog dana.
               </p>
             </div>
 
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 'clamp(16px, 3vw, 40px)', width: '100%', maxWidth: 960 }} className="steps-grid">
               {[
-                { n: '01', color: '#0d9488', bg: '#f0fdfa', border: 'rgba(13,148,136,0.15)', icon: '🏢', title: 'Registrujete zgradu', desc: 'Unesete naziv i adresu — dobijate jedinstveni kod. Bukvalno jedan minut posla.', time: '1 min' },
-                { n: '02', color: '#6366f1', bg: '#f5f3ff', border: 'rgba(99,102,241,0.15)',  icon: '📱', title: 'Stanari se pridružuju', desc: 'Delite kod stanarima. Preuzmu aplikaciju, ukucaju kod — odmah su unutra.', time: '5 min' },
-                { n: '03', color: '#f59e0b', bg: '#fffbeb', border: 'rgba(245,158,11,0.15)',  icon: '✅', title: 'Platforma radi odmah', desc: 'Kvarovi, finansije, glasanja, chat — sve aktivno od prvog dana.', time: 'Odmah!' },
+                { n: '01', color: '#0d9488', bg: '#f0fdfa', border: 'rgba(13,148,136,0.15)', icon: '🏢', title: 'Registrujete zgradu', desc: 'Unesete naziv i adresu zgrade i odmah dobijate jedinstveni kod ulaza. Sve je gotovo za minut.', time: '1 min' },
+                { n: '02', color: '#6366f1', bg: '#f5f3ff', border: 'rgba(99,102,241,0.15)',  icon: '📱', title: 'Stanari se pridružuju', desc: 'Podelite kod stanarima. Oni preuzmu MojUlaz, ukucaju kod — i odmah su unutra.', time: '5 min' },
+                { n: '03', color: '#f59e0b', bg: '#fffbeb', border: 'rgba(245,158,11,0.15)',  icon: '✅', title: 'Sve radi odmah', desc: 'Prijave kvarova, obaveštenja, glasanja, finansije i chat — sve je aktivno od prvog dana.', time: 'Odmah!' },
               ].map(({ n, color, bg, border, icon, title, desc, time }, i) => (
                 <div key={n} style={{ position: 'relative' }}>
                   {i < 2 && <div className="step-arrow hidden md:flex" style={{ position: 'absolute', right: -20, top: '50%', transform: 'translateY(-50%)', zIndex: 10, color: '#cbd5e1', fontSize: 20, pointerEvents: 'none' }}>→</div>}

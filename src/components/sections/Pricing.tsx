@@ -1,4 +1,5 @@
 import { Check, Star } from '../ui/icons'
+import { ADMIN_PANEL_URL } from '../../lib/links'
 
 const freeFeatures = [
   'Sve funkcionalnosti uključene',
@@ -69,7 +70,9 @@ export default function Pricing() {
             </ul>
 
             <a
-              href="#"
+              href={ADMIN_PANEL_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="block text-center text-sm font-semibold text-white bg-primary-600 hover:bg-primary-700 rounded-full px-6 py-3.5 transition-all hover:shadow-[0_4px_14px_rgba(13,148,136,0.32)] hover:-translate-y-px"
             >
               Počnite besplatno — 30 dana
@@ -117,7 +120,9 @@ export default function Pricing() {
             </ul>
 
             <a
-              href="#"
+              href={ADMIN_PANEL_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="block text-center text-sm font-semibold text-primary-600 bg-white hover:bg-primary-50 border border-primary-300 rounded-full px-6 py-3.5 transition-colors"
             >
               Počnite besplatno — bez kartice

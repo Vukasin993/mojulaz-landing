@@ -11,17 +11,17 @@ interface Testimonial {
 
 const testimonials: Testimonial[] = [
   {
-    initials: 'MJ',
+    initials: 'MV',
     color: 'from-primary-600 to-primary-700',
-    name: 'Miroslav Jovanović',
+    name: 'Milorad Veličković',
     role: 'Upravnik stambene zgrade, Beograd',
-    quote: 'Pre MojUlaza sve je bilo na papiru i WhatsApp grupama. Sada imam pregled svakog zahteva i mogu odmah da odgovorim stanarima. Neverovatno koliko se administrativni posao smanjio.',
+    quote: 'Pre MojUlaza sve je bilo na papiru i po Viber grupama. Sada imam pregled svakog zahteva i mogu odmah da odgovorim stanarima. Neverovatno koliko se administrativni posao smanjio.',
     revealClass: 'reveal-left',
   },
   {
-    initials: 'AN',
+    initials: 'AV',
     color: 'from-indigo-500 to-indigo-600',
-    name: 'Ana Nikolić',
+    name: 'Aleksa Vukadinović',
     role: 'Predsednik skupštine stanara, Novi Sad',
     quote: 'Organizovati skupštinu stanara je bilo pravo mučenje. Sada koristimo ankete u aplikaciji — za sat vremena skupim glasove svih 32 stana. Sistem je intuitivan i stanari su ga odmah prihvatili.',
     revealClass: 'reveal reveal-d2',

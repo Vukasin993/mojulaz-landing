@@ -1,37 +1,49 @@
 import { useRef, useEffect, useState } from 'react'
 import PhoneMockup from '../ui/PhoneMockup'
-import {
-  DashboardScreen, MaintenanceScreen,
-  NotificationsScreen, FinancesScreen, VotingScreen,
-} from '../ui/PhoneScreens'
 import { useScrollProgress } from '../../hooks/useScrollProgress'
+import homeDashboardImg from '../../assets/section/home-dashbaord.png'
+import zahtev2Img from '../../assets/section/zahtev2.png'
+import obavestenjaImg from '../../assets/section/obavestenja.png'
+import finance2Img from '../../assets/section/finance2.png'
+import pollImg from '../../assets/section/poll.png'
+
+/* ── Screenshot screens ────────────────────────────────────────────── */
+function ScreenImage({ src, alt }: { src: string; alt: string }) {
+  return <img src={src} alt={alt} draggable={false} style={{ width: '100%', display: 'block' }} />
+}
+
+const DashboardScreen     = () => <ScreenImage src={homeDashboardImg} alt="MojUlaz — početni ekran sa pregledom zgrade" />
+const RequestsScreen      = () => <ScreenImage src={zahtev2Img} alt="MojUlaz — zahtev sa istorijom statusa i komentarima" />
+const NotificationsScreen = () => <ScreenImage src={obavestenjaImg} alt="MojUlaz — obaveštenja sa oznakama važnosti" />
+const FinancesScreen      = () => <ScreenImage src={finance2Img} alt="MojUlaz — finansije sa stanjem fonda i mesečnim pregledom" />
+const PollScreen          = () => <ScreenImage src={pollImg} alt="MojUlaz — anketa sa glasanjem stanara" />
 
 const steps = [
   {
     painLabel: 'Čest problem',
-    painQuote: '"Gde je ta informacija? Zvali su me tri puta danas..."',
+    painQuote: '"Koliko imamo u fondu? Šta je sa liftom? Kad je sastanak? — svi pitaju mene."',
     emoji: '🏠', label: 'Pregled',
-    title: 'Sve što je važno, na jednom mestu.',
-    desc: 'Kvarovi, fond, obaveštenja, glasanja — sve odjednom. Nema traženja po porukama.',
-    bullets: ['Aktuelni kvarovi i statusi', 'Stanje rezervnog fonda', 'Poslednje aktivnosti stanara'],
+    title: 'Ceo ulaz u jednom pogledu.',
+    desc: 'Otvorite aplikaciju i odmah vidite šta se dešava: nova obaveštenja, aktivni zahtevi, ankete u toku i stanje fonda.',
+    bullets: ['Obaveštenja, zahtevi i ankete na broju', 'Stanje fonda na početnom ekranu', 'Brzi pristup održavanju i dokumentima'],
     accent: '#0d9488', bg: '#f0fdfa', screen: DashboardScreen,
   },
   {
     painLabel: 'Što kažu stanari',
     painQuote: '"Prijavio sam kvar pre mesec dana. Niko se nije javio."',
-    emoji: '🔧', label: 'Kvarovi',
-    title: 'Svaki kvar praćen do rešenja.',
-    desc: 'Prijava za 10 sekundi — foto, opis, kategorija. Notifikacija odmah. Tehničar zna prioritete.',
-    bullets: ['Foto dokumentacija kvara', 'Automatske notifikacije', 'Status vidljiv svima'],
-    accent: '#f59e0b', bg: '#fffbeb', screen: MaintenanceScreen,
+    emoji: '🔧', label: 'Zahtevi',
+    title: 'Svaki zahtev praćen do rešenja.',
+    desc: 'Stanar prijavi problem za par sekundi, a status se prati od prijave do rešenja — uz istoriju i komentare.',
+    bullets: ['Istorija statusa za svaki zahtev', 'Komentari i dogovor na jednom mestu', 'Status vidljiv svim stanarima'],
+    accent: '#f59e0b', bg: '#fffbeb', screen: RequestsScreen,
   },
   {
     painLabel: 'Čujemo ih često',
     painQuote: '"Važno obaveštenje — a niko ga nije video."',
     emoji: '📢', label: 'Obaveštenja',
     title: 'Poruka koja stigne do svakog stanara.',
-    desc: 'Jedno obaveštenje — svi ga prime za sekunde. Vidite ko je pročitao, ko nije.',
-    bullets: ['Push notifikacije na iOS i Android', 'Potvrda čitanja za svaki stan', 'Hitna i redovna obaveštenja'],
+    desc: 'Jedno obaveštenje i svi ga prime istog trenutka — uz jasnu oznaku koliko je hitno.',
+    bullets: ['Push notifikacije na iOS i Android', 'Oznake važnosti: kritično, važno, normalno', 'Kategorije — održavanje, sastanci, rokovi'],
     accent: '#6366f1', bg: '#f5f3ff', screen: NotificationsScreen,
   },
   {
@@ -39,18 +51,18 @@ const steps = [
     painQuote: '"Gde ide novac od stanarine? Niko nam ne odgovara."',
     emoji: '💰', label: 'Finansije',
     title: 'Transparentnost koja gradi poverenje.',
-    desc: 'Fond, uplate i rashodi u realnom vremenu. Svaki stanar vidi. Nema nagađanja.',
-    bullets: ['Fond vidljiv svim stanarima', 'Pregled dugovanja po stanu', 'PDF izveštaji jednim klikom'],
+    desc: 'Stanje fonda, prihodi i rashodi u realnom vremenu. Svaki stanar vidi na šta novac odlazi.',
+    bullets: ['Stanje fonda vidljivo svim stanarima', 'Prihodi i rashodi jasno razdvojeni', 'Mesečni pregled za celu godinu'],
     accent: '#10b981', bg: '#f0fdf4', screen: FinancesScreen,
   },
   {
     painLabel: 'Klasična skupština',
     painQuote: '"Skupština traje 3 sata. Niko se ne dogovori ni oko čega."',
-    emoji: '🗳️', label: 'Glasanje',
-    title: 'Demokratija koja traje 5 minuta.',
-    desc: 'Otvorite glasanje, svaki stanar glasa sa telefona. Rezultati odmah. Skupštine — jedan klik.',
-    bullets: ['Glasanje po stanu ili kvadraturi', 'Anonimni rezultati u realnom vremenu', 'Arhiva svih prethodnih anketa'],
-    accent: '#8b5cf6', bg: '#faf5ff', screen: VotingScreen,
+    emoji: '🗳️', label: 'Ankete',
+    title: 'Odluke bez sazivanja skupštine.',
+    desc: 'Pokrenete anketu, stanari glasaju sa telefona, a rezultati stižu odmah — bez tročasovnih sastanaka.',
+    bullets: ['Glasanje direktno iz aplikacije', 'Rezultati vidljivi u realnom vremenu', 'Anketa iz zahteva — kad treba odluka stanara'],
+    accent: '#8b5cf6', bg: '#faf5ff', screen: PollScreen,
   },
 ]
 
