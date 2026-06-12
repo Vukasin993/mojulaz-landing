@@ -76,10 +76,18 @@ const content: Record<Lang, PageContent> = {
       {
         title: '5. Kolačići (Cookies)',
         body: (
-          <p>
-            Koristimo isključivo neophodne kolačiće za funkcionisanje aplikacije (sesija, autentifikacija).
-            Ne koristimo reklamne kolačiće niti alate za praćenje trećih strana.
-          </p>
+          <>
+            <p>
+              Koristimo neophodne kolačiće za funkcionisanje aplikacije (sesija, autentifikacija) i —
+              isključivo uz vašu saglasnost — analitičke kolačiće (Google Analytics) koji nam pomažu
+              da razumemo kako se sajt koristi. Ne koristimo reklamne kolačiće.
+            </p>
+            <p className="mt-3">
+              Saglasnošću upravljate putem Cookiebot banera pri prvoj poseti, a izbor možete
+              izmeniti ili povući u bilo kom trenutku. Bez vaše saglasnosti analitički kolačići
+              se ne postavljaju.
+            </p>
+          </>
         ),
       },
       {
@@ -176,10 +184,18 @@ const content: Record<Lang, PageContent> = {
       {
         title: '5. Cookies',
         body: (
-          <p>
-            We use only the cookies necessary for the application to function (session, authentication).
-            We do not use advertising cookies or third-party tracking tools.
-          </p>
+          <>
+            <p>
+              We use cookies necessary for the application to function (session, authentication) and —
+              only with your consent — analytics cookies (Google Analytics) that help us understand
+              how the site is used. We do not use advertising cookies.
+            </p>
+            <p className="mt-3">
+              You manage your consent through the Cookiebot banner on your first visit, and you can
+              change or withdraw your choice at any time. Without your consent, analytics cookies
+              are never set.
+            </p>
+          </>
         ),
       },
       {
