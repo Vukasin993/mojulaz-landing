@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react'
+import { useLang } from '../../i18n/LanguageContext'
 
 const KEY = 'mojulaz-cookies-accepted'
 
 export default function CookieConsent() {
+  const { t } = useLang()
   const [visible, setVisible] = useState(false)
 
   useEffect(() => {
@@ -25,21 +27,21 @@ export default function CookieConsent() {
       animation: 'cookieSlideUp 0.4s cubic-bezier(0.34,1.4,0.64,1)',
     }}>
       <p style={{ flex: 1, fontSize: 13, color: 'rgba(255,255,255,0.75)', lineHeight: 1.5, margin: 0, minWidth: 200 }}>
-        Koristimo kolačiće kako bismo poboljšali vaše iskustvo.{' '}
-        <a href="/politika-privatnosti" style={{ color: '#14b8a6', textDecoration: 'underline' }}>Politika privatnosti</a>
+        {t.cookie.text}{' '}
+        <a href="/politika-privatnosti" style={{ color: '#14b8a6', textDecoration: 'underline' }}>{t.cookie.privacy}</a>
       </p>
       <div style={{ display: 'flex', gap: 8, flexShrink: 0 }}>
         <button
           onClick={decline}
           style={{ padding: '8px 16px', borderRadius: 99, border: '1px solid rgba(255,255,255,0.15)', background: 'transparent', color: 'rgba(255,255,255,0.5)', fontSize: 12, fontWeight: 600, cursor: 'pointer' }}
         >
-          Odbij
+          {t.cookie.decline}
         </button>
         <button
           onClick={accept}
           style={{ padding: '8px 16px', borderRadius: 99, border: 'none', background: '#0d9488', color: '#fff', fontSize: 12, fontWeight: 700, cursor: 'pointer' }}
         >
-          Prihvati
+          {t.cookie.accept}
         </button>
       </div>
       <style>{`@keyframes cookieSlideUp { from { opacity:0; transform:translateX(-50%) translateY(20px) } to { opacity:1; transform:translateX(-50%) translateY(0) } }`}</style>

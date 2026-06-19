@@ -5,15 +5,11 @@ import AppStoreButtons from '../ui/AppStoreButtons'
 import { Check } from '../ui/icons'
 import { REGISTER_URL } from '../../constants/marketing'
 import homeDashboardImg from '../../assets/section/home-dashbaord.png'
+import { useLang } from '../../i18n/LanguageContext'
 const adminOverview = '/screenshots/admin-overview.png'
 
-const trustItems = [
-  '270+ zgrada',
-  '30 dana besplatno',
-  'Počnite za 5 minuta',
-]
-
 export default function ChatSection() {
+  const { t } = useLang()
   const heroRef = useRef<HTMLElement>(null)
   const [mouse, setMouse] = useState({ x: 0, y: 0 })
   const [loaded, setLoaded] = useState(false)
@@ -84,7 +80,7 @@ export default function ChatSection() {
                 style={{ animation: 'bsPulse 2s ease-in-out infinite' }}
               />
               <span className="text-[11px] font-extrabold uppercase tracking-[0.1em] text-primary-700">
-                Problem koji dobro poznajete
+                {t.hero.badge}
               </span>
             </div>
 
@@ -92,7 +88,7 @@ export default function ChatSection() {
               className="mb-5 text-[clamp(36px,5.5vw,64px)] font-black leading-[1.05] tracking-[-2px] text-ink"
               style={fade('0.08s')}
             >
-              Prestanite da vodite zgradu{' '}
+              {t.hero.title}{' '}
               <span
                 className="block"
                 style={{
@@ -102,7 +98,7 @@ export default function ChatSection() {
                   backgroundClip: 'text',
                 }}
               >
-                kroz Viber grupe.
+                {t.hero.highlight}
               </span>
             </h1>
 
@@ -110,8 +106,7 @@ export default function ChatSection() {
               className="mx-auto mb-8 max-w-xl text-[clamp(15px,1.8vw,18px)] leading-relaxed text-slate-600 lg:mx-0"
               style={fade('0.16s')}
             >
-              Obaveštenja, dokumenta, finansije, prijava kvarova i glasanja na jednom mestu.
-              Sve što stanarima i upravnicima treba za modernu stambenu zajednicu.
+              {t.hero.subtitle}
             </p>
 
             <div className="mb-4 flex flex-wrap justify-center lg:justify-start" style={fade('0.24s')}>
@@ -129,11 +124,11 @@ export default function ChatSection() {
             >
               <span className="flex-shrink-0 text-xl">🧑‍💼</span>
               <span className="flex-1 text-[13px] leading-relaxed text-slate-600">
-                <strong className="text-ink">Vi ste upravnik?</strong>{' '}
-                Registrujte zgradu u admin panelu — besplatno 30 dana.
+                <strong className="text-ink">{t.hero.manager}</strong>{' '}
+                {t.hero.managerText}
               </span>
               <span className="flex-shrink-0 whitespace-nowrap rounded-full bg-primary-600 px-3.5 py-2 text-xs font-extrabold text-white">
-                Admin panel →
+                {t.hero.admin}
               </span>
             </a>
 
@@ -141,7 +136,7 @@ export default function ChatSection() {
               className="flex flex-wrap justify-center gap-2 lg:justify-start"
               style={fade('0.38s')}
             >
-              {trustItems.map((text) => (
+              {t.hero.trust.map((text) => (
                 <div
                   key={text}
                   className="flex items-center gap-1.5 rounded-full border bg-white px-3.5 py-1.5 text-xs font-semibold text-ink shadow-sm"
@@ -168,14 +163,14 @@ export default function ChatSection() {
             <div className="relative z-10">
               <BrowserMockup
                 src={adminOverview}
-                alt="MojUlaz admin panel — pregled zgrade"
+                alt={t.hero.adminAlt}
                 className="w-full"
               />
               <div className="absolute -bottom-4 right-0 z-20 w-[130px] sm:w-[148px] animate-float">
                 <PhoneMockup>
                   <img
                     src={homeDashboardImg.src}
-                    alt="MojUlaz mobilna aplikacija — početni ekran"
+                    alt={t.hero.mobileAlt}
                     draggable={false}
                     className="block h-full w-full object-cover"
                   />

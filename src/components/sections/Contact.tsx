@@ -1,31 +1,11 @@
 import { useState } from 'react'
+import { useLang } from '../../i18n/LanguageContext'
 
 const CONTACT_EMAIL = 'info@moj-ulaz.com'
-const copy = {
-  badge: 'Kontakt',
-  title: 'Imate pitanje? Tu smo.',
-  sub: 'Bilo da upravljate jednom zgradom ili stotinom, javite nam se — odgovaramo brzo i bez komplikovanja.',
-  emailTitle: 'Email',
-  emailDesc: 'Odgovaramo u roku od 24 sata, radnim danima.',
-  demoTitle: 'Zakažite demo',
-  demoDesc: 'Pokazaćemo vam platformu uživo — 20 minuta, bez obaveza.',
-  demoAction: 'Zakažite termin',
-  demoSubject: 'Zahtev za demo prezentaciju',
-  responsePrefix: 'Prosečno vreme odgovora:',
-  responseTime: 'manje od 24 sata',
-  nameLabel: 'Ime i prezime',
-  namePlaceholder: 'Petar Petrović',
-  emailLabel: 'Email adresa',
-  emailPlaceholder: 'petar@primer.rs',
-  messageLabel: 'Poruka',
-  messagePlaceholder: 'Upravljam zgradom od 30 stanova i zanima me kako MojUlaz može da mi pomogne...',
-  submit: 'Pošaljite poruku',
-  note: 'Slanjem poruke otvoriće se vaš email klijent. Ne čuvamo podatke iz forme.',
-  mailSubjectPrefix: 'Upit sa sajta',
-  mailFallbackName: 'novi korisnik',
-}
 
 export default function Contact() {
+  const { t } = useLang()
+  const copy = t.contact
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [message, setMessage] = useState('')
@@ -49,7 +29,7 @@ export default function Contact() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    const subject = encodeURIComponent(`${copy.mailSubjectPrefix} — ${name || copy.mailFallbackName}`)
+    const subject = encodeURIComponent(`${copy.subject} — ${name || copy.fallback}`)
     const body = encodeURIComponent(`${message}\n\n—\n${name}\n${email}`)
     window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`
   }
@@ -67,7 +47,7 @@ export default function Contact() {
             {copy.title}
           </h2>
           <p className="reveal reveal-d2 text-base text-slate-500 max-w-xl mx-auto leading-relaxed">
-            {copy.sub}
+            {copy.subtitle}
           </p>
         </div>
 
@@ -98,7 +78,7 @@ export default function Contact() {
                 <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-primary-500" />
               </span>
               <p className="text-sm text-slate-600">
-                {copy.responsePrefix} <strong className="text-ink">{copy.responseTime}</strong>
+                {copy.response} <strong className="text-ink">{copy.responseTime}</strong>
               </p>
             </div>
           </div>
@@ -107,7 +87,7 @@ export default function Contact() {
           <form onSubmit={handleSubmit} className="reveal reveal-d2 p-7 sm:p-8 rounded-3xl border border-slate-200 bg-slate-50/60 shadow-[0_2px_12px_rgba(0,0,0,0.04)]">
             <div className="grid sm:grid-cols-2 gap-4 mb-4">
               <div>
-                <label htmlFor="contact-name" className="block text-xs font-semibold text-slate-600 mb-1.5">{copy.nameLabel}</label>
+                <label htmlFor="contact-name" className="block text-xs font-semibold text-slate-600 mb-1.5">{copy.name}</label>
                 <input
                   id="contact-name"
                   type="text"
@@ -119,7 +99,7 @@ export default function Contact() {
                 />
               </div>
               <div>
-                <label htmlFor="contact-email" className="block text-xs font-semibold text-slate-600 mb-1.5">{copy.emailLabel}</label>
+                <label htmlFor="contact-email" className="block text-xs font-semibold text-slate-600 mb-1.5">{copy.email}</label>
                 <input
                   id="contact-email"
                   type="email"
@@ -132,7 +112,7 @@ export default function Contact() {
               </div>
             </div>
             <div className="mb-5">
-              <label htmlFor="contact-message" className="block text-xs font-semibold text-slate-600 mb-1.5">{copy.messageLabel}</label>
+              <label htmlFor="contact-message" className="block text-xs font-semibold text-slate-600 mb-1.5">{copy.message}</label>
               <textarea
                 id="contact-message"
                 value={message}

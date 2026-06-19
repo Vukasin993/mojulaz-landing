@@ -7,6 +7,7 @@ import zahtev2Img from '../../assets/section/zahtev2.png'
 import obavestenjaImg from '../../assets/section/obavestenja.png'
 import finance2Img from '../../assets/section/finance2.png'
 import pollImg from '../../assets/section/poll.png'
+import { useLang } from '../../i18n/LanguageContext'
 
 /* ── Screenshot screens ────────────────────────────────────────────── */
 function ScreenImage({ src, alt }: { src: StaticImageData; alt: string }) {
@@ -19,7 +20,7 @@ const NotificationsScreen = () => <ScreenImage src={obavestenjaImg} alt="MojUlaz
 const FinancesScreen      = () => <ScreenImage src={finance2Img} alt="MojUlaz — finansije sa stanjem fonda i mesečnim pregledom" />
 const PollScreen          = () => <ScreenImage src={pollImg} alt="MojUlaz — anketa sa glasanjem stanara" />
 
-const steps = [
+const stepMeta = [
   {
     painLabel: 'Čest problem',
     painQuote: '"Koliko imamo u fondu? Šta je sa liftom? Kad je sastanak? — svi pitaju mene."',
@@ -76,6 +77,8 @@ const TILTS = [
 ]
 
 export default function PhoneScrollSection() {
+  const { t } = useLang()
+  const steps = stepMeta.map((meta, index) => ({ ...meta, ...t.phone.steps[index] }))
   const sectionRef   = useRef<HTMLElement>(null)
   const containerRef = useRef<HTMLDivElement>(null)
   const { activeStep, isActive } = useScrollProgress(containerRef, steps.length)
@@ -128,17 +131,17 @@ export default function PhoneScrollSection() {
         <div style={{ position: 'relative', zIndex: 1 }}>
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '5px 16px', borderRadius: 99, border: '1px solid rgba(20,184,166,0.3)', background: 'rgba(20,184,166,0.08)', marginBottom: 32 }}>
             <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#14b8a6', display: 'inline-block', animation: 'chapterPulse 2s ease-in-out infinite' }} />
-            <span style={{ fontSize: 11, fontWeight: 800, color: '#14b8a6', letterSpacing: '0.18em', textTransform: 'uppercase' }}>Rešenje</span>
+            <span style={{ fontSize: 11, fontWeight: 800, color: '#14b8a6', letterSpacing: '0.18em', textTransform: 'uppercase' }}>{t.phone.badge}</span>
           </div>
 
           <h2 style={{ fontSize: 'clamp(40px, 7vw, 88px)', fontWeight: 900, lineHeight: 1.0, letterSpacing: '-3px', color: '#fff', marginBottom: 20, animation: 'chapterFadeUp 0.9s cubic-bezier(0.22,1,0.36,1) both' }}>
-            Jedna aplikacija.
+            {t.phone.title}
           </h2>
           <h2 style={{ fontSize: 'clamp(40px, 7vw, 88px)', fontWeight: 900, lineHeight: 1.0, letterSpacing: '-3px', marginBottom: 32, background: 'linear-gradient(135deg, #2dd4bf 0%, #14b8a6 50%, #0d9488 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text', animation: 'chapterFadeUp 0.9s cubic-bezier(0.22,1,0.36,1) 0.12s both' }}>
-            Sve pod kontrolom.
+            {t.phone.highlight}
           </h2>
           <p style={{ fontSize: 'clamp(16px, 2vw, 20px)', color: 'rgba(255,255,255,0.5)', maxWidth: 500, margin: '0 auto 48px', lineHeight: 1.7, animation: 'chapterFadeUp 0.9s cubic-bezier(0.22,1,0.36,1) 0.24s both' }}>
-            Pogledajte kako MojUlaz rešava sve što vas muči.
+            {t.phone.subtitle}
           </p>
 
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 12, animation: 'chapterFadeUp 0.9s cubic-bezier(0.22,1,0.36,1) 0.36s both' }}>
@@ -147,7 +150,7 @@ export default function PhoneScrollSection() {
                 <div key={i} style={{ width: 7, height: 7, borderRadius: '50%', background: s.accent, opacity: 0.5 }} />
               ))}
             </div>
-            <span style={{ fontSize: 12, fontWeight: 600, color: 'rgba(255,255,255,0.3)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>{steps.length} funkcija</span>
+            <span style={{ fontSize: 12, fontWeight: 600, color: 'rgba(255,255,255,0.3)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>{steps.length} {t.phone.count}</span>
           </div>
 
           {/* Scroll arrow */}
@@ -273,7 +276,7 @@ export default function PhoneScrollSection() {
           {/* Scroll hint */}
           {activeStep === 0 && (
             <div style={{ position: 'absolute', bottom: 28, left: '50%', transform: 'translateX(-50%)', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6, opacity: 0.45, animation: 'fadeInUp 1s ease 1s both' }}>
-              <span style={{ fontSize: 11, fontWeight: 600, color: '#64748b', letterSpacing: '0.08em', textTransform: 'uppercase' }}>Skrolujte</span>
+              <span style={{ fontSize: 11, fontWeight: 600, color: '#64748b', letterSpacing: '0.08em', textTransform: 'uppercase' }}>{t.phone.scroll}</span>
               <div style={{ width: 1, height: 28, background: 'linear-gradient(to bottom, #64748b, transparent)' }} />
             </div>
           )}

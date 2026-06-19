@@ -1,39 +1,8 @@
 import { openSignup } from '../ui/SignupModal'
-
-const rows = [
-  {
-    topic: 'Prijava kvara',
-    before: 'Izgubi se u 47 poruka pre 8h',
-    after: 'Foto + opis za 30 sekundi, praćenje do rešenja',
-  },
-  {
-    topic: 'Obaveštenja',
-    before: 'Ko je video? Ko nije? Nikad siguran',
-    after: 'Push notifikacija + potvrda čitanja po stanu',
-  },
-  {
-    topic: 'Finansije',
-    before: 'Excel koji zastareva čim se napravi',
-    after: 'Fond i dugovanja u realnom vremenu, vidljivo svima',
-  },
-  {
-    topic: 'Skupštine',
-    before: '3-satni haos, niko se ne dogovori',
-    after: 'Glasanje sa telefona, rezultati za 5 minuta',
-  },
-  {
-    topic: 'Dokumenta',
-    before: '"Gde je taj ugovor?" — svaki put iznova',
-    after: 'Centralno, pretraživo, uvek dostupno',
-  },
-  {
-    topic: 'Kvarovi bez odgovora',
-    before: 'Niko ne zna ko treba da reaguje',
-    after: 'Jasna odgovornost, rok, automatska notifikacija',
-  },
-]
+import { useLang } from '../../i18n/LanguageContext'
 
 export default function ComparisonSection() {
+  const { t } = useLang()
   return (
     <section
       style={{
@@ -53,13 +22,13 @@ export default function ComparisonSection() {
         {/* Header */}
         <div style={{ textAlign: 'center', marginBottom: 56 }}>
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: 7, padding: '4px 14px', borderRadius: 99, background: 'rgba(239,68,68,0.1)', border: '1px solid rgba(239,68,68,0.2)', marginBottom: 20 }}>
-            <span style={{ fontSize: 11, fontWeight: 800, color: '#ef4444', letterSpacing: '0.15em', textTransform: 'uppercase' }}>Zašto ne Viber?</span>
+            <span style={{ fontSize: 11, fontWeight: 800, color: '#ef4444', letterSpacing: '0.15em', textTransform: 'uppercase' }}>{t.comparison.badge}</span>
           </div>
           <h2 style={{ fontSize: 'clamp(28px, 4.5vw, 52px)', fontWeight: 900, color: '#fff', letterSpacing: '-2px', lineHeight: 1.05, marginBottom: 16 }}>
-            Vaša zgrada zaslužuje bolji alat.
+            {t.comparison.title}
           </h2>
           <p style={{ fontSize: 'clamp(14px, 1.6vw, 17px)', color: 'rgba(255,255,255,0.5)', maxWidth: 480, margin: '0 auto', lineHeight: 1.7 }}>
-            Viber je aplikacija za prijatelje. MojUlaz je alat za upravljanje zgradom.
+            {t.comparison.subtitle}
           </p>
         </div>
 
@@ -68,17 +37,17 @@ export default function ComparisonSection() {
 
           {/* Column headers */}
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', background: 'rgba(255,255,255,0.04)' }}>
-            <div style={{ padding: '14px 20px', fontSize: 11, fontWeight: 800, color: 'rgba(255,255,255,0.35)', letterSpacing: '0.12em', textTransform: 'uppercase' }}>Situacija</div>
+            <div style={{ padding: '14px 20px', fontSize: 11, fontWeight: 800, color: 'rgba(255,255,255,0.35)', letterSpacing: '0.12em', textTransform: 'uppercase' }}>{t.comparison.headers[0]}</div>
             <div style={{ padding: '14px 20px', fontSize: 11, fontWeight: 800, color: '#ef4444', letterSpacing: '0.12em', textTransform: 'uppercase', borderLeft: '1px solid rgba(255,255,255,0.06)', display: 'flex', alignItems: 'center', gap: 6 }}>
-              <span>Viber / papir</span>
+              <span>{t.comparison.headers[1]}</span>
             </div>
             <div style={{ padding: '14px 20px', fontSize: 11, fontWeight: 800, color: '#14b8a6', letterSpacing: '0.12em', textTransform: 'uppercase', borderLeft: '1px solid rgba(255,255,255,0.06)', display: 'flex', alignItems: 'center', gap: 6 }}>
-              <span>MojUlaz</span>
+              <span>{t.comparison.headers[2]}</span>
             </div>
           </div>
 
           {/* Rows */}
-          {rows.map((row, i) => (
+          {t.comparison.rows.map(([topic, before, after], i) => (
             <div
               key={i}
               style={{
@@ -93,19 +62,19 @@ export default function ComparisonSection() {
             >
               {/* Topic */}
               <div style={{ padding: '16px 20px', fontSize: 13, fontWeight: 700, color: 'rgba(255,255,255,0.7)' }}>
-                {row.topic}
+                {topic}
               </div>
 
               {/* Before */}
               <div style={{ padding: '16px 20px', fontSize: 13, color: 'rgba(239,68,68,0.75)', lineHeight: 1.5, borderLeft: '1px solid rgba(255,255,255,0.06)', display: 'flex', alignItems: 'flex-start', gap: 8 }}>
                 <span style={{ flexShrink: 0, marginTop: 2, fontSize: 11, color: '#ef4444' }}>✕</span>
-                {row.before}
+                {before}
               </div>
 
               {/* After */}
               <div style={{ padding: '16px 20px', fontSize: 13, color: 'rgba(20,184,166,0.9)', lineHeight: 1.5, borderLeft: '1px solid rgba(255,255,255,0.06)', display: 'flex', alignItems: 'flex-start', gap: 8 }}>
                 <span style={{ flexShrink: 0, marginTop: 2, fontSize: 11, color: '#14b8a6' }}>✓</span>
-                {row.after}
+                {after}
               </div>
             </div>
           ))}
@@ -127,10 +96,10 @@ export default function ComparisonSection() {
             onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.transform = 'translateY(-2px)'; el.style.boxShadow = '0 10px 32px rgba(13,148,136,0.45)' }}
             onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.transform = ''; el.style.boxShadow = '0 4px 24px rgba(13,148,136,0.35)' }}
           >
-            Isprobajte razliku — besplatno →
+            {t.comparison.cta}
           </button>
           <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.3)', marginTop: 12 }}>
-            Bez kreditne kartice · Podešavanje za 10 minuta · 270+ zgrada već koristi MojUlaz
+            {t.comparison.proof}
           </p>
         </div>
       </div>

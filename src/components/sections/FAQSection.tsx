@@ -1,42 +1,9 @@
 import { useState } from 'react'
 import { openSignup } from '../ui/SignupModal'
-
-const faqs = [
-  {
-    q: 'Za koga je MojUlaz namenjen?',
-    a: 'MojUlaz je namenjen upravnicima stambenih zgrada, predsednicima skupštine stanara i profesionalnim agencijama za upravljanje nekretninama. Koriste ga i sami stanari za prijavu kvarova, glasanje i pregled obaveštenja.',
-  },
-  {
-    q: 'Kako funkcioniše probni period od 30 dana?',
-    a: 'Nakon registracije dobijate potpun pristup svim funkcijama bez ikakvih ograničenja. Nema kreditne kartice, nema automatskog naplaćivanja. Nakon 30 dana možete nastaviti sa plaćenom licencom ili odustati — bez ikakvih troškova.',
-  },
-  {
-    q: 'Koliko košta MojUlaz?',
-    a: 'Cena zavisi od broja zgrada: 7.600 RSD/god po zgradi za 1–5 zgrada, 6.600 RSD/god za 6–20 zgrada i 4.999 RSD/god za 21+ zgrada. Probni period je potpuno besplatan.',
-  },
-  {
-    q: 'Da li stanari moraju da instaliraju aplikaciju?',
-    a: 'Stanari mogu koristiti MojUlaz putem mobilne aplikacije (iOS i Android) ili putem web pregledača — bez instalacije. Aplikacija je potpuno opcionalna, što znači da se i stariji stanari lako snalaze.',
-  },
-  {
-    q: 'Kako se prijavljuju kvarovi?',
-    a: 'Stanar otvori aplikaciju, tapne "Prijavi kvar", dodá foto i kratak opis, i to je to — za manje od 30 sekundi. Upravnik odmah dobija notifikaciju, može dodeliti tehničara i ažurirati status. Svi zainteresovani prate napredak u realnom vremenu.',
-  },
-  {
-    q: 'Da li su podaci bezbedni?',
-    a: 'Sve informacije se čuvaju na serverima u EU, šifrovane su u prenosu i mirovanju (TLS 1.3 + AES-256). Usklađeni smo sa GDPR regulativom i Zakonom o zaštiti podataka o ličnosti Republike Srbije.',
-  },
-  {
-    q: 'Mogu li upravljati više zgrada iz jednog naloga?',
-    a: 'Da. Nalog podržava neograničen broj zgrada. Svaka zgrada ima sopstvenu ploču, stanare i istoriju. Agencije i veći upravljači posebno cene pregled svih zgrada na jednom mestu.',
-  },
-  {
-    q: 'Šta ako imam pitanje ili problem tokom korišćenja?',
-    a: 'Podrška je dostupna na srpskom jeziku putem emaila i chata, radnim danima od 8 do 18h. Korisnici sa aktivnom licencom imaju prioritetnu podršku sa garantovanim odgovorom u roku od 4 sata.',
-  },
-]
+import { useLang } from '../../i18n/LanguageContext'
 
 export default function FAQSection() {
+  const { t } = useLang()
   const [open, setOpen] = useState<number | null>(null)
 
   return (
@@ -55,20 +22,20 @@ export default function FAQSection() {
         {/* Header */}
         <div style={{ textAlign: 'center', marginBottom: 56 }}>
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: 7, padding: '4px 14px', borderRadius: 99, background: 'rgba(13,148,136,0.07)', border: '1px solid rgba(13,148,136,0.18)', marginBottom: 18 }}>
-            <span style={{ fontSize: 11, fontWeight: 800, color: '#0d9488', letterSpacing: '0.15em', textTransform: 'uppercase' }}>Često postavljana pitanja</span>
+            <span style={{ fontSize: 11, fontWeight: 800, color: '#0d9488', letterSpacing: '0.15em', textTransform: 'uppercase' }}>{t.faq.badge}</span>
           </div>
           <h2 style={{ fontSize: 'clamp(28px, 4vw, 44px)', fontWeight: 900, color: '#0f172a', letterSpacing: '-1.5px', lineHeight: 1.1, marginBottom: 12 }}>
-            Imate pitanje?
+            {t.faq.title}
           </h2>
           <p style={{ fontSize: 16, color: '#64748b', lineHeight: 1.7 }}>
-            Ako ne nađete odgovor, pišite nam na{' '}
+            {t.faq.subtitle}{' '}
             <a href="mailto:info@moj-ulaz.com" style={{ color: '#0d9488', textDecoration: 'none', fontWeight: 600 }}>info@moj-ulaz.com</a>
           </p>
         </div>
 
         {/* FAQ list */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-          {faqs.map((faq, i) => (
+          {t.faq.items.map(([question, answer], i) => (
             <div
               key={i}
               itemScope
@@ -94,7 +61,7 @@ export default function FAQSection() {
                   itemProp="name"
                   style={{ fontSize: 15, fontWeight: 700, color: open === i ? '#0d9488' : '#0f172a', lineHeight: 1.4, transition: 'color 0.2s' }}
                 >
-                  {faq.q}
+                  {question}
                 </span>
                 <span style={{
                   flexShrink: 0, width: 22, height: 22, borderRadius: '50%',
@@ -122,7 +89,7 @@ export default function FAQSection() {
                   itemProp="text"
                   style={{ padding: '0 20px 18px', fontSize: 14.5, color: '#475569', lineHeight: 1.75, margin: 0 }}
                 >
-                  {faq.a}
+                  {answer}
                 </p>
               </div>
             </div>
@@ -132,7 +99,7 @@ export default function FAQSection() {
         {/* Bottom CTA */}
         <div style={{ textAlign: 'center', marginTop: 56 }}>
           <p style={{ fontSize: 15, color: '#64748b', marginBottom: 20 }}>
-            Spremi ste da probate? Prve 30 dana su besplatne.
+            {t.faq.ready}
           </p>
           <button
             onClick={openSignup}
@@ -148,7 +115,7 @@ export default function FAQSection() {
             onMouseEnter={e => { const el = e.currentTarget as HTMLElement; el.style.transform = 'translateY(-2px)'; el.style.boxShadow = '0 8px 28px rgba(13,148,136,0.4)' }}
             onMouseLeave={e => { const el = e.currentTarget as HTMLElement; el.style.transform = ''; el.style.boxShadow = '0 4px 20px rgba(13,148,136,0.3)' }}
           >
-            Počnite besplatno →
+            {t.common.startArrow}
           </button>
         </div>
       </div>

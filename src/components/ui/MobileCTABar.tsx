@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react'
 import { REGISTER_URL } from '../../constants/marketing'
+import { useLang } from '../../i18n/LanguageContext'
 
 export default function MobileCTABar() {
+  const { t } = useLang()
   const [visible, setVisible] = useState(false)
 
   useEffect(() => {
@@ -39,10 +41,10 @@ export default function MobileCTABar() {
           className="block w-full rounded-xl bg-primary-600 px-4 py-3 text-center transition-colors hover:bg-primary-700 active:bg-primary-800"
         >
           <span className="block text-sm font-semibold text-white">
-            Počnite besplatno
+            {t.mobile.title}
           </span>
           <span className="block text-[11px] font-medium text-teal-100/90">
-            30 dana · bez kartice
+            {t.mobile.sub}
           </span>
         </a>
       </div>

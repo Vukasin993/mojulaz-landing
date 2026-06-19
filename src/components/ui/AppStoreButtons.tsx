@@ -1,5 +1,6 @@
 import type { CSSProperties } from 'react'
 import { APP_STORE_URL, GOOGLE_PLAY_URL, REGISTER_URL } from '../../constants/marketing'
+import { useLang } from '../../i18n/LanguageContext'
 
 type Size = 'md' | 'sm'
 type Variant = 'full' | 'icon'
@@ -27,6 +28,7 @@ interface Props {
 }
 
 export default function AppStoreButtons({ size = 'md', variant = 'full', className = '', light = false }: Props) {
+  const { t } = useLang()
   const s = sizes[size]
   const bg = light ? 'rgba(255,255,255,0.14)' : '#0f172a'
   const border = light ? '1px solid rgba(255,255,255,0.28)' : '1px solid rgba(15,23,42,0.06)'
@@ -88,7 +90,7 @@ export default function AppStoreButtons({ size = 'md', variant = 'full', classNa
       <a
         href={storeHref(APP_STORE_URL) ?? '#'}
         onClick={(e) => onStoreClick(e, APP_STORE_URL)}
-        aria-label="Preuzmite MojUlaz na App Store"
+        aria-label={`${t.common.appStore} App Store`}
         style={baseStyle}
         onMouseEnter={(e) => hoverIn(e.currentTarget)}
         onMouseLeave={(e) => hoverOut(e.currentTarget)}
@@ -98,7 +100,7 @@ export default function AppStoreButtons({ size = 'md', variant = 'full', classNa
         </svg>
         {!iconOnly && (
           <div style={{ lineHeight: 1.2, textAlign: 'left' }}>
-            <div style={{ fontSize: s.label, opacity: 0.75, fontWeight: 500 }}>Preuzmite na</div>
+            <div style={{ fontSize: s.label, opacity: 0.75, fontWeight: 500 }}>{t.common.appStore}</div>
             <div style={{ fontSize: s.title, fontWeight: 700 }}>App Store</div>
           </div>
         )}
@@ -106,7 +108,7 @@ export default function AppStoreButtons({ size = 'md', variant = 'full', classNa
       <a
         href={storeHref(GOOGLE_PLAY_URL) ?? '#'}
         onClick={(e) => onStoreClick(e, GOOGLE_PLAY_URL)}
-        aria-label="Preuzmite MojUlaz na Google Play"
+        aria-label={`${t.common.googlePlay} Google Play`}
         style={baseStyle}
         onMouseEnter={(e) => hoverIn(e.currentTarget)}
         onMouseLeave={(e) => hoverOut(e.currentTarget)}
@@ -119,7 +121,7 @@ export default function AppStoreButtons({ size = 'md', variant = 'full', classNa
         </svg>
         {!iconOnly && (
           <div style={{ lineHeight: 1.2, textAlign: 'left' }}>
-            <div style={{ fontSize: s.label, opacity: 0.75, fontWeight: 500 }}>Dostupno na</div>
+            <div style={{ fontSize: s.label, opacity: 0.75, fontWeight: 500 }}>{t.common.googlePlay}</div>
             <div style={{ fontSize: s.title, fontWeight: 700 }}>Google Play</div>
           </div>
         )}

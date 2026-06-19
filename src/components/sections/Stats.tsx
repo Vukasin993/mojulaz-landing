@@ -1,10 +1,11 @@
 import { useEffect, useRef, useState } from 'react'
+import { useLang } from '../../i18n/LanguageContext'
 
 const stats = [
-  { value: 270,  suffix: '+',     label: 'zgrada u Srbiji'           },
-  { value: 2500, suffix: '+',     label: 'aktivnih stanara'           },
-  { value: 98,   suffix: '%',     label: 'zadovoljnih korisnika'      },
-  { value: 10,   prefix: '< ',   suffix: ' min', label: 'podešavanje zgrade' },
+  { value: 270, suffix: '+' },
+  { value: 2500, suffix: '+' },
+  { value: 98, suffix: '%' },
+  { value: 10, prefix: '< ', suffix: ' min' },
 ]
 
 function useCountUp(target: number, active: boolean, duration = 1400) {
@@ -45,6 +46,7 @@ function StatItem({ value, suffix, prefix, label, active, index }: {
 }
 
 export default function Stats() {
+  const { t } = useLang()
   const ref = useRef<HTMLElement>(null)
   const [active, setActive] = useState(false)
 
@@ -67,13 +69,13 @@ export default function Stats() {
     >
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-0 lg:divide-x lg:divide-slate-100">
-          {stats.map(({ value, suffix, prefix, label }, i) => (
+          {stats.map(({ value, suffix, prefix }, i) => (
             <StatItem
-              key={label}
+              key={t.stats[i]}
               value={value}
               suffix={suffix}
               prefix={prefix}
-              label={label}
+              label={t.stats[i]}
               active={active}
               index={i}
             />

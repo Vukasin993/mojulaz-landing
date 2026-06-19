@@ -16,6 +16,7 @@ import CTABanner from '../src/components/sections/CTABanner'
 import SignupModal from '../src/components/ui/SignupModal'
 import CookieConsent from '../src/components/ui/CookieConsent'
 import MobileCTABar from '../src/components/ui/MobileCTABar'
+import { useLang } from '../src/i18n/LanguageContext'
 
 // react-simple-maps uses browser APIs — SSR must be disabled
 const PhoneScrollSection = dynamic(
@@ -50,10 +51,11 @@ function LandingPage() {
 }
 
 const Home: NextPage = () => {
+  const { t } = useLang()
   return (
     <>
       <Head>
-        <title>MojUlaz — Aplikacija za upravnike stambenih zgrada</title>
+        <title>{t.metaTitle}</title>
       </Head>
       <LandingPage />
     </>
