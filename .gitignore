@@ -1,6 +1,7 @@
 node_modules
 dist
 .next
+vite.config.ts.timestamp-*.mjs
 .env
 .env.local
 .DS_Store
