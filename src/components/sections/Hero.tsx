@@ -153,7 +153,7 @@ export default function Hero() {
               }}
             >
               <a
-                href="https://app.moj-ulaz.com/login"
+                href="https://app.moj-ulaz.com/register"
                 className="group inline-flex items-center gap-2 text-sm font-semibold text-white bg-primary-600 hover:bg-primary-700 rounded-full px-6 py-3.5 transition-all hover:shadow-[0_4px_20px_rgba(13,148,136,0.45)] hover:-translate-y-1 active:translate-y-0"
               >
                 Registrujte se besplatno
