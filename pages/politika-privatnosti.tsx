@@ -69,13 +69,13 @@ const PrivacyPolicyPage: NextPage = () => {
             <p>Podatke čuvamo dok postoji aktivan nalog i 12 meseci nakon deaktivacije, osim gde zakon nalaže duži rok.</p>
 
             <h2>6. Vaša prava</h2>
-            <p>Imate pravo na pristup, ispravku, brisanje i prenosivost podataka, kao i pravo na prigovor. Zahteve šaljite na: <a href="mailto:zdravo@mojulaz.rs">zdravo@mojulaz.rs</a>.</p>
+            <p>Imate pravo na pristup, ispravku, brisanje i prenosivost podataka, kao i pravo na prigovor. Zahteve šaljite na: <a href="mailto:info@moj-ulaz.com">info@moj-ulaz.com</a>.</p>
 
             <h2>7. Kolačići</h2>
             <p>Koristimo neophodne kolačiće sesije i, uz vaš pristanak, analitičke kolačiće. Možete upravljati kolačićima kroz baner na sajtu ili podešavanja pregledača.</p>
 
             <h2>8. Kontakt</h2>
-            <p>Za sva pitanja o privatnosti: <a href="mailto:zdravo@mojulaz.rs">zdravo@mojulaz.rs</a></p>
+            <p>Za sva pitanja o privatnosti: <a href="mailto:info@moj-ulaz.com">info@moj-ulaz.com</a></p>
           </div>
         </main>
       </div>

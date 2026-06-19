@@ -70,7 +70,7 @@ const TermsPage: NextPage = () => {
             <p>Zadržavamo pravo izmene ovih uslova uz obaveštenje korisnika najmanje 14 dana unapred putem e-maila.</p>
 
             <h2>10. Kontakt</h2>
-            <p>Za pitanja: <a href="mailto:zdravo@mojulaz.rs">zdravo@mojulaz.rs</a></p>
+            <p>Za pitanja: <a href="mailto:info@moj-ulaz.com">info@moj-ulaz.com</a></p>
           </div>
         </main>
       </div>

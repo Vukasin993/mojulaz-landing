@@ -53,13 +53,13 @@ export default function ComparisonSection() {
         {/* Header */}
         <div style={{ textAlign: 'center', marginBottom: 56 }}>
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: 7, padding: '4px 14px', borderRadius: 99, background: 'rgba(239,68,68,0.1)', border: '1px solid rgba(239,68,68,0.2)', marginBottom: 20 }}>
-            <span style={{ fontSize: 11, fontWeight: 800, color: '#ef4444', letterSpacing: '0.15em', textTransform: 'uppercase' }}>Zašto ne WhatsApp?</span>
+            <span style={{ fontSize: 11, fontWeight: 800, color: '#ef4444', letterSpacing: '0.15em', textTransform: 'uppercase' }}>Zašto ne Viber?</span>
           </div>
           <h2 style={{ fontSize: 'clamp(28px, 4.5vw, 52px)', fontWeight: 900, color: '#fff', letterSpacing: '-2px', lineHeight: 1.05, marginBottom: 16 }}>
             Vaša zgrada zaslužuje bolji alat.
           </h2>
           <p style={{ fontSize: 'clamp(14px, 1.6vw, 17px)', color: 'rgba(255,255,255,0.5)', maxWidth: 480, margin: '0 auto', lineHeight: 1.7 }}>
-            WhatsApp je aplikacija za prijatelje. MojUlaz je alat za upravljanje zgradom.
+            Viber je aplikacija za prijatelje. MojUlaz je alat za upravljanje zgradom.
           </p>
         </div>
 
@@ -70,7 +70,7 @@ export default function ComparisonSection() {
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', background: 'rgba(255,255,255,0.04)' }}>
             <div style={{ padding: '14px 20px', fontSize: 11, fontWeight: 800, color: 'rgba(255,255,255,0.35)', letterSpacing: '0.12em', textTransform: 'uppercase' }}>Situacija</div>
             <div style={{ padding: '14px 20px', fontSize: 11, fontWeight: 800, color: '#ef4444', letterSpacing: '0.12em', textTransform: 'uppercase', borderLeft: '1px solid rgba(255,255,255,0.06)', display: 'flex', alignItems: 'center', gap: 6 }}>
-              <span>WhatsApp / papir</span>
+              <span>Viber / papir</span>
             </div>
             <div style={{ padding: '14px 20px', fontSize: 11, fontWeight: 800, color: '#14b8a6', letterSpacing: '0.12em', textTransform: 'uppercase', borderLeft: '1px solid rgba(255,255,255,0.06)', display: 'flex', alignItems: 'center', gap: 6 }}>
               <span>MojUlaz</span>

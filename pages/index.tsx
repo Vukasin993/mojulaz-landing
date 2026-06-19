@@ -10,6 +10,7 @@ import BuildingSection from '../src/components/sections/BuildingSection'
 import ComparisonSection from '../src/components/sections/ComparisonSection'
 import Pricing from '../src/components/sections/Pricing'
 import Testimonials from '../src/components/sections/Testimonials'
+import Contact from '../src/components/sections/Contact'
 import FAQSection from '../src/components/sections/FAQSection'
 import CTABanner from '../src/components/sections/CTABanner'
 import SignupModal from '../src/components/ui/SignupModal'
@@ -36,6 +37,7 @@ function LandingPage() {
         <PhoneScrollSection />
         <Pricing />
         <Testimonials />
+        <Contact />
         <FAQSection />
         <CTABanner />
       </main>

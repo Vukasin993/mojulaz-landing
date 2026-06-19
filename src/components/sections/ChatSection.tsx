@@ -1,16 +1,16 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 import BrowserMockup from '../ui/BrowserMockup'
 import PhoneMockup from '../ui/PhoneMockup'
-import MobileAppPreview from '../ui/MobileAppPreview'
-import { ArrowRight, Check, Lock, Star } from '../ui/icons'
-import { PRIMARY_CTA, REGISTER_URL } from '../../constants/marketing'
+import AppStoreButtons from '../ui/AppStoreButtons'
+import { Check } from '../ui/icons'
+import { REGISTER_URL } from '../../constants/marketing'
+import homeDashboardImg from '../../assets/section/home-dashbaord.png'
 const adminOverview = '/screenshots/admin-overview.png'
 
 const trustItems = [
-  { icon: Star, text: '270+ zgrada u Srbiji' },
-  { icon: Check, text: '30 dana besplatno' },
-  { icon: Lock, text: 'Bez kreditne kartice' },
-  { icon: Check, text: 'Podešavanje za 10 min' },
+  '500+ zgrada',
+  '30 dana besplatno',
+  'Počnite za 5 minuta',
 ]
 
 export default function ChatSection() {
@@ -71,7 +71,6 @@ export default function ChatSection() {
       <div className="relative z-10 mx-auto w-full max-w-6xl px-6 lg:px-12">
         <div className="flex flex-col items-center gap-12 lg:flex-row lg:items-center lg:gap-16">
           <div className="flex-1 text-center lg:text-left">
-            {/* Live activity badge */}
             <div
               className="mb-4 inline-flex items-center gap-2 rounded-full border px-3.5 py-1.5"
               style={{
@@ -85,7 +84,7 @@ export default function ChatSection() {
                 style={{ animation: 'bsPulse 2s ease-in-out infinite' }}
               />
               <span className="text-[11px] font-extrabold uppercase tracking-[0.1em] text-primary-700">
-                270+ zgrada koristi MojUlaz
+                Problem koji dobro poznajete
               </span>
             </div>
 
@@ -93,8 +92,9 @@ export default function ChatSection() {
               className="mb-5 text-[clamp(36px,5.5vw,64px)] font-black leading-[1.05] tracking-[-2px] text-ink"
               style={fade('0.08s')}
             >
-              Aplikacija za upravljanje{' '}
+              Prestanite da vodite zgradu{' '}
               <span
+                className="block"
                 style={{
                   background: 'linear-gradient(135deg, #14b8a6 0%, #0d9488 60%)',
                   WebkitBackgroundClip: 'text',
@@ -102,7 +102,7 @@ export default function ChatSection() {
                   backgroundClip: 'text',
                 }}
               >
-                zgradom.
+                kroz Viber grupe.
               </span>
             </h1>
 
@@ -110,35 +110,44 @@ export default function ChatSection() {
               className="mx-auto mb-8 max-w-xl text-[clamp(15px,1.8vw,18px)] leading-relaxed text-slate-600 lg:mx-0"
               style={fade('0.16s')}
             >
-              Stanari vas pozivaju manje. Kvarovi se rešavaju brže. Skupštine
-              traju 40 minuta. Vi upravljate — aplikacija radi umesto vas.
+              Obaveštenja, dokumenta, finansije, prijava kvarova i glasanja na jednom mestu.
+              Sve što stanarima i upravnicima treba za modernu stambenu zajednicu.
             </p>
 
-            <div className="mb-6 flex flex-wrap justify-center lg:justify-start" style={fade('0.24s')}>
-              <a
-                href={REGISTER_URL}
-                className="group inline-flex items-center gap-2 rounded-xl px-7 py-4 text-base font-extrabold text-white transition-all hover:-translate-y-0.5 active:translate-y-0"
-                style={{
-                  background: 'linear-gradient(135deg, #0d9488, #0891b2)',
-                  boxShadow: '0 4px 20px rgba(13,148,136,0.35)',
-                }}
-              >
-                {PRIMARY_CTA}
-                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </a>
+            <div className="mb-4 flex flex-wrap justify-center lg:justify-start" style={fade('0.24s')}>
+              <AppStoreButtons />
             </div>
+
+            <a
+              href={REGISTER_URL}
+              className="mx-auto mb-4 flex max-w-[520px] items-center gap-3 rounded-2xl border p-3.5 text-left no-underline transition-all hover:-translate-y-0.5 hover:shadow-lg lg:mx-0"
+              style={{
+                ...fade('0.3s'),
+                background: 'rgba(13,148,136,0.06)',
+                borderColor: 'rgba(13,148,136,0.25)',
+              }}
+            >
+              <span className="flex-shrink-0 text-xl">🧑‍💼</span>
+              <span className="flex-1 text-[13px] leading-relaxed text-slate-600">
+                <strong className="text-ink">Vi ste upravnik?</strong>{' '}
+                Registrujte zgradu u admin panelu — besplatno 30 dana.
+              </span>
+              <span className="flex-shrink-0 whitespace-nowrap rounded-full bg-primary-600 px-3.5 py-2 text-xs font-extrabold text-white">
+                Admin panel →
+              </span>
+            </a>
 
             <div
               className="flex flex-wrap justify-center gap-2 lg:justify-start"
               style={fade('0.38s')}
             >
-              {trustItems.map(({ icon: Icon, text }) => (
+              {trustItems.map((text) => (
                 <div
                   key={text}
                   className="flex items-center gap-1.5 rounded-full border bg-white px-3.5 py-1.5 text-xs font-semibold text-ink shadow-sm"
                   style={{ borderColor: 'rgba(13,148,136,0.15)' }}
                 >
-                  <Icon className="h-3.5 w-3.5 text-primary-600" />
+                  <Check className="h-3.5 w-3.5 text-primary-600" />
                   {text}
                 </div>
               ))}
@@ -164,7 +173,12 @@ export default function ChatSection() {
               />
               <div className="absolute -bottom-4 right-0 z-20 w-[130px] sm:w-[148px] animate-float">
                 <PhoneMockup>
-                  <MobileAppPreview />
+                  <img
+                    src={homeDashboardImg.src}
+                    alt="MojUlaz mobilna aplikacija — početni ekran"
+                    draggable={false}
+                    className="block h-full w-full object-cover"
+                  />
                 </PhoneMockup>
               </div>
             </div>

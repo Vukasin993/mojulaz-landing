@@ -18,7 +18,7 @@ const features = [
     bg: '#f5f3ff',
     border: 'rgba(99,102,241,0.18)',
     title: 'Chat i oglasna tabla',
-    desc: 'Jedno obaveštenje stiže svim stanarima za sekunde. Vidite ko je pročitao, ko nije. Zauvek zbogom WhatsApp haosu.',
+    desc: 'Jedno obaveštenje stiže svim stanarima za sekunde. Vidite ko je pročitao, ko nije. Zauvek zbogom Viber haosu.',
     chips: ['Push notifikacije', 'Potvrda čitanja', 'Hitne poruke'],
   },
   {
@@ -54,7 +54,7 @@ function StoreButtons() {
         Počnite besplatno →
       </a>
       <a
-        href="mailto:zdravo@mojulaz.rs"
+        href="mailto:info@moj-ulaz.com"
         style={{ display: 'inline-flex', alignItems: 'center', gap: 9, padding: '11px 22px', borderRadius: 12, background: '#fff', color: '#0f172a', border: '1.5px solid #e2e8f0', fontSize: 14, fontWeight: 700, textDecoration: 'none', transition: 'border-color 0.2s, color 0.2s' }}
         onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = '#0d9488'; (e.currentTarget as HTMLElement).style.color = '#0d9488' }}
         onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = '#e2e8f0'; (e.currentTarget as HTMLElement).style.color = '#0f172a' }}

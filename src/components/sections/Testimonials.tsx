@@ -9,7 +9,7 @@ const testimonials = [
     name: 'Miroslav Jovanović',
     role: 'Upravnik, 3 zgrade · Beograd',
     detail: 'Blok 23, stambena zgrada sa 48 stanova',
-    quote: 'Pre MojUlaza sve je bilo na papiru i WhatsApp grupama. Za 2 nedelje smo uveli prijavu kvarova i obaveštenja — stanari su prestali da me zovu telefonom. To nikad nisam mislio da će se desiti.',
+    quote: 'Pre MojUlaza sve je bilo na papiru i Viber grupama. Za 2 nedelje smo uveli prijavu kvarova i obaveštenja — stanari su prestali da me zovu telefonom. To nikad nisam mislio da će se desiti.',
     stat: { n: '87%', label: 'manje poziva od stanara' },
   },
   {

@@ -75,7 +75,7 @@ const softwareSchema = {
     logo: 'https://mojulaz.rs/logo-icon.png',
     contactPoint: {
       '@type': 'ContactPoint',
-      email: 'zdravo@mojulaz.rs',
+      email: 'info@moj-ulaz.com',
       contactType: 'customer support',
       availableLanguage: 'Serbian',
     },
@@ -88,7 +88,7 @@ const orgSchema = {
   name: 'MojUlaz',
   url: 'https://mojulaz.rs',
   logo: 'https://mojulaz.rs/logo-icon.png',
-  email: 'zdravo@mojulaz.rs',
+  email: 'info@moj-ulaz.com',
   sameAs: [],
   areaServed: {
     '@type': 'Country',

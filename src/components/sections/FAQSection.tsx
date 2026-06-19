@@ -62,7 +62,7 @@ export default function FAQSection() {
           </h2>
           <p style={{ fontSize: 16, color: '#64748b', lineHeight: 1.7 }}>
             Ako ne nađete odgovor, pišite nam na{' '}
-            <a href="mailto:zdravo@mojulaz.rs" style={{ color: '#0d9488', textDecoration: 'none', fontWeight: 600 }}>zdravo@mojulaz.rs</a>
+            <a href="mailto:info@moj-ulaz.com" style={{ color: '#0d9488', textDecoration: 'none', fontWeight: 600 }}>info@moj-ulaz.com</a>
           </p>
         </div>
 

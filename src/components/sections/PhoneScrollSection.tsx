@@ -1,58 +1,69 @@
-import { useRef, useEffect, useState, useCallback } from 'react'
-import gsap from 'gsap'
-import { ComposableMap, Geographies, Geography, Marker } from 'react-simple-maps'
+import { useRef, useEffect, useState } from 'react'
+import type { StaticImageData } from 'next/image'
 import PhoneMockup from '../ui/PhoneMockup'
-import {
-  DashboardScreen, MaintenanceScreen,
-  NotificationsScreen, FinancesScreen, VotingScreen,
-} from '../ui/PhoneScreens'
 import { useScrollProgress } from '../../hooks/useScrollProgress'
+import homeDashboardImg from '../../assets/section/home-dashbaord.png'
+import zahtev2Img from '../../assets/section/zahtev2.png'
+import obavestenjaImg from '../../assets/section/obavestenja.png'
+import finance2Img from '../../assets/section/finance2.png'
+import pollImg from '../../assets/section/poll.png'
+
+/* ── Screenshot screens ────────────────────────────────────────────── */
+function ScreenImage({ src, alt }: { src: StaticImageData; alt: string }) {
+  return <img src={src.src} alt={alt} draggable={false} style={{ width: '100%', display: 'block' }} />
+}
+
+const DashboardScreen     = () => <ScreenImage src={homeDashboardImg} alt="MojUlaz — početni ekran sa pregledom zgrade" />
+const RequestsScreen      = () => <ScreenImage src={zahtev2Img} alt="MojUlaz — zahtev sa istorijom statusa i komentarima" />
+const NotificationsScreen = () => <ScreenImage src={obavestenjaImg} alt="MojUlaz — obaveštenja sa oznakama važnosti" />
+const FinancesScreen      = () => <ScreenImage src={finance2Img} alt="MojUlaz — finansije sa stanjem fonda i mesečnim pregledom" />
+const PollScreen          = () => <ScreenImage src={pollImg} alt="MojUlaz — anketa sa glasanjem stanara" />
 
 const steps = [
   {
     painLabel: 'Čest problem',
-    painQuote: '"Gde je ta informacija? Zvali su me tri puta danas..."',
-    emoji: '🏠', label: 'Pregled',
-    title: 'Sve što je važno, na jednom mestu.',
-    desc: 'Kvarovi, fond, obaveštenja, glasanja — sve odjednom. Nema traženja po porukama.',
-    bullets: ['Aktuelni kvarovi i statusi', 'Stanje rezervnog fonda', 'Poslednje aktivnosti stanara'],
-    accent: '#0d9488', bg: '#f0fdfa', screen: DashboardScreen,
+    painQuote: '"Koliko imamo u fondu? Šta je sa liftom? Kad je sastanak? — svi pitaju mene."',
+    label: 'Pregled',
+    title: 'Ceo ulaz u jednom pogledu.',
+    desc: 'Otvorite aplikaciju i odmah vidite šta se dešava: nova obaveštenja, aktivni zahtevi, ankete u toku i stanje fonda.',
+    bullets: ['Obaveštenja, zahtevi i ankete na broju', 'Stanje fonda na početnom ekranu', 'Brzi pristup održavanju i dokumentima'],
+    emoji: '🏠', accent: '#0d9488', bg: '#f0fdfa', screen: DashboardScreen,
   },
   {
-    painLabel: 'Što kažu stanari',
+    painLabel: 'Šta kažu stanari',
     painQuote: '"Prijavio sam kvar pre mesec dana. Niko se nije javio."',
-    emoji: '🔧', label: 'Kvarovi',
-    title: 'Svaki kvar praćen do rešenja.',
-    desc: 'Prijava za 10 sekundi — foto, opis, kategorija. Notifikacija odmah. Tehničar zna prioritete.',
-    bullets: ['Foto dokumentacija kvara', 'Automatske notifikacije', 'Status vidljiv svima'],
-    accent: '#f59e0b', bg: '#fffbeb', screen: MaintenanceScreen,
+    label: 'Zahtevi',
+    title: 'Svaki zahtev praćen do rešenja.',
+    desc: 'Stanar prijavi problem za par sekundi, a status se prati od prijave do rešenja — uz istoriju i komentare.',
+    bullets: ['Istorija statusa za svaki zahtev', 'Komentari i dogovor na jednom mestu', 'Status vidljiv svim stanarima'],
+    emoji: '🔧', accent: '#f59e0b', bg: '#fffbeb', screen: RequestsScreen,
   },
   {
     painLabel: 'Čujemo ih često',
     painQuote: '"Važno obaveštenje — a niko ga nije video."',
-    emoji: '📢', label: 'Obaveštenja',
+    label: 'Obaveštenja',
     title: 'Poruka koja stigne do svakog stanara.',
-    desc: 'Jedno obaveštenje — svi ga prime za sekunde. Vidite ko je pročitao, ko nije.',
-    bullets: ['Push notifikacije na iOS i Android', 'Potvrda čitanja za svaki stan', 'Hitna i redovna obaveštenja'],
-    accent: '#6366f1', bg: '#f5f3ff', screen: NotificationsScreen,
+    desc: 'Jedno obaveštenje i svi ga prime istog trenutka — uz jasnu oznaku koliko je hitno.',
+    bullets: ['Push notifikacije na iOS i Android', 'Oznake važnosti: kritično, važno, normalno', 'Kategorije — održavanje, sastanci, rokovi'],
+    emoji: '📢', accent: '#6366f1', bg: '#f5f3ff', screen: NotificationsScreen,
   },
   {
     painLabel: 'Pitanje na skupštini',
     painQuote: '"Gde ide novac od stanarine? Niko nam ne odgovara."',
-    emoji: '💰', label: 'Finansije',
+    label: 'Finansije',
     title: 'Transparentnost koja gradi poverenje.',
-    desc: 'Fond, uplate i rashodi u realnom vremenu. Svaki stanar vidi. Nema nagađanja.',
-    bullets: ['Fond vidljiv svim stanarima', 'Pregled dugovanja po stanu', 'PDF izveštaji jednim klikom'],
-    accent: '#10b981', bg: '#f0fdf4', screen: FinancesScreen,
+    desc: 'Stanje fonda, prihodi i rashodi u realnom vremenu. Svaki stanar vidi na šta novac odlazi.',
+    bullets: ['Stanje fonda vidljivo svim stanarima', 'Prihodi i rashodi jasno razdvojeni', 'Mesečni pregled za celu godinu'],
+    emoji: '💰', accent: '#10b981', bg: '#f0fdf4', screen: FinancesScreen,
   },
   {
     painLabel: 'Klasična skupština',
     painQuote: '"Skupština traje 3 sata. Niko se ne dogovori ni oko čega."',
-    emoji: '🗳️', label: 'Glasanje',
-    title: 'Demokratija koja traje 5 minuta.',
-    desc: 'Otvorite glasanje, svaki stanar glasa sa telefona. Rezultati odmah. Skupštine — jedan klik.',
-    bullets: ['Glasanje po stanu ili kvadraturi', 'Anonimni rezultati u realnom vremenu', 'Arhiva svih prethodnih anketa'],
-    accent: '#8b5cf6', bg: '#faf5ff', screen: VotingScreen,
+    label: 'Ankete',
+    title: 'Odluke bez sazivanja skupštine.',
+    desc: 'Pokrenete anketu, stanari glasaju sa telefona, a rezultati stižu odmah — bez tročasovnih sastanaka.',
+    bullets: ['Glasanje direktno iz aplikacije', 'Rezultati vidljivi u realnom vremenu', 'Anketa iz zahteva — kad treba odluka stanara'],
+    emoji: '🗳️', accent: '#8b5cf6', bg: '#faf5ff', screen: PollScreen,
   },
 ]
 
@@ -63,427 +74,6 @@ const TILTS = [
   { ry: 6,   rx: 4,  rz: 0.5  },
   { ry: -3,  rx: 3,  rz: -0.3 },
 ]
-
-const GEO_URL = 'https://cdn.jsdelivr.net/npm/world-atlas@2/countries-50m.json'
-
-/* ── Cities data ─────────────────────────────────────────────────── */
-const cities = [
-  {
-    name: 'Beograd', buildings: 120, color: '#0d9488',
-    coordinates: [20.46, 44.82] as [number, number],
-    ticket: {
-      problem: 'Lift ne radi — treći put ovog meseca',
-      location: 'Blok 23, zgrada 14A',
-      steps: [
-        { label: 'Kvar prijavljen', time: '08:14', icon: '📋' },
-        { label: 'Majstor pozvan',  time: '09:45', icon: '🔧' },
-        { label: 'Rešeno',          time: '12:22', icon: '✓', final: true },
-      ],
-      duration: '4h 8min',
-    },
-  },
-  {
-    name: 'Novi Sad', buildings: 48, color: '#6366f1',
-    coordinates: [19.83, 45.25] as [number, number],
-    ticket: {
-      problem: 'Curenje vode u podrumu',
-      location: 'Liman 3, zgrada B',
-      steps: [
-        { label: 'Kvar prijavljen',  time: '07:52', icon: '📋' },
-        { label: 'Vodoinstalater',   time: '10:10', icon: '🔧' },
-        { label: 'Rešeno',           time: '15:40', icon: '✓', final: true },
-      ],
-      duration: '7h 48min',
-    },
-  },
-  {
-    name: 'Niš', buildings: 35, color: '#f59e0b',
-    coordinates: [21.9, 43.32] as [number, number],
-    ticket: {
-      problem: 'Parking — neovlašćeno vozilo blokira rampu',
-      location: 'Medijana, zgrada 7',
-      steps: [
-        { label: 'Prijava poslata',  time: '08:03', icon: '📋' },
-        { label: 'Komunalna policija', time: '08:55', icon: '🚔' },
-        { label: 'Rešeno',           time: '10:15', icon: '✓', final: true },
-      ],
-      duration: '2h 12min',
-    },
-  },
-  {
-    name: 'Kragujevac', buildings: 28, color: '#10b981',
-    coordinates: [20.92, 44.01] as [number, number],
-    ticket: {
-      problem: 'Interfon ne radi na 1–4. spratu',
-      location: 'Aerodrom, zgrada C2',
-      steps: [
-        { label: 'Prijavili 3 stanara', time: '09:20', icon: '📋' },
-        { label: 'Servis pozvan',       time: '11:00', icon: '🔧' },
-        { label: 'Rešeno',              time: '13:45', icon: '✓', final: true },
-      ],
-      duration: '4h 25min',
-    },
-  },
-  {
-    name: 'Subotica', buildings: 22, color: '#0891b2',
-    coordinates: [19.67, 46.1] as [number, number],
-    ticket: {
-      problem: 'Grejanje isključeno u delu zgrade',
-      location: 'Centar, zgrada 3',
-      steps: [
-        { label: 'Kvar prijavljen',   time: '06:45', icon: '📋' },
-        { label: 'Toplane obaveštene', time: '07:30', icon: '📞' },
-        { label: 'Rešeno',             time: '11:50', icon: '✓', final: true },
-      ],
-      duration: '5h 5min',
-    },
-  },
-  {
-    name: 'Zrenjanin', buildings: 18, color: '#8b5cf6',
-    coordinates: [20.38, 45.38] as [number, number],
-    ticket: {
-      problem: 'Osvetljenje u hodniku ne radi',
-      location: 'Đerđ Klajn, ulaz 2',
-      steps: [
-        { label: 'Kvar prijavljen', time: '17:05', icon: '📋' },
-        { label: 'Električar pozvan', time: '17:30', icon: '🔧' },
-        { label: 'Rešeno',           time: '18:20', icon: '✓', final: true },
-      ],
-      duration: '1h 15min',
-    },
-  },
-]
-
-// ── Animated number counter hook ─────────────────────────────────
-function useCountUp(target: number) {
-  const [display, setDisplay] = useState(0)
-  const obj = useRef({ val: 0 })
-
-  useEffect(() => {
-    gsap.killTweensOf(obj.current)
-    obj.current.val = 0
-    setDisplay(0)
-    gsap.to(obj.current, {
-      val: target,
-      duration: 1.1,
-      ease: 'power3.out',
-      onUpdate: () => setDisplay(Math.round(obj.current.val)),
-    })
-  }, [target])
-
-  return display
-}
-
-// ── CitiesSection ─────────────────────────────────────────────────
-function CitiesSection() {
-  const [idx, setIdx] = useState(0)
-  const mapRef  = useRef<HTMLDivElement>(null)
-  const cardRef = useRef<HTMLDivElement>(null)
-  const intervalRef = useRef<ReturnType<typeof setInterval>>()
-  const prevIdx = useRef(-1)
-
-  const city  = cities[idx]
-  const count = useCountUp(city.buildings)
-
-  // ── Mount: draw outline + stagger city dots in ────────────────
-  useEffect(() => {
-    const container = mapRef.current
-    if (!container) return
-    // Draw the Serbia outline path
-    const outline = container.querySelector<SVGPathElement>('.serbia-outline')
-    if (outline) {
-      const len = outline.getTotalLength()
-      gsap.set(outline, { strokeDasharray: len, strokeDashoffset: len })
-      gsap.to(outline, { strokeDashoffset: 0, duration: 2.8, ease: 'power2.inOut', delay: 0.4 })
-    }
-    const dots = container.querySelectorAll<SVGCircleElement>('.city-dot')
-    gsap.fromTo(
-      dots,
-      { scale: 0, opacity: 0, transformOrigin: '50% 50%' },
-      { scale: 1, opacity: 1, duration: 0.6, stagger: 0.14, ease: 'back.out(1.7)', delay: 1.8 }
-    )
-    animateCityIn(0)
-  }, [])
-
-  // ── Rotation timer ────────────────────────────────────────────
-  useEffect(() => {
-    intervalRef.current = setInterval(() => {
-      if (cardRef.current) {
-        gsap.to(cardRef.current, {
-          opacity: 0, y: -18, duration: 0.32, ease: 'power2.in',
-          onComplete: () => setIdx(i => (i + 1) % cities.length),
-        })
-      } else {
-        setIdx(i => (i + 1) % cities.length)
-      }
-    }, 3600)
-    return () => clearInterval(intervalRef.current)
-  }, [])
-
-  // ── Animate city rings + card when idx changes ────────────────
-  const animateCityIn = useCallback((i: number) => {
-    const container = mapRef.current
-    if (!container) return
-    // Stop old rings
-    cities.forEach((_, j) => {
-      const r1 = container.querySelector(`#cr1-${j}`) as SVGCircleElement | null
-      const r2 = container.querySelector(`#cr2-${j}`) as SVGCircleElement | null
-      const r3 = container.querySelector(`#cr3-${j}`) as SVGCircleElement | null
-      ;[r1, r2, r3].forEach(el => { if (el) { gsap.killTweensOf(el); gsap.set(el, { attr: { r: 7 }, opacity: 0 }) } })
-    })
-    // New rings expand outward infinitely
-    const tl = gsap.timeline({ repeat: -1 })
-    const rings = [
-      container.querySelector(`#cr1-${i}`) as SVGCircleElement | null,
-      container.querySelector(`#cr2-${i}`) as SVGCircleElement | null,
-      container.querySelector(`#cr3-${i}`) as SVGCircleElement | null,
-    ].filter(Boolean) as SVGCircleElement[]
-    rings.forEach((el, ri) => {
-      tl.fromTo(
-        el,
-        { attr: { r: 7 }, opacity: 0.75 },
-        { attr: { r: 32 + ri * 6 }, opacity: 0, duration: 1.9 + ri * 0.3, ease: 'power2.out' },
-        ri * 0.55
-      )
-    })
-    // Dot bump
-    const dot = container.querySelector(`#cd-${i}`) as SVGCircleElement | null
-    if (dot) gsap.fromTo(dot, { attr: { r: 6 } }, { attr: { r: 9 }, duration: 0.35, ease: 'back.out(3)', yoyo: true, repeat: 1 })
-    // Spotlight glow
-    const glow = container.querySelector(`#cg-${i}`) as SVGCircleElement | null
-    if (glow) gsap.fromTo(glow, { opacity: 0 }, { opacity: 1, duration: 0.6, ease: 'power2.out' })
-    // Fade previous city glow
-    if (prevIdx.current >= 0) {
-      const pg = container.querySelector(`#cg-${prevIdx.current}`) as SVGCircleElement | null
-      if (pg) gsap.to(pg, { opacity: 0, duration: 0.5 })
-    }
-  }, [])
-
-  useEffect(() => {
-    if (prevIdx.current === idx) return
-    // Card slide in
-    if (cardRef.current) {
-      gsap.fromTo(cardRef.current, { opacity: 0, y: 22 }, { opacity: 1, y: 0, duration: 0.5, ease: 'power3.out' })
-    }
-    animateCityIn(idx)
-    prevIdx.current = idx
-  }, [idx, animateCityIn])
-
-  const maxBuildings = Math.max(...cities.map(c => c.buildings))
-  const ticket = city.ticket
-
-  return (
-    <div style={{
-      minHeight: '100vh', display: 'flex', flexDirection: 'column',
-      alignItems: 'center', justifyContent: 'center',
-      background: 'linear-gradient(160deg, #f8fafc 0%, #f0fdfa 55%, #f8fafc 100%)',
-      position: 'relative', overflow: 'hidden', padding: '60px 24px',
-    }}>
-      {/* Grid */}
-      <div style={{ position: 'absolute', inset: 0, backgroundImage: 'linear-gradient(rgba(13,148,136,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(13,148,136,0.03) 1px, transparent 1px)', backgroundSize: '56px 56px', pointerEvents: 'none' }} />
-
-      <div style={{ position: 'relative', zIndex: 1, width: '100%', maxWidth: 1040 }}>
-
-        {/* ── Section header ── */}
-        <div style={{ textAlign: 'center', marginBottom: 56 }}>
-          <div style={{ display: 'inline-flex', alignItems: 'center', gap: 7, padding: '4px 14px', borderRadius: 99, background: 'rgba(13,148,136,0.07)', border: '1px solid rgba(13,148,136,0.18)', marginBottom: 18 }}>
-            <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#0d9488', display: 'inline-block', animation: 'ciPulse 2s ease-in-out infinite' }} />
-            <span style={{ fontSize: 11, fontWeight: 800, color: '#0d9488', letterSpacing: '0.15em', textTransform: 'uppercase' }}>Gde smo prisutni</span>
-          </div>
-          <h2 style={{ fontSize: 'clamp(30px, 4.5vw, 56px)', fontWeight: 900, lineHeight: 1.05, letterSpacing: '-2px', color: '#0f172a', marginBottom: 8 }}>
-            Raste u celoj Srbiji.
-          </h2>
-          <p style={{ fontSize: 'clamp(14px, 1.5vw, 16px)', color: '#64748b', maxWidth: 400, margin: '0 auto', lineHeight: 1.7 }}>
-            Više od 270 zgrada već koristi MojUlaz. Svake nedelje ih je više.
-          </p>
-        </div>
-
-        {/* ── Main two-col: content left, map right ── */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: 64, flexWrap: 'wrap', justifyContent: 'center' }}>
-
-          {/* ── LEFT: city info + resolved ticket ── */}
-          <div ref={cardRef} style={{ flex: '0 1 400px', minWidth: 280 }}>
-
-            {/* City + count — bare, no card */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 4 }}>
-              <div style={{ width: 9, height: 9, borderRadius: '50%', background: city.color, boxShadow: `0 0 12px ${city.color}` }} />
-              <span style={{ fontSize: 13, fontWeight: 700, color: city.color, letterSpacing: '0.04em' }}>{city.name}</span>
-            </div>
-
-            <div style={{ fontSize: 'clamp(56px, 9vw, 88px)', fontWeight: 900, lineHeight: 0.92, letterSpacing: '-4px', color: '#0f172a', marginBottom: 4, fontVariantNumeric: 'tabular-nums' }}>
-              {count}<span style={{ color: city.color }}>+</span>
-            </div>
-            <div style={{ fontSize: 14, color: '#64748b', marginBottom: 8 }}>
-              zgrada koristi MojUlaz
-            </div>
-
-            {/* Network bar */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 36 }}>
-              <div style={{ flex: 1, height: 3, background: '#e2e8f0', borderRadius: 99, overflow: 'hidden' }}>
-                <div style={{ height: '100%', width: `${(city.buildings / maxBuildings) * 100}%`, background: city.color, borderRadius: 99, transition: 'width 1s cubic-bezier(0.16,1,0.3,1), background 0.6s ease' }} />
-              </div>
-              <span style={{ fontSize: 11, fontWeight: 700, color: city.color, whiteSpace: 'nowrap' }}>
-                {Math.round(city.buildings / 271 * 100)}% mreže
-              </span>
-            </div>
-
-            {/* ── Resolved ticket ── */}
-            <div style={{ marginBottom: 8 }}>
-              <span style={{ fontSize: 10, fontWeight: 800, color: '#94a3b8', letterSpacing: '0.14em', textTransform: 'uppercase' }}>
-                Primer rešenog kvara
-              </span>
-            </div>
-
-            {/* Problem header */}
-            <div style={{ marginBottom: 20 }}>
-              <div style={{ fontSize: 15, fontWeight: 700, color: '#0f172a', marginBottom: 2, lineHeight: 1.4 }}>
-                {ticket.problem}
-              </div>
-              <div style={{ fontSize: 12, color: '#94a3b8' }}>{ticket.location}</div>
-            </div>
-
-            {/* Timeline steps */}
-            <div style={{ position: 'relative', paddingLeft: 28 }}>
-              {/* Vertical connector line */}
-              <div style={{ position: 'absolute', left: 7, top: 10, bottom: 10, width: 2, background: `linear-gradient(to bottom, ${city.color}, ${city.color}20)`, borderRadius: 99, transition: 'background 0.6s ease' }} />
-
-              {ticket.steps.map((step, si) => (
-                <div key={si} style={{ display: 'flex', alignItems: 'flex-start', gap: 14, marginBottom: si < ticket.steps.length - 1 ? 20 : 0, position: 'relative' }}>
-                  {/* Step dot */}
-                  <div style={{
-                    position: 'absolute', left: -28, top: 2,
-                    width: 16, height: 16, borderRadius: '50%',
-                    background: step.final ? city.color : '#fff',
-                    border: `2px solid ${step.final ? city.color : '#e2e8f0'}`,
-                    display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    fontSize: 8,
-                    boxShadow: step.final ? `0 0 10px ${city.color}60` : 'none',
-                    transition: 'background 0.6s, border-color 0.6s, box-shadow 0.6s',
-                  }}>
-                    {step.final && (
-                      <svg width="8" height="8" viewBox="0 0 8 8" fill="none">
-                        <path d="M1.5 4L3.5 6L6.5 2" stroke="#fff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
-                    )}
-                  </div>
-
-                  <div>
-                    <div style={{ fontSize: 13.5, fontWeight: step.final ? 700 : 500, color: step.final ? city.color : '#334155', lineHeight: 1.3, transition: 'color 0.6s' }}>
-                      {step.icon} {step.label}
-                    </div>
-                    <div style={{ fontSize: 11, color: '#94a3b8', marginTop: 1 }}>{step.time}</div>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* Resolution time */}
-            <div style={{ marginTop: 20, display: 'inline-flex', alignItems: 'center', gap: 6, padding: '5px 12px', borderRadius: 99, background: `${city.color}0f`, border: `1px solid ${city.color}22`, transition: 'background 0.6s, border-color 0.6s' }}>
-              <svg width="11" height="11" viewBox="0 0 12 12" fill="none">
-                <circle cx="6" cy="6" r="5" stroke={city.color} strokeWidth="1.3"/>
-                <path d="M6 3.5V6L7.5 7.5" stroke={city.color} strokeWidth="1.3" strokeLinecap="round"/>
-              </svg>
-              <span style={{ fontSize: 12, fontWeight: 700, color: city.color }}>Rešeno za {ticket.duration}</span>
-            </div>
-
-            {/* Progress dots */}
-            <div style={{ display: 'flex', gap: 7, marginTop: 36 }}>
-              {cities.map((c, i) => (
-                <button
-                  key={i}
-                  onClick={() => {
-                    if (cardRef.current) {
-                      gsap.to(cardRef.current, {
-                        opacity: 0, y: -14, duration: 0.25, ease: 'power2.in',
-                        onComplete: () => setIdx(i),
-                      })
-                    } else setIdx(i)
-                  }}
-                  style={{ height: 5, borderRadius: 99, background: i === idx ? c.color : 'rgba(0,0,0,0.1)', width: i === idx ? 24 : 5, border: 'none', padding: 0, cursor: 'pointer', transition: 'all 0.4s cubic-bezier(0.16,1,0.3,1)' }}
-                />
-              ))}
-            </div>
-          </div>
-
-          {/* ── RIGHT: Serbia map ── */}
-          <div ref={mapRef} style={{ flexShrink: 0, width: 300, height: 360 }}>
-            <ComposableMap
-              projection="geoMercator"
-              projectionConfig={{ center: [20.9, 44.15], scale: 4200 }}
-              width={300}
-              height={360}
-              style={{ width: '100%', height: '100%', overflow: 'visible' }}
-            >
-              <Geographies geography={GEO_URL}>
-                {({ geographies }: { geographies: Array<{ id: string | number; rsmKey: string }> }) =>
-                  geographies
-                    .filter((geo) => Number(geo.id) === 688)
-                    .map((geo) => (
-                      <Geography
-                        key={geo.rsmKey}
-                        geography={geo}
-                        className="serbia-outline"
-                        fill="rgba(13,148,136,0.05)"
-                        stroke="rgba(13,148,136,0.3)"
-                        strokeWidth={1.2}
-                        style={{ default: { outline: 'none' }, hover: { outline: 'none' }, pressed: { outline: 'none' } }}
-                      />
-                    ))
-                }
-              </Geographies>
-
-              {cities.map((c, i) => (
-                <Marker key={i} coordinates={c.coordinates}>
-                  {/* Spotlight glow */}
-                  <circle id={`cg-${i}`} r={20} fill={c.color} opacity={0} style={{ filter: 'blur(8px)' }} />
-                  {/* Expanding rings */}
-                  <circle id={`cr1-${i}`} r={7} fill="none" stroke={c.color} strokeWidth={1.5} opacity={0} />
-                  <circle id={`cr2-${i}`} r={7} fill="none" stroke={c.color} strokeWidth={1}   opacity={0} />
-                  <circle id={`cr3-${i}`} r={7} fill="none" stroke={c.color} strokeWidth={0.7} opacity={0} />
-                  {/* City dot */}
-                  <circle
-                    id={`cd-${i}`}
-                    className="city-dot"
-                    r={i === idx ? 7 : 4}
-                    fill={c.color}
-                    opacity={i === idx ? 1 : 0.3}
-                    style={{ transition: 'opacity 0.5s ease' }}
-                  />
-                  {/* Label */}
-                  <text
-                    textAnchor="middle"
-                    y={-13}
-                    fontSize={i === idx ? 9.5 : 8}
-                    fontWeight={i === idx ? 800 : 500}
-                    fill={c.color}
-                    opacity={i === idx ? 1 : 0.4}
-                    fontFamily="system-ui, sans-serif"
-                    style={{ transition: 'opacity 0.5s', pointerEvents: 'none' }}
-                  >
-                    {c.name}
-                  </text>
-                </Marker>
-              ))}
-            </ComposableMap>
-          </div>
-        </div>
-
-        {/* Scroll hint */}
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 5, marginTop: 48, opacity: 0.35 }}>
-          <span style={{ fontSize: 11, fontWeight: 600, color: '#64748b', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Pogledajte aplikaciju</span>
-          <svg width="18" height="18" viewBox="0 0 20 20" fill="none" style={{ animation: 'ciArrow 2s ease-in-out infinite' }}>
-            <path d="M10 4v12M4 10l6 6 6-6" stroke="#64748b" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
-        </div>
-      </div>
-
-      <style>{`
-        @keyframes ciPulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(1.5)} }
-        @keyframes ciArrow { 0%,100%{transform:translateY(0)} 50%{transform:translateY(7px)} }
-      `}</style>
-    </div>
-  )
-}
 
 export default function PhoneScrollSection() {
   const sectionRef   = useRef<HTMLElement>(null)
@@ -523,8 +113,55 @@ export default function PhoneScrollSection() {
       style={{ position: 'relative', background: '#ffffff', overflowX: 'clip' }}
     >
 
-      {/* ── Cities section ── */}
-      <CitiesSection />
+      {/* ── Dark chapter break — visual separator before phone features ── */}
+      <div style={{
+        height: '100vh', display: 'flex', flexDirection: 'column',
+        alignItems: 'center', justifyContent: 'center',
+        background: 'linear-gradient(160deg, #0f172a 0%, #0d2d26 50%, #0f172a 100%)',
+        position: 'relative', overflow: 'hidden', textAlign: 'center', padding: '0 24px',
+      }}>
+        {/* Decorative grid */}
+        <div style={{ position: 'absolute', inset: 0, backgroundImage: 'linear-gradient(rgba(20,184,166,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(20,184,166,0.05) 1px, transparent 1px)', backgroundSize: '72px 72px', pointerEvents: 'none' }} />
+        {/* Glow */}
+        <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '60vw', height: '60vw', maxWidth: 800, maxHeight: 800, borderRadius: '50%', background: 'radial-gradient(circle, rgba(13,148,136,0.14) 0%, transparent 65%)', pointerEvents: 'none' }} />
+
+        <div style={{ position: 'relative', zIndex: 1 }}>
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '5px 16px', borderRadius: 99, border: '1px solid rgba(20,184,166,0.3)', background: 'rgba(20,184,166,0.08)', marginBottom: 32 }}>
+            <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#14b8a6', display: 'inline-block', animation: 'chapterPulse 2s ease-in-out infinite' }} />
+            <span style={{ fontSize: 11, fontWeight: 800, color: '#14b8a6', letterSpacing: '0.18em', textTransform: 'uppercase' }}>Rešenje</span>
+          </div>
+
+          <h2 style={{ fontSize: 'clamp(40px, 7vw, 88px)', fontWeight: 900, lineHeight: 1.0, letterSpacing: '-3px', color: '#fff', marginBottom: 20, animation: 'chapterFadeUp 0.9s cubic-bezier(0.22,1,0.36,1) both' }}>
+            Jedna aplikacija.
+          </h2>
+          <h2 style={{ fontSize: 'clamp(40px, 7vw, 88px)', fontWeight: 900, lineHeight: 1.0, letterSpacing: '-3px', marginBottom: 32, background: 'linear-gradient(135deg, #2dd4bf 0%, #14b8a6 50%, #0d9488 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text', animation: 'chapterFadeUp 0.9s cubic-bezier(0.22,1,0.36,1) 0.12s both' }}>
+            Sve pod kontrolom.
+          </h2>
+          <p style={{ fontSize: 'clamp(16px, 2vw, 20px)', color: 'rgba(255,255,255,0.5)', maxWidth: 500, margin: '0 auto 48px', lineHeight: 1.7, animation: 'chapterFadeUp 0.9s cubic-bezier(0.22,1,0.36,1) 0.24s both' }}>
+            Pogledajte kako MojUlaz rešava sve što vas muči.
+          </p>
+
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 12, animation: 'chapterFadeUp 0.9s cubic-bezier(0.22,1,0.36,1) 0.36s both' }}>
+            <div style={{ display: 'flex', gap: 8 }}>
+              {steps.map((s, i) => (
+                <div key={i} style={{ width: 7, height: 7, borderRadius: '50%', background: s.accent, opacity: 0.5 }} />
+              ))}
+            </div>
+            <span style={{ fontSize: 12, fontWeight: 600, color: 'rgba(255,255,255,0.3)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>{steps.length} funkcija</span>
+          </div>
+
+          {/* Scroll arrow */}
+          <div style={{ marginTop: 64, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6, animation: 'chapterArrow 2s ease-in-out infinite' }}>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 4v12M4 10l6 6 6-6" stroke="rgba(20,184,166,0.5)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+          </div>
+        </div>
+
+        <style>{`
+          @keyframes chapterPulse   { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.4; transform: scale(1.5); } }
+          @keyframes chapterFadeUp  { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
+          @keyframes chapterArrow   { 0%, 100% { transform: translateY(0); opacity: 0.5; } 50% { transform: translateY(8px); opacity: 1; } }
+        `}</style>
+      </div>
 
       <div ref={containerRef} style={{ position: 'relative', height: `${(steps.length + 1.2) * 100}vh` }}>
 

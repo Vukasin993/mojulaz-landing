@@ -33,8 +33,8 @@ export default function Footer() {
               Moderna platforma za upravljanje stambenim zgradama i kondominijumima u Srbiji.
             </p>
             <div className="flex flex-col gap-1.5 mb-4">
-              <a href="mailto:zdravo@mojulaz.rs" className="text-sm text-slate-400 hover:text-primary-400 transition-colors">
-                📧 zdravo@mojulaz.rs
+              <a href="mailto:info@moj-ulaz.com" className="text-sm text-slate-400 hover:text-primary-400 transition-colors">
+                📧 info@moj-ulaz.com
               </a>
             </div>
             <p className="text-sm text-slate-500">Napravljeno u Srbiji 🇷🇸</p>
@@ -62,7 +62,7 @@ export default function Footer() {
                 </li>
               ))}
               <li>
-                <a href="mailto:zdravo@mojulaz.rs" className="text-sm text-slate-400 hover:text-primary-400 transition-colors">Kontakt</a>
+                <a href="mailto:info@moj-ulaz.com" className="text-sm text-slate-400 hover:text-primary-400 transition-colors">Kontakt</a>
               </li>
             </ul>
             <a

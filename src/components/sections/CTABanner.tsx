@@ -28,7 +28,7 @@ export default function CTABanner() {
 
       <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <p className="reveal text-sm font-bold text-teal-200 uppercase tracking-widest mb-4">
-          Za upravnike koji upravljaju zgradama — ne WhatsApp grupama
+          Za upravnike koji upravljaju zgradama — ne Viber grupama
         </p>
         <h2 className="reveal text-[clamp(28px,5vw,52px)] font-extrabold text-white tracking-tight leading-[1.1] mb-5">
           Imate 10 minuta?<br />Podesite prvu zgradu danas.

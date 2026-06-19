@@ -7,6 +7,7 @@ const links = [
   { href: '#features',  label: 'Funkcionalnosti' },
   { href: '#how',       label: 'Kako radi'        },
   { href: '#pricing',   label: 'Cene'             },
+  { href: '#contact',   label: 'Kontakt'          },
   { href: '#faq',       label: 'FAQ'              },
 ]
 
