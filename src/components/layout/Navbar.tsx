@@ -57,7 +57,7 @@ export default function Navbar() {
 
           {/* Logo */}
           <a href="/" className="flex items-center flex-shrink-0">
-            <img src={logoImg} alt="MojUlaz" className="h-9 w-auto object-contain" />
+            <img src={logoImg} alt="MojUlaz" className="h-9 w-auto object-contain" style={{height: '64px'}} />
           </a>
 
           {/* Desktop links */}
