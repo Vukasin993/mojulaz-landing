@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
 
 const stats = [
-  { value: 270,  suffix: '+',     label: 'zgrada u Srbiji'           },
-  { value: 3000, suffix: '+',     label: 'aktivnih stanara'           },
+  { value: 140,  suffix: '+',     label: 'zgrada u Srbiji'           },
+  { value: 2500, suffix: '+',     label: 'aktivnih stanara'           },
   { value: 98,   suffix: '%',     label: 'zadovoljnih korisnika'      },
   { value: 10,   prefix: '< ',   suffix: ' min', label: 'podešavanje zgrade' },
 ]

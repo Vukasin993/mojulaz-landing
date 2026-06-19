@@ -5,7 +5,7 @@ interface Props {
   className?: string
 }
 
-export default function BrowserMockup({ src, alt, url = 'app.mojulaz.rs', className = '' }: Props) {
+export default function BrowserMockup({ src, alt, url = 'app.moj-ulaz.rs', className = '' }: Props) {
   return (
     <div className={`rounded-2xl overflow-hidden border border-slate-200/80 bg-white shadow-2xl ${className}`}>
       {/* Chrome bar */}
