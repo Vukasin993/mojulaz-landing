@@ -1,10 +1,31 @@
 import { useState } from 'react'
-import { useLang } from '../../i18n/LanguageContext'
 
 const CONTACT_EMAIL = 'info@moj-ulaz.com'
+const copy = {
+  badge: 'Kontakt',
+  title: 'Imate pitanje? Tu smo.',
+  sub: 'Bilo da upravljate jednom zgradom ili stotinom, javite nam se — odgovaramo brzo i bez komplikovanja.',
+  emailTitle: 'Email',
+  emailDesc: 'Odgovaramo u roku od 24 sata, radnim danima.',
+  demoTitle: 'Zakažite demo',
+  demoDesc: 'Pokazaćemo vam platformu uživo — 20 minuta, bez obaveza.',
+  demoAction: 'Zakažite termin',
+  demoSubject: 'Zahtev za demo prezentaciju',
+  responsePrefix: 'Prosečno vreme odgovora:',
+  responseTime: 'manje od 24 sata',
+  nameLabel: 'Ime i prezime',
+  namePlaceholder: 'Petar Petrović',
+  emailLabel: 'Email adresa',
+  emailPlaceholder: 'petar@primer.rs',
+  messageLabel: 'Poruka',
+  messagePlaceholder: 'Upravljam zgradom od 30 stanova i zanima me kako MojUlaz može da mi pomogne...',
+  submit: 'Pošaljite poruku',
+  note: 'Slanjem poruke otvoriće se vaš email klijent. Ne čuvamo podatke iz forme.',
+  mailSubjectPrefix: 'Upit sa sajta',
+  mailFallbackName: 'novi korisnik',
+}
 
 export default function Contact() {
-  const { t } = useLang()
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [message, setMessage] = useState('')
@@ -12,23 +33,23 @@ export default function Contact() {
   const channels = [
     {
       icon: '✉️',
-      title: t.contact.emailTitle,
-      desc: t.contact.emailDesc,
+      title: copy.emailTitle,
+      desc: copy.emailDesc,
       action: CONTACT_EMAIL,
       href: `mailto:${CONTACT_EMAIL}`,
     },
     {
       icon: '🎯',
-      title: t.contact.demoTitle,
-      desc: t.contact.demoDesc,
-      action: t.contact.demoAction,
-      href: `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(t.contact.demoSubject)}`,
+      title: copy.demoTitle,
+      desc: copy.demoDesc,
+      action: copy.demoAction,
+      href: `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(copy.demoSubject)}`,
     },
   ]
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    const subject = encodeURIComponent(`${t.contact.mailSubjectPrefix} — ${name || t.contact.mailFallbackName}`)
+    const subject = encodeURIComponent(`${copy.mailSubjectPrefix} — ${name || copy.mailFallbackName}`)
     const body = encodeURIComponent(`${message}\n\n—\n${name}\n${email}`)
     window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`
   }
@@ -40,13 +61,13 @@ export default function Contact() {
         {/* Header */}
         <div className="text-center mb-16">
           <div className="reveal inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold mb-4 bg-primary-50 text-primary-700 border border-primary-100">
-            {t.contact.badge}
+            {copy.badge}
           </div>
           <h2 className="reveal reveal-d1 text-4xl sm:text-5xl font-extrabold text-ink tracking-tight mb-4">
-            {t.contact.title}
+            {copy.title}
           </h2>
           <p className="reveal reveal-d2 text-base text-slate-500 max-w-xl mx-auto leading-relaxed">
-            {t.contact.sub}
+            {copy.sub}
           </p>
         </div>
 
@@ -77,7 +98,7 @@ export default function Contact() {
                 <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-primary-500" />
               </span>
               <p className="text-sm text-slate-600">
-                {t.contact.responsePrefix} <strong className="text-ink">{t.contact.responseTime}</strong>
+                {copy.responsePrefix} <strong className="text-ink">{copy.responseTime}</strong>
               </p>
             </div>
           </div>
@@ -86,37 +107,37 @@ export default function Contact() {
           <form onSubmit={handleSubmit} className="reveal reveal-d2 p-7 sm:p-8 rounded-3xl border border-slate-200 bg-slate-50/60 shadow-[0_2px_12px_rgba(0,0,0,0.04)]">
             <div className="grid sm:grid-cols-2 gap-4 mb-4">
               <div>
-                <label htmlFor="contact-name" className="block text-xs font-semibold text-slate-600 mb-1.5">{t.contact.nameLabel}</label>
+                <label htmlFor="contact-name" className="block text-xs font-semibold text-slate-600 mb-1.5">{copy.nameLabel}</label>
                 <input
                   id="contact-name"
                   type="text"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  placeholder={t.contact.namePlaceholder}
+                  placeholder={copy.namePlaceholder}
                   required
                   className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white text-sm text-ink placeholder:text-slate-400 focus:outline-none focus:border-primary-400 focus:ring-2 focus:ring-primary-100 transition-all"
                 />
               </div>
               <div>
-                <label htmlFor="contact-email" className="block text-xs font-semibold text-slate-600 mb-1.5">{t.contact.emailLabel}</label>
+                <label htmlFor="contact-email" className="block text-xs font-semibold text-slate-600 mb-1.5">{copy.emailLabel}</label>
                 <input
                   id="contact-email"
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder={t.contact.emailPlaceholder}
+                  placeholder={copy.emailPlaceholder}
                   required
                   className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white text-sm text-ink placeholder:text-slate-400 focus:outline-none focus:border-primary-400 focus:ring-2 focus:ring-primary-100 transition-all"
                 />
               </div>
             </div>
             <div className="mb-5">
-              <label htmlFor="contact-message" className="block text-xs font-semibold text-slate-600 mb-1.5">{t.contact.messageLabel}</label>
+              <label htmlFor="contact-message" className="block text-xs font-semibold text-slate-600 mb-1.5">{copy.messageLabel}</label>
               <textarea
                 id="contact-message"
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
-                placeholder={t.contact.messagePlaceholder}
+                placeholder={copy.messagePlaceholder}
                 required
                 rows={5}
                 className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white text-sm text-ink placeholder:text-slate-400 focus:outline-none focus:border-primary-400 focus:ring-2 focus:ring-primary-100 transition-all resize-none"
@@ -126,10 +147,10 @@ export default function Contact() {
               type="submit"
               className="w-full text-sm font-semibold text-white bg-primary-600 hover:bg-primary-700 rounded-xl px-5 py-3.5 transition-all hover:shadow-[0_6px_20px_rgba(13,148,136,0.35)] hover:-translate-y-px"
             >
-              {t.contact.submit}
+              {copy.submit}
             </button>
             <p className="text-xs text-slate-400 text-center mt-3">
-              {t.contact.note}
+              {copy.note}
             </p>
           </form>
         </div>

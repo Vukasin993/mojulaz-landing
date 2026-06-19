@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from 'react'
 
 const stats = [
-  { value: 500,   suffix: '+',    label: 'zgrada pod upravljanjem'  },
-  { value: 12000, suffix: '+',    label: 'aktivnih stanara'          },
-  { value: 98,    suffix: '%',    label: 'zadovoljnih korisnika'     },
-  { value: 2,     prefix: '< ',   suffix: ' min', label: 'prosečno vreme odgovora' },
+  { value: 270,  suffix: '+',     label: 'zgrada u Srbiji'           },
+  { value: 3000, suffix: '+',     label: 'aktivnih stanara'           },
+  { value: 98,   suffix: '%',     label: 'zadovoljnih korisnika'      },
+  { value: 10,   prefix: '< ',   suffix: ' min', label: 'podešavanje zgrade' },
 ]
 
 function useCountUp(target: number, active: boolean, duration = 1400) {
@@ -62,11 +62,11 @@ export default function Stats() {
   return (
     <section
       ref={ref}
-      className="py-12 border-y border-slate-200"
-      style={{ background: 'linear-gradient(90deg, #f0fdfa 0%, #ffffff 50%, #f0fdfa 100%)' }}
+      className="py-10 border-y border-slate-100"
+      style={{ background: '#ffffff' }}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-0 lg:divide-x lg:divide-slate-100">
           {stats.map(({ value, suffix, prefix, label }, i) => (
             <StatItem
               key={label}

@@ -1,9 +1,7 @@
 import { ArrowRight } from '../ui/icons'
-import { ADMIN_PANEL_URL } from '../../lib/links'
-import { useLang } from '../../i18n/LanguageContext'
+import { REGISTER_URL } from '../../constants/marketing'
 
 export default function CTABanner() {
-  const { t } = useLang()
   return (
     <section
       className="relative py-24 lg:py-28 overflow-hidden"
@@ -29,42 +27,43 @@ export default function CTABanner() {
       />
 
       <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h2 className="reveal text-[clamp(28px,5vw,48px)] font-extrabold text-white tracking-tight leading-[1.15] mb-5">
-          {t.ctaBanner.title}
+        <p className="reveal text-sm font-bold text-teal-200 uppercase tracking-widest mb-4">
+          Za upravnike koji upravljaju zgradama — ne Viber grupama
+        </p>
+        <h2 className="reveal text-[clamp(28px,5vw,52px)] font-extrabold text-white tracking-tight leading-[1.1] mb-5">
+          Imate 10 minuta?<br />Podesite prvu zgradu danas.
         </h2>
-        <p className="reveal reveal-d1 text-lg text-white/80 mb-10 leading-relaxed">
-          {t.ctaBanner.sub}
+        <p className="reveal reveal-d1 text-lg text-white/75 mb-10 leading-relaxed">
+          Pridružite se 270+ zgrada širom Srbije — i počnite da dobijate
+          manje poziva, manje papira i više slobodnog vremena.
         </p>
 
-        <div className="reveal reveal-d2">
+        <div className="reveal reveal-d2 flex flex-col items-center gap-5">
           <a
-            href={ADMIN_PANEL_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group relative inline-flex items-center gap-2 text-sm font-bold text-primary-700 bg-white rounded-full px-7 py-4 overflow-hidden transition-all hover:shadow-[0_12px_32px_rgba(0,0,0,0.22)] hover:-translate-y-1"
+            href={REGISTER_URL}
+            className="group relative inline-flex items-center gap-2 text-base font-extrabold text-primary-700 bg-white rounded-full px-8 py-4 overflow-hidden transition-all hover:shadow-[0_12px_32px_rgba(0,0,0,0.22)] hover:-translate-y-1 active:translate-y-0"
           >
-            {/* Shine sweep on hover */}
             <span
               className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out"
-              style={{
-                background: 'linear-gradient(90deg, transparent 0%, rgba(13,148,136,0.08) 50%, transparent 100%)',
-              }}
+              style={{ background: 'linear-gradient(90deg, transparent 0%, rgba(13,148,136,0.08) 50%, transparent 100%)' }}
             />
-            <span className="relative">{t.ctaBanner.cta}</span>
+            <span className="relative">Počnite besplatno — 30 dana</span>
             <ArrowRight className="relative w-4 h-4 transition-transform group-hover:translate-x-1" />
           </a>
         </div>
 
         {/* Social proof row */}
-        <div className="reveal reveal-d3 flex flex-wrap items-center justify-center gap-6 mt-10 text-sm text-white/65">
-          {t.ctaBanner.proof.map((p, i) => (
-            <span key={p} className="contents">
-              {i > 0 && <span className="hidden sm:block text-white/30">·</span>}
-              <span>{p}</span>
-            </span>
-          ))}
+        <div className="reveal reveal-d3 flex flex-wrap items-center justify-center gap-6 mt-10 text-sm text-white/60">
+          <span>✓ Bez kreditne kartice</span>
+          <span className="hidden sm:block text-white/30">·</span>
+          <span>✓ 30 dana besplatno</span>
+          <span className="hidden sm:block text-white/30">·</span>
+          <span>✓ Otkazivanje u bilo kom trenutku</span>
+          <span className="hidden sm:block text-white/30">·</span>
+          <span>✓ Podrška na srpskom</span>
         </div>
       </div>
+
     </section>
   )
 }
