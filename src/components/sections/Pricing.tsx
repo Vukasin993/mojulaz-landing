@@ -2,12 +2,6 @@ import { Check, Star } from '../ui/icons'
 import { REGISTER_URL } from '../../constants/marketing'
 import { useLang } from '../../i18n/LanguageContext'
 
-const tiers = [
-  { price: '7.600', monthly: '633', highlight: false },
-  { price: '6.600', monthly: '550', highlight: true  },
-  { price: '4.999', monthly: '416', highlight: false },
-]
-
 export default function Pricing() {
   const { t } = useLang()
   return (
@@ -42,25 +36,26 @@ export default function Pricing() {
         {/* Cards */}
         <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
 
-          {/* Free trial */}
+          {/* Single price */}
           <div className="reveal relative rounded-2xl p-8 bg-white border-2 border-primary-600 shadow-[0_8px_32px_rgba(13,148,136,0.13)]">
             <div className="absolute -top-4 left-1/2 -translate-x-1/2 whitespace-nowrap">
               <span className="inline-flex items-center gap-1.5 bg-primary-600 text-white text-xs font-bold px-3 py-1.5 rounded-full">
                 <Star className="w-3 h-3" />
-                {t.pricing.startHere}
+                {t.pricing.singleBadge}
               </span>
             </div>
 
             <div className="mb-6">
-              <h3 className="text-xl font-bold text-ink mb-2">{t.pricing.trial}</h3>
-              <div className="flex items-baseline gap-2 mb-2">
-                <span className="text-4xl font-extrabold text-primary-600 tracking-tight">{t.pricing.free}</span>
+              <h3 className="text-xl font-bold text-ink mb-1">{t.pricing.singleTitle}</h3>
+              <p className="text-sm text-slate-500 mb-4">{t.pricing.singleScope}</p>
+              <div className="flex items-baseline gap-1 mb-2">
+                <span className="text-4xl font-extrabold text-primary-600 tracking-tight">2.190</span>
+                <span className="text-sm font-medium text-slate-500">{t.pricing.singleUnit}</span>
               </div>
-              <p className="text-sm text-slate-500">{t.pricing.trialSub}</p>
             </div>
 
-            <ul className="space-y-3 mb-8">
-              {t.pricing.freeFeatures.map((f) => (
+            <ul className="space-y-3 mb-6">
+              {t.pricing.singleFeatures.map((f) => (
                 <li key={f} className="flex items-center gap-3 text-sm text-slate-600">
                   <span className="w-4.5 h-4.5 rounded-full bg-primary-50 flex items-center justify-center flex-shrink-0">
                     <Check className="w-3 h-3 text-primary-600" strokeWidth={2.5} />
@@ -75,44 +70,25 @@ export default function Pricing() {
               className="block w-full text-center text-sm font-bold text-white bg-primary-600 hover:bg-primary-700 rounded-full px-6 py-4 transition-all hover:shadow-[0_6px_20px_rgba(13,148,136,0.38)] hover:-translate-y-0.5 active:translate-y-0"
               style={{ fontSize: 15 }}
             >
-              {t.pricing.trialCta}
+              {t.pricing.singleCta}
             </a>
+
+            <p className="text-xs text-center text-slate-400 mt-3">{t.pricing.trialNote}</p>
           </div>
 
-          {/* Paid tiers */}
-          <div className="reveal reveal-d2 rounded-2xl p-8 bg-slate-50 border border-slate-200">
+          {/* Enterprise */}
+          <div className="reveal reveal-d2 rounded-2xl p-8 bg-slate-50 border border-slate-200 flex flex-col">
             <div className="mb-5">
-              <h3 className="text-xl font-bold text-ink mb-1">{t.pricing.license}</h3>
-              <p className="text-sm text-slate-500">{t.pricing.licenseSub}</p>
+              <h3 className="text-xl font-bold text-ink mb-1">{t.pricing.enterpriseTitle}</h3>
+              <p className="text-sm text-slate-500">{t.pricing.enterpriseScope}</p>
             </div>
 
-            {/* Tier table */}
-            <div className="rounded-xl overflow-hidden border border-slate-200 mb-5">
-              {tiers.map(({ price, monthly, highlight }, index) => (
-                <div
-                  key={t.pricing.ranges[index]}
-                  className={`flex items-center justify-between px-4 py-3 border-b border-slate-200 last:border-b-0 ${
-                    highlight ? 'bg-primary-50' : 'bg-white'
-                  }`}
-                >
-                  <span className={`text-sm font-medium ${highlight ? 'text-primary-700' : 'text-slate-600'}`}>
-                    {t.pricing.ranges[index]}
-                  </span>
-                  <div className="text-right">
-                    <div>
-                      <span className={`text-base font-extrabold ${highlight ? 'text-primary-600' : 'text-ink'}`}>
-                        {price}
-                      </span>
-                      <span className="text-xs text-slate-400 ml-1">{t.pricing.perYear}</span>
-                    </div>
-                    <div className="text-[11px] text-slate-400">= {monthly} {t.pricing.perMonth}</div>
-                  </div>
-                </div>
-              ))}
-            </div>
+            <p className="text-sm text-slate-600 leading-relaxed mb-6">
+              {t.pricing.enterpriseDesc}
+            </p>
 
-            <ul className="space-y-2.5 mb-8">
-              {t.pricing.paidFeatures.map((f) => (
+            <ul className="space-y-3 mb-8">
+              {t.pricing.enterpriseFeatures.map((f) => (
                 <li key={f} className="flex items-center gap-3 text-sm text-slate-600">
                   <span className="w-4.5 h-4.5 rounded-full bg-primary-50 flex items-center justify-center flex-shrink-0">
                     <Check className="w-3 h-3 text-primary-600" strokeWidth={2.5} />
@@ -123,10 +99,10 @@ export default function Pricing() {
             </ul>
 
             <a
-              href={REGISTER_URL}
-              className="block w-full text-center text-sm font-semibold text-primary-600 bg-white hover:bg-primary-50 border border-primary-300 rounded-full px-6 py-3.5 transition-colors"
+              href="mailto:info@moj-ulaz.com"
+              className="mt-auto block w-full text-center text-sm font-semibold text-primary-600 bg-white hover:bg-primary-50 border border-primary-300 rounded-full px-6 py-3.5 transition-colors"
             >
-              {t.pricing.paidCta}
+              {t.pricing.enterpriseCta}
             </a>
           </div>
 
