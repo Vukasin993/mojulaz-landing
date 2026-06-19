@@ -18,7 +18,7 @@ const features = [
     bg: '#f5f3ff',
     border: 'rgba(99,102,241,0.18)',
     title: 'Chat i oglasna tabla',
-    desc: 'Jedno obaveštenje stiže svim stanarima za sekunde. Vidite ko je pročitao, ko nije. Zauvek zbogom Viber haosu.',
+    desc: 'Jedno obaveštenje stiže svim stanarima za sekundu. Vidite ko je pročitao, ko nije. Zauvek zbogom Viber haosu.',
     chips: ['Push notifikacije', 'Potvrda čitanja', 'Hitne poruke'],
   },
   {

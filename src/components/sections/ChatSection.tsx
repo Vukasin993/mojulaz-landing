@@ -8,7 +8,7 @@ import homeDashboardImg from '../../assets/section/home-dashbaord.png'
 const adminOverview = '/screenshots/admin-overview.png'
 
 const trustItems = [
-  '500+ zgrada',
+  '270+ zgrada',
   '30 dana besplatno',
   'Počnite za 5 minuta',
 ]

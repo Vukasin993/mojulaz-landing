@@ -35,7 +35,7 @@ const TermsPage: NextPage = () => {
           </div>
 
           <div className="prose prose-slate max-w-none">
-            <p>Dobrodošli na MojUlaz. Korišćenjem naše aplikacije i sajta (mojulaz.rs) prihvatate ove uslove. Pažljivo ih pročitajte.</p>
+            <p>Dobrodošli na MojUlaz. Korišćenjem naše aplikacije i sajta (moj-ulaz.com) prihvatate ove uslove. Pažljivo ih pročitajte.</p>
 
             <h2>1. Usluga</h2>
             <p>MojUlaz pruža softversku platformu za upravljanje stambenim zgradama, uključujući prijavu kvarova, obaveštenja, glasanje i finansijsko praćenje.</p>
@@ -52,7 +52,7 @@ const TermsPage: NextPage = () => {
             </ul>
 
             <h2>4. Intelektualna svojina</h2>
-            <p>Sav softver, dizajn i sadržaj platforme su vlasništvo MojUlaz d.o.o. Dozvoljena je isključivo upotreba u okviru pretplaćene usluge.</p>
+            <p>Sav softver, dizajn i sadržaj platforme su vlasništvo ConvertixDigital d.o.o. Dozvoljena je isključivo upotreba u okviru pretplaćene usluge.</p>
 
             <h2>5. Dostupnost usluge</h2>
             <p>Nastojimo da platforma bude dostupna 24/7, ali ne garantujemo neprekidni rad. Planirano održavanje najavljivаmo unapred.</p>

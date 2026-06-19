@@ -35,7 +35,7 @@ const PrivacyPolicyPage: NextPage = () => {
           </div>
 
           <div className="prose prose-slate max-w-none">
-            <p>MojUlaz d.o.o. (u daljem tekstu „MojUlaz", „mi", „nas") poštuje vašu privatnost i opredeljen je da zaštiti lične podatke koje prikuplja od korisnika svoje aplikacije i veb-sajta (mojulaz.rs).</p>
+            <p>CovertixDigital d.o.o. (u daljem tekstu „MojUlaz", „mi", „nas") poštuje vašu privatnost i opredeljen je da zaštiti lične podatke koje prikuplja od korisnika svoje aplikacije i veb-sajta (moj-ulaz.com).</p>
 
             <h2>1. Koje podatke prikupljamo</h2>
             <p>Prikupljamo sledeće kategorije podataka:</p>

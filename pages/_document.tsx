@@ -67,12 +67,12 @@ const softwareSchema = {
   },
   description:
     'Aplikacija za upravljanje stambenom zgradom. Kvarovi, obaveštenja, fond i dokumenta — sve na jednom mestu. Koristi više od 270 zgrada u Srbiji.',
-  url: 'https://mojulaz.rs',
+  url: 'https://moj-ulaz.com',
   publisher: {
     '@type': 'Organization',
     name: 'MojUlaz',
-    url: 'https://mojulaz.rs',
-    logo: 'https://mojulaz.rs/logo-icon.png',
+    url: 'https://moj-ulaz.com',
+    logo: 'https://moj-ulaz.com/logo-icon.png',
     contactPoint: {
       '@type': 'ContactPoint',
       email: 'info@moj-ulaz.com',
@@ -86,8 +86,8 @@ const orgSchema = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
   name: 'MojUlaz',
-  url: 'https://mojulaz.rs',
-  logo: 'https://mojulaz.rs/logo-icon.png',
+  url: 'https://moj-ulaz.com',
+  logo: 'https://moj-ulaz.com/logo-icon.png',
   email: 'info@moj-ulaz.com',
   sameAs: [],
   areaServed: {
@@ -102,10 +102,10 @@ const websiteSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
   name: 'MojUlaz',
-  url: 'https://mojulaz.rs',
+  url: 'https://moj-ulaz.com',
   potentialAction: {
     '@type': 'SearchAction',
-    target: 'https://mojulaz.rs/?q={search_term_string}',
+    target: 'https://moj-ulaz.com/?q={search_term_string}',
     'query-input': 'required name=search_term_string',
   },
 }
@@ -125,11 +125,11 @@ export default function Document() {
           name="keywords"
           content="upravljanje zgradom, aplikacija za upravnike zgrada, software za zgrade Srbija, kvarovi u zgradi app, skupštinska glasanja online, fond zgrade aplikacija, MojUlaz"
         />
-        <link rel="canonical" href="https://mojulaz.rs" />
+        <link rel="canonical" href="https://moj-ulaz.com" />
 
         {/* ── Open Graph ── */}
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://mojulaz.rs" />
+        <meta property="og:url" content="https://moj-ulaz.com" />
         <meta
           property="og:title"
           content="MojUlaz — Aplikacija za upravnike stambenih zgrada"
@@ -138,13 +138,13 @@ export default function Document() {
           property="og:description"
           content="Smanjite broj poziva od stanara za 87%. Upravljajte kvarovima, fondom i skupštinama iz jedne aplikacije. Koristi 270+ zgrada u Srbiji."
         />
-        <meta property="og:image" content="https://mojulaz.rs/og-image.png" />
+        <meta property="og:image" content="https://moj-ulaz.com/og-image.png" />
         <meta property="og:locale" content="sr_RS" />
         <meta property="og:site_name" content="MojUlaz" />
 
         {/* ── Twitter ── */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:url" content="https://mojulaz.rs" />
+        <meta name="twitter:url" content="https://moj-ulaz.com" />
         <meta
           name="twitter:title"
           content="MojUlaz — Aplikacija za upravnike stambenih zgrada"
@@ -153,7 +153,7 @@ export default function Document() {
           name="twitter:description"
           content="Smanjite broj poziva od stanara za 87%. Upravljajte kvarovima, fondom i skupštinama iz jedne aplikacije."
         />
-        <meta name="twitter:image" content="https://mojulaz.rs/og-image.png" />
+        <meta name="twitter:image" content="https://moj-ulaz.com/og-image.png" />
 
         {/* ── Robots ── */}
         <meta name="robots" content="index, follow" />
