@@ -235,7 +235,7 @@ export default function Hero() {
             <div className="relative z-10">
               <BrowserMockup
                 src={adminOverview}
-                alt="MojUlaz admin panel — pregled zgrade"
+                alt="MojUlaz softver za upravljanje stambenim zajednicama — admin panel sa pregledom zgrade, stanara i kvarova"
                 className="w-full"
               />
               <div
@@ -245,7 +245,7 @@ export default function Hero() {
                 <PhoneMockup>
                   <img
                     src={homeDashboardImg.src}
-                    alt="MojUlaz mobilna aplikacija — početni ekran"
+                    alt="MojUlaz mobilna aplikacija za stanare — početni ekran sa obaveštenjima, kvarovima i stanjem fonda"
                     draggable={false}
                     className="block h-full w-full object-cover"
                   />

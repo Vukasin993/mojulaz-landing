@@ -21,8 +21,8 @@ const sr = {
     managerText: 'Registrujte zgradu u admin panelu — besplatno 30 dana.',
     admin: 'Admin panel →',
     trust: ['500+ zgrada', '30 dana besplatno', 'Počnite za 5 minuta'],
-    adminAlt: 'MojUlaz admin panel — pregled zgrade',
-    mobileAlt: 'MojUlaz mobilna aplikacija — početni ekran',
+    adminAlt: 'MojUlaz softver za upravljanje stambenim zajednicama — admin panel sa pregledom zgrade',
+    mobileAlt: 'MojUlaz mobilna aplikacija za stanare — početni ekran sa obaveštenjima i kvarovima',
   },
   stats: ['zgrada u Srbiji', 'aktivnih stanara', 'zadovoljnih korisnika', 'podešavanje zgrade'],
   features: {
@@ -119,6 +119,7 @@ const sr = {
     tagline: 'Moderna platforma za upravljanje stambenim zgradama i kondominijumima u Srbiji.', madeIn: 'Napravljeno u Srbiji 🇷🇸',
     platform: 'Platforma', company: 'Kompanija', links: ['Funkcionalnosti', 'Kako radi', 'Cene', 'FAQ'], privacy: 'Politika privatnosti', terms: 'Uslovi korišćenja', contact: 'Kontakt', rights: 'Sva prava zadržana.',
     resources: 'Resursi', resourceLinks: ['Softver za upravnike', 'Stambene zajednice', 'Prijava kvarova', 'Glasanje stanara', 'Finansije zgrade'],
+    cities: 'Gradovi', cityLinks: ['Beograd', 'Novi Sad', 'Niš'],
   },
   cookie: { text: 'Koristimo kolačiće kako bismo poboljšali vaše iskustvo.', privacy: 'Politika privatnosti', decline: 'Odbij', accept: 'Prihvati' },
   mobile: { title: 'Počnite besplatno', sub: '30 dana · bez kartice' },
@@ -128,7 +129,7 @@ const sr = {
 const en: typeof sr = {
   common: { start: 'Start for free', startArrow: 'Start for free →', login: 'Log in', existingAccount: 'Already have an account? Log in', contact: 'Contact us', appStore: 'Download on the', googlePlay: 'Get it on' },
   nav: { menu: 'Menu', links: ['Features', 'How it works', 'Pricing', 'Contact', 'FAQ'] },
-  hero: { badge: 'Residential community management software', title: 'Stop managing your building', highlight: 'through Viber groups.', subtitle: 'Announcements, issue reporting, finances, documents and voting — everything for building management in one place. No Viber groups, no paperwork.', manager: 'Are you a manager?', managerText: 'Register your building in the admin panel — free for 30 days.', admin: 'Admin panel →', trust: ['500+ buildings', '30 days free', 'Set up in 5 minutes'], adminAlt: 'MojUlaz admin panel — building overview', mobileAlt: 'MojUlaz mobile app — home screen' },
+  hero: { badge: 'Residential community management software', title: 'Stop managing your building', highlight: 'through Viber groups.', subtitle: 'Announcements, issue reporting, finances, documents and voting — everything for building management in one place. No Viber groups, no paperwork.', manager: 'Are you a manager?', managerText: 'Register your building in the admin panel — free for 30 days.', admin: 'Admin panel →', trust: ['500+ buildings', '30 days free', 'Set up in 5 minutes'], adminAlt: 'MojUlaz building management software — admin panel with building overview', mobileAlt: 'MojUlaz mobile app for residents — home screen with announcements and issues' },
   stats: ['buildings in Serbia', 'active residents', 'satisfied users', 'building setup'],
   features: {
     badge: 'What you get', title: 'Tools that work', highlight: 'for you.', subtitle: 'As a manager, your time is valuable. MojUlaz automates issues, payments, meetings and announcements.',
@@ -204,7 +205,7 @@ const en: typeof sr = {
     ready: 'Ready to try it? Your first 30 days are free.',
   },
   cta: { kicker: 'For managers who run buildings — not Viber groups', title: 'Have 10 minutes?', title2: 'Set up your first building today.', subtitle: 'Join 270+ buildings across Serbia and start getting fewer calls, less paperwork and more free time.', button: 'Start free — 30 days', proof: ['✓ No credit card', '✓ 30 days free', '✓ Cancel anytime', '✓ Local support'] },
-  footer: { tagline: 'A modern platform for managing residential buildings and condominiums in Serbia.', madeIn: 'Made in Serbia 🇷🇸', platform: 'Platform', company: 'Company', links: ['Features', 'How it works', 'Pricing', 'FAQ'], privacy: 'Privacy policy', terms: 'Terms of service', contact: 'Contact', rights: 'All rights reserved.', resources: 'Resources', resourceLinks: ['Manager software', 'Residential communities', 'Issue reporting', 'Resident voting', 'Building finances'] },
+  footer: { tagline: 'A modern platform for managing residential buildings and condominiums in Serbia.', madeIn: 'Made in Serbia 🇷🇸', platform: 'Platform', company: 'Company', links: ['Features', 'How it works', 'Pricing', 'FAQ'], privacy: 'Privacy policy', terms: 'Terms of service', contact: 'Contact', rights: 'All rights reserved.', resources: 'Resources', resourceLinks: ['Manager software', 'Residential communities', 'Issue reporting', 'Resident voting', 'Building finances'], cities: 'Cities', cityLinks: ['Belgrade', 'Novi Sad', 'Niš'] },
   cookie: { text: 'We use cookies to improve your experience.', privacy: 'Privacy policy', decline: 'Decline', accept: 'Accept' },
   mobile: { title: 'Start for free', sub: '30 days · no card' },
   metaTitle: 'MojUlaz — Residential community management software',
