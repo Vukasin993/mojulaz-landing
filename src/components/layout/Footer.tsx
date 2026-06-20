@@ -29,8 +29,8 @@ export default function Footer() {
               {t.footer.tagline}
             </p>
             <div className="flex flex-col gap-1.5 mb-4">
-              <a href="mailto:info@moj-ulaz.com" className="text-sm text-slate-400 hover:text-primary-400 transition-colors">
-                📧 info@moj-ulaz.com
+              <a href="mailto:info&#64;moj-ulaz.com" className="text-sm text-slate-400 hover:text-primary-400 transition-colors">
+                📧 info&#64;moj-ulaz.com
               </a>
             </div>
             <p className="text-sm text-slate-500">{t.footer.madeIn}</p>

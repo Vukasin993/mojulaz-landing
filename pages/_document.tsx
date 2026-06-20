@@ -98,6 +98,27 @@ const orgSchema = {
     'MojUlaz je softver za upravljanje stambenim zajednicama namenjen upravnicima zgrada u Srbiji.',
 }
 
+const localBusinessSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  '@id': 'https://moj-ulaz.com/#local-business',
+  name: 'MojUlaz',
+  url: 'https://moj-ulaz.com',
+  logo: 'https://moj-ulaz.com/logo-icon.png',
+  email: 'info@moj-ulaz.com',
+  description: 'Softver za upravljanje stambenim zajednicama u Srbiji. Prijava kvarova, obaveštenja, finansije, dokumentacija i glasanje stanara.',
+  areaServed: [
+    { '@type': 'City', name: 'Beograd' },
+    { '@type': 'City', name: 'Novi Sad' },
+    { '@type': 'City', name: 'Niš' },
+  ],
+  priceRange: 'od 2.190 RSD godišnje',
+  address: {
+    '@type': 'PostalAddress',
+    addressCountry: 'RS',
+  },
+}
+
 const websiteSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
@@ -126,6 +147,8 @@ export default function Document() {
           content="upravljanje stambenim zajednicama, softver za upravnike zgrada, aplikacija za upravljanje zgradom, prijava kvarova, finansije zgrade, glasanje stanara, komunikacija stanara, MojUlaz"
         />
         <link rel="canonical" href="https://moj-ulaz.com" />
+        <link rel="alternate" hrefLang="sr" href="https://moj-ulaz.com" />
+        <link rel="alternate" hrefLang="x-default" href="https://moj-ulaz.com" />
 
         {/* ── Open Graph ── */}
         <meta property="og:type" content="website" />
@@ -189,6 +212,10 @@ export default function Document() {
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
         />
       </Head>
       <body>

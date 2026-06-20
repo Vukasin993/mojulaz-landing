@@ -29,7 +29,7 @@ export default function FAQSection() {
           </h2>
           <p style={{ fontSize: 16, color: '#64748b', lineHeight: 1.7 }}>
             {t.faq.subtitle}{' '}
-            <a href="mailto:info@moj-ulaz.com" style={{ color: '#0d9488', textDecoration: 'none', fontWeight: 600 }}>info@moj-ulaz.com</a>
+            <a href="mailto:info&#64;moj-ulaz.com" style={{ color: '#0d9488', textDecoration: 'none', fontWeight: 600 }}>info&#64;moj-ulaz.com</a>
           </p>
         </div>
 

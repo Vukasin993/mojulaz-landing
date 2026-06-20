@@ -1,0 +1,40 @@
+# MojUlaz
+
+> Softver za upravljanje stambenim zajednicama u Srbiji. Zamenjuje Viber grupe, papir i Excel jednom platformom.
+
+## O MojUlazu
+
+MojUlaz je SaaS platforma za upravljanje stambenim zgradama namenjena upravnicima, predsednicima skupštine stanara i profesionalnim agencijama za upravljanje nekretninama u Srbiji.
+
+## Ključne funkcionalnosti
+
+- Prijava kvarova — stanari prijavljuju kvar sa fotografijom za 30 sekundi
+- Obaveštenja — push notifikacije za sve stanare sa potvrdom čitanja
+- Finansije — stanje fonda, uplate i rashodi u realnom vremenu
+- Glasanje — online ankete i glasanja bez sazivanja skupštine
+- Dokumentacija — centralno čuvanje ugovora, zapisnika i tehničke dokumentacije
+- Mobilna aplikacija — besplatna za stanare na iOS i Android
+
+## Cene
+
+- 2.190 RSD po zgradi godišnje (1–75 zgrada)
+- Enterprise (76+ zgrada) — prilagođene cene
+- Besplatan probni period od 30 dana bez kreditne kartice
+
+## Kontakt
+
+- Web: https://moj-ulaz.com
+- Admin panel: https://app.moj-ulaz.com
+- Email: info@moj-ulaz.com
+
+## Dostupnost
+
+- Web aplikacija (admin panel za upravnike)
+- iOS aplikacija za stanare
+- Android aplikacija za stanare
+
+## Tržište
+
+- Srbija
+- Srpski jezik (latinica)
+- Cene u RSD
