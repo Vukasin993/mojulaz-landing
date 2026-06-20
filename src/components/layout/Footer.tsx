@@ -16,7 +16,7 @@ export default function Footer() {
     <footer id="footer" className="bg-ink pt-16 pb-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        <div className="grid md:grid-cols-4 gap-10 mb-12">
+        <div className="grid md:grid-cols-5 gap-10 mb-12">
 
           {/* Brand */}
           <div className="md:col-span-2">
@@ -43,6 +43,18 @@ export default function Footer() {
               {platform.map((href, index) => (
                 <li key={href}>
                   <a href={href} className="text-sm text-slate-400 hover:text-primary-400 transition-colors">{t.footer.links[index]}</a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Resources */}
+          <div>
+            <h4 className="text-xs font-semibold text-white uppercase tracking-wider mb-4">{t.footer.resources}</h4>
+            <ul className="space-y-2.5 mb-6">
+              {['/upravnici-zgrada', '/stambene-zajednice', '/prijava-kvarova', '/glasanje-stanara', '/finansije-zgrade'].map((href, index) => (
+                <li key={href}>
+                  <Link href={href} className="text-sm text-slate-400 hover:text-primary-400 transition-colors">{t.footer.resourceLinks[index]}</Link>
                 </li>
               ))}
             </ul>

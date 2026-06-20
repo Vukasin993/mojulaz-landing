@@ -116,7 +116,7 @@ export default function Hero() {
               }}
             >
               <span className="w-1.5 h-1.5 rounded-full bg-primary-600 flex-shrink-0" />
-              Softver za upravljanje stambenim zgradama
+              Softver za upravljanje stambenim zajednicama
             </div>
 
             <h1
@@ -127,9 +127,9 @@ export default function Hero() {
                 transition: 'opacity 0.7s ease 0.1s, transform 0.7s cubic-bezier(0.22,1,0.36,1) 0.1s',
               }}
             >
-              Upravljajte<br />
-              <span className="grad-text-animated">zgradom.</span><br />
-              Jednostavno.
+              Prestanite da vodite<br />
+              <span className="grad-text-animated">stambenu zajednicu</span><br />
+              kroz Viber grupe.
             </h1>
 
             <p
@@ -140,8 +140,8 @@ export default function Hero() {
                 transition: 'opacity 0.7s ease 0.2s, transform 0.7s cubic-bezier(0.22,1,0.36,1) 0.2s',
               }}
             >
-              MojUlaz povezuje upravnike i stanare u jednoj platformi —
-              prijave kvarova, obaveštenja, finansije i glasanja, sve na jednom mestu.
+              Obaveštenja, prijava kvarova, finansije, dokumentacija i glasanja —
+              sve za upravljanje zgradom na jednom mestu. Bez Viber grupa i papira.
             </p>
 
             <div

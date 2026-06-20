@@ -55,7 +55,7 @@ const softwareSchema = {
   operatingSystem: 'Web, Android, iOS',
   offers: {
     '@type': 'Offer',
-    price: '7600',
+    price: '2190',
     priceCurrency: 'RSD',
     priceValidUntil: '2026-12-31',
     availability: 'https://schema.org/InStock',
@@ -66,7 +66,7 @@ const softwareSchema = {
     reviewCount: '270',
   },
   description:
-    'Aplikacija za upravljanje stambenom zgradom. Kvarovi, obaveštenja, fond i dokumenta — sve na jednom mestu. Koristi više od 270 zgrada u Srbiji.',
+    'Softver za upravljanje stambenim zajednicama u Srbiji. Prijava kvarova, obaveštenja, finansije, dokumentacija i glasanje stanara — sve na jednom mestu.',
   url: 'https://moj-ulaz.com',
   publisher: {
     '@type': 'Organization',
@@ -95,7 +95,7 @@ const orgSchema = {
     name: 'Serbia',
   },
   description:
-    'MojUlaz je softver za upravljanje stambenim zgradama namenjen upravnicima u Srbiji.',
+    'MojUlaz je softver za upravljanje stambenim zajednicama namenjen upravnicima zgrada u Srbiji.',
 }
 
 const websiteSchema = {
@@ -119,11 +119,11 @@ export default function Document() {
         <meta name="theme-color" content="#0d9488" />
         <meta
           name="description"
-          content="Aplikacija za upravnike stambenih zgrada u Srbiji. Smanjite broj poziva od stanara za 87%. Kvarovi, fond, glasanje i dokumenta — na jednom mestu. Besplatno 30 dana."
+          content="Softver za upravnike zgrada i stambene zajednice. Prijava kvarova, finansije, dokumentacija i komunikacija stanara — sve na jednom mestu. Besplatno 30 dana."
         />
         <meta
           name="keywords"
-          content="upravljanje zgradom, aplikacija za upravnike zgrada, software za zgrade Srbija, kvarovi u zgradi app, skupštinska glasanja online, fond zgrade aplikacija, MojUlaz"
+          content="upravljanje stambenim zajednicama, softver za upravnike zgrada, aplikacija za upravljanje zgradom, prijava kvarova, finansije zgrade, glasanje stanara, komunikacija stanara, MojUlaz"
         />
         <link rel="canonical" href="https://moj-ulaz.com" />
 
@@ -132,11 +132,11 @@ export default function Document() {
         <meta property="og:url" content="https://moj-ulaz.com" />
         <meta
           property="og:title"
-          content="MojUlaz — Aplikacija za upravnike stambenih zgrada"
+          content="MojUlaz — Softver za upravljanje stambenim zajednicama"
         />
         <meta
           property="og:description"
-          content="Smanjite broj poziva od stanara za 87%. Upravljajte kvarovima, fondom i skupštinama iz jedne aplikacije. Koristi 270+ zgrada u Srbiji."
+          content="Softver za upravnike zgrada i stambene zajednice. Prijava kvarova, finansije, dokumentacija i komunikacija stanara — sve na jednom mestu. Besplatno 30 dana."
         />
         <meta property="og:image" content="https://moj-ulaz.com/og-image.png" />
         <meta property="og:locale" content="sr_RS" />
@@ -147,11 +147,11 @@ export default function Document() {
         <meta name="twitter:url" content="https://moj-ulaz.com" />
         <meta
           name="twitter:title"
-          content="MojUlaz — Aplikacija za upravnike stambenih zgrada"
+          content="MojUlaz — Softver za upravljanje stambenim zajednicama"
         />
         <meta
           name="twitter:description"
-          content="Smanjite broj poziva od stanara za 87%. Upravljajte kvarovima, fondom i skupštinama iz jedne aplikacije."
+          content="Prijava kvarova, finansije, dokumentacija i komunikacija stanara — sve na jednom mestu. Besplatno 30 dana."
         />
         <meta name="twitter:image" content="https://moj-ulaz.com/og-image.png" />
 
