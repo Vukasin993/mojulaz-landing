@@ -49,8 +49,8 @@ const content = {
     links: [
       { href: '/upravljanje-zgradama-beograd', label: 'Beograd' },
       { href: '/upravljanje-zgradama-nis', label: 'Niš' },
-      { href: '/stambene-zajednice', label: 'Stambene zajednice' },
-      { href: '/finansije-zgrade', label: 'Finansije zgrade' },
+      { href: '/upravljanje-zgradama-kragujevac', label: 'Kragujevac' },
+      { href: '/upravnici-zgrada', label: 'Softver za upravnike' },
     ],
     ctaTitle: 'Modernizujte upravljanje zgradom u Novom Sadu',
     ctaSub: 'Besplatno 30 dana, bez kreditne kartice. Podešavanje za 10 minuta.',
@@ -104,8 +104,8 @@ const content = {
     links: [
       { href: '/upravljanje-zgradama-beograd', label: 'Belgrade' },
       { href: '/upravljanje-zgradama-nis', label: 'Niš' },
-      { href: '/stambene-zajednice', label: 'Residential communities' },
-      { href: '/finansije-zgrade', label: 'Building finances' },
+      { href: '/upravljanje-zgradama-kragujevac', label: 'Kragujevac' },
+      { href: '/upravnici-zgrada', label: 'Manager software' },
     ],
     ctaTitle: 'Modernize building management in Novi Sad',
     ctaSub: 'Free for 30 days, no credit card. Set up in 10 minutes.',

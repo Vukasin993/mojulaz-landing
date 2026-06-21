@@ -23,7 +23,7 @@ MojUlaz je SaaS platforma za upravljanje stambenim zgradama namenjena upravnicim
 
 ## Kontakt
 
-- Web: https://moj-ulaz.com
+- Web: https://www.moj-ulaz.com
 - Admin panel: https://app.moj-ulaz.com
 - Email: info@moj-ulaz.com
 

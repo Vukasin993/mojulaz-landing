@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import { REGISTER_URL } from '../../constants/marketing'
+import { SITE_URL } from '../../lib/seo'
 import LanguageSwitcher from '../ui/LanguageSwitcher'
 import { useLang } from '../../i18n/LanguageContext'
 
@@ -58,10 +59,10 @@ export default function CityLandingPage({ content, metaDesc, canonicalPath, ogTi
       <Head>
         <title>{c.title}</title>
         <meta name="description" content={metaDesc} />
-        <link rel="canonical" href={`https://moj-ulaz.com${canonicalPath}`} />
+        <link rel="canonical" href={`${SITE_URL}${canonicalPath}`} />
         <meta property="og:title" content={ogTitle} />
         <meta property="og:description" content={ogDesc} />
-        <meta property="og:url" content={`https://moj-ulaz.com${canonicalPath}`} />
+        <meta property="og:url" content={`${SITE_URL}${canonicalPath}`} />
         <meta property="og:type" content="website" />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       </Head>

@@ -106,10 +106,10 @@ const GlasanjeStanara: NextPage = () => {
       <Head>
         <title>{c.title}</title>
         <meta name="description" content="Online glasanje stanara u stambenoj zajednici. Pokrenite anketu, stanari glasaju sa telefona, rezultati odmah. Bez višečasovnih skupština. Besplatno 30 dana." />
-        <link rel="canonical" href="https://moj-ulaz.com/glasanje-stanara/" />
+        <link rel="canonical" href="https://www.moj-ulaz.com/glasanje-stanara/" />
         <meta property="og:title" content="Online glasanje stanara — MojUlaz aplikacija" />
         <meta property="og:description" content="Online glasanje stanara u stambenoj zajednici. Ankete, odluke i rezultati — sve digitalno." />
-        <meta property="og:url" content="https://moj-ulaz.com/glasanje-stanara/" />
+        <meta property="og:url" content="https://www.moj-ulaz.com/glasanje-stanara/" />
         <meta property="og:type" content="website" />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       </Head>

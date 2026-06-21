@@ -1,4 +1,5 @@
 import { Html, Head, Main, NextScript } from 'next/document'
+import { SITE_URL, SITE_NAME, SITE_LOGO, OG_IMAGE, CONTACT_EMAIL, SEO_DEFAULTS } from '../src/lib/seo'
 
 const faqSchema = {
   '@context': 'https://schema.org',
@@ -50,7 +51,7 @@ const faqSchema = {
 const softwareSchema = {
   '@context': 'https://schema.org',
   '@type': 'SoftwareApplication',
-  name: 'MojUlaz',
+  name: SITE_NAME,
   applicationCategory: 'BusinessApplication',
   operatingSystem: 'Web, Android, iOS',
   offers: {
@@ -67,15 +68,15 @@ const softwareSchema = {
   },
   description:
     'Softver za upravljanje stambenim zajednicama u Srbiji. Prijava kvarova, obaveštenja, finansije, dokumentacija i glasanje stanara — sve na jednom mestu.',
-  url: 'https://moj-ulaz.com',
+  url: SITE_URL,
   publisher: {
     '@type': 'Organization',
-    name: 'MojUlaz',
-    url: 'https://moj-ulaz.com',
-    logo: 'https://moj-ulaz.com/logo-icon.png',
+    name: SITE_NAME,
+    url: SITE_URL,
+    logo: SITE_LOGO,
     contactPoint: {
       '@type': 'ContactPoint',
-      email: 'info@moj-ulaz.com',
+      email: CONTACT_EMAIL,
       contactType: 'customer support',
       availableLanguage: 'Serbian',
     },
@@ -85,10 +86,10 @@ const softwareSchema = {
 const orgSchema = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
-  name: 'MojUlaz',
-  url: 'https://moj-ulaz.com',
-  logo: 'https://moj-ulaz.com/logo-icon.png',
-  email: 'info@moj-ulaz.com',
+  name: SITE_NAME,
+  url: SITE_URL,
+  logo: SITE_LOGO,
+  email: CONTACT_EMAIL,
   sameAs: [],
   areaServed: {
     '@type': 'Country',
@@ -101,16 +102,17 @@ const orgSchema = {
 const localBusinessSchema = {
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
-  '@id': 'https://moj-ulaz.com/#local-business',
-  name: 'MojUlaz',
-  url: 'https://moj-ulaz.com',
-  logo: 'https://moj-ulaz.com/logo-icon.png',
-  email: 'info@moj-ulaz.com',
+  '@id': `${SITE_URL}/#local-business`,
+  name: SITE_NAME,
+  url: SITE_URL,
+  logo: SITE_LOGO,
+  email: CONTACT_EMAIL,
   description: 'Softver za upravljanje stambenim zajednicama u Srbiji. Prijava kvarova, obaveštenja, finansije, dokumentacija i glasanje stanara.',
   areaServed: [
     { '@type': 'City', name: 'Beograd' },
     { '@type': 'City', name: 'Novi Sad' },
     { '@type': 'City', name: 'Niš' },
+    { '@type': 'City', name: 'Kragujevac' },
   ],
   priceRange: 'od 2.190 RSD godišnje',
   address: {
@@ -122,69 +124,40 @@ const localBusinessSchema = {
 const websiteSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
-  name: 'MojUlaz',
-  url: 'https://moj-ulaz.com',
-  potentialAction: {
-    '@type': 'SearchAction',
-    target: 'https://moj-ulaz.com/?q={search_term_string}',
-    'query-input': 'required name=search_term_string',
-  },
+  name: SITE_NAME,
+  url: SITE_URL,
 }
 
 export default function Document() {
   return (
     <Html lang="sr">
       <Head>
-        {/* ── Primary Meta ── */}
         <meta charSet="UTF-8" />
         <meta name="theme-color" content="#0d9488" />
-        <meta
-          name="description"
-          content="Softver za upravnike zgrada i stambene zajednice. Prijava kvarova, finansije, dokumentacija i komunikacija stanara — sve na jednom mestu. Besplatno 30 dana."
-        />
-        <meta
-          name="keywords"
-          content="upravljanje stambenim zajednicama, softver za upravnike zgrada, aplikacija za upravljanje zgradom, prijava kvarova, finansije zgrade, glasanje stanara, komunikacija stanara, MojUlaz"
-        />
-        <link rel="canonical" href="https://moj-ulaz.com" />
-        <link rel="alternate" hrefLang="sr" href="https://moj-ulaz.com" />
-        <link rel="alternate" hrefLang="x-default" href="https://moj-ulaz.com" />
+        <meta name="description" content={SEO_DEFAULTS.description} />
+        <meta name="keywords" content={SEO_DEFAULTS.keywords.join(', ')} />
+        <link rel="canonical" href={SITE_URL} />
+        <link rel="alternate" hrefLang="sr" href={SITE_URL} />
+        <link rel="alternate" hrefLang="x-default" href={SITE_URL} />
 
-        {/* ── Open Graph ── */}
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://moj-ulaz.com" />
-        <meta
-          property="og:title"
-          content="MojUlaz — Softver za upravljanje stambenim zajednicama"
-        />
-        <meta
-          property="og:description"
-          content="Softver za upravnike zgrada i stambene zajednice. Prijava kvarova, finansije, dokumentacija i komunikacija stanara — sve na jednom mestu. Besplatno 30 dana."
-        />
-        <meta property="og:image" content="https://moj-ulaz.com/og-image.png" />
-        <meta property="og:locale" content="sr_RS" />
-        <meta property="og:site_name" content="MojUlaz" />
+        <meta property="og:url" content={SITE_URL} />
+        <meta property="og:title" content={SEO_DEFAULTS.title} />
+        <meta property="og:description" content={SEO_DEFAULTS.description} />
+        <meta property="og:image" content={OG_IMAGE} />
+        <meta property="og:locale" content={SEO_DEFAULTS.locale} />
+        <meta property="og:site_name" content={SITE_NAME} />
 
-        {/* ── Twitter ── */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:url" content="https://moj-ulaz.com" />
-        <meta
-          name="twitter:title"
-          content="MojUlaz — Softver za upravljanje stambenim zajednicama"
-        />
-        <meta
-          name="twitter:description"
-          content="Prijava kvarova, finansije, dokumentacija i komunikacija stanara — sve na jednom mestu. Besplatno 30 dana."
-        />
-        <meta name="twitter:image" content="https://moj-ulaz.com/og-image.png" />
+        <meta name="twitter:url" content={SITE_URL} />
+        <meta name="twitter:title" content={SEO_DEFAULTS.title} />
+        <meta name="twitter:description" content={SEO_DEFAULTS.description} />
+        <meta name="twitter:image" content={OG_IMAGE} />
 
-        {/* ── Robots ── */}
-        <meta name="robots" content="index, follow" />
+        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
 
-        {/* ── Favicons ── */}
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
-        {/* ── Google Fonts ── */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
           rel="preconnect"
@@ -196,7 +169,6 @@ export default function Document() {
           rel="stylesheet"
         />
 
-        {/* ── Structured Data ── */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}

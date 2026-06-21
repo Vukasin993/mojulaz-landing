@@ -106,10 +106,10 @@ const PrijavaKvarova: NextPage = () => {
       <Head>
         <title>{c.title}</title>
         <meta name="description" content="Sistem za prijavu i praćenje kvarova u stambenim zgradama. Stanari prijavljuju kvar za 30 sekundi, upravnici prate status do rešenja. Besplatno 30 dana." />
-        <link rel="canonical" href="https://moj-ulaz.com/prijava-kvarova/" />
+        <link rel="canonical" href="https://www.moj-ulaz.com/prijava-kvarova/" />
         <meta property="og:title" content="Prijava kvarova u zgradi — MojUlaz softver" />
         <meta property="og:description" content="Sistem za prijavu i praćenje kvarova u stambenim zgradama. Foto, opis, status — sve na jednom mestu." />
-        <meta property="og:url" content="https://moj-ulaz.com/prijava-kvarova/" />
+        <meta property="og:url" content="https://www.moj-ulaz.com/prijava-kvarova/" />
         <meta property="og:type" content="website" />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       </Head>

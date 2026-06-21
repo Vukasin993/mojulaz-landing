@@ -96,10 +96,10 @@ const FinansijeZgrade: NextPage = () => {
       <Head>
         <title>{c.title}</title>
         <meta name="description" content="Transparentno praćenje finansija stambene zajednice. Fond zgrade, uplate, rashodi i dugovanja — sve vidljivo stanarima u realnom vremenu. Besplatno 30 dana." />
-        <link rel="canonical" href="https://moj-ulaz.com/finansije-zgrade/" />
+        <link rel="canonical" href="https://www.moj-ulaz.com/finansije-zgrade/" />
         <meta property="og:title" content="Finansije stambene zajednice — MojUlaz softver" />
         <meta property="og:description" content="Transparentno praćenje finansija zgrade. Fond, uplate i rashodi — vidljivo svim stanarima u realnom vremenu." />
-        <meta property="og:url" content="https://moj-ulaz.com/finansije-zgrade/" />
+        <meta property="og:url" content="https://www.moj-ulaz.com/finansije-zgrade/" />
         <meta property="og:type" content="website" />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       </Head>

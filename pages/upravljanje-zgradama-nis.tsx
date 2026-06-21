@@ -50,7 +50,7 @@ const content = {
     links: [
       { href: '/upravljanje-zgradama-beograd', label: 'Beograd' },
       { href: '/upravljanje-zgradama-novi-sad', label: 'Novi Sad' },
-      { href: '/glasanje-stanara', label: 'Glasanje stanara' },
+      { href: '/upravljanje-zgradama-kragujevac', label: 'Kragujevac' },
       { href: '/upravnici-zgrada', label: 'Softver za upravnike' },
     ],
     ctaTitle: 'Digitalizujte upravljanje zgradom u Nišu',
@@ -106,7 +106,7 @@ const content = {
     links: [
       { href: '/upravljanje-zgradama-beograd', label: 'Belgrade' },
       { href: '/upravljanje-zgradama-novi-sad', label: 'Novi Sad' },
-      { href: '/glasanje-stanara', label: 'Resident voting' },
+      { href: '/upravljanje-zgradama-kragujevac', label: 'Kragujevac' },
       { href: '/upravnici-zgrada', label: 'Manager software' },
     ],
     ctaTitle: 'Digitalize building management in Niš',

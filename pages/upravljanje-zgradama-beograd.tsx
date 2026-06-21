@@ -50,8 +50,8 @@ const content = {
     links: [
       { href: '/upravljanje-zgradama-novi-sad', label: 'Novi Sad' },
       { href: '/upravljanje-zgradama-nis', label: 'Niš' },
+      { href: '/upravljanje-zgradama-kragujevac', label: 'Kragujevac' },
       { href: '/upravnici-zgrada', label: 'Softver za upravnike' },
-      { href: '/prijava-kvarova', label: 'Prijava kvarova' },
     ],
     ctaTitle: 'Digitalizujte upravljanje zgradom u Beogradu',
     ctaSub: 'Pridružite se stotinama zgrada u Beogradu koje već koriste MojUlaz. Besplatno 30 dana.',
@@ -106,8 +106,8 @@ const content = {
     links: [
       { href: '/upravljanje-zgradama-novi-sad', label: 'Novi Sad' },
       { href: '/upravljanje-zgradama-nis', label: 'Niš' },
+      { href: '/upravljanje-zgradama-kragujevac', label: 'Kragujevac' },
       { href: '/upravnici-zgrada', label: 'Manager software' },
-      { href: '/prijava-kvarova', label: 'Issue reporting' },
     ],
     ctaTitle: 'Digitalize building management in Belgrade',
     ctaSub: 'Join hundreds of Belgrade buildings already using MojUlaz. Free for 30 days.',

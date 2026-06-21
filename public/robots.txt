@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://moj-ulaz.com/sitemap.xml
+Sitemap: https://www.moj-ulaz.com/sitemap.xml

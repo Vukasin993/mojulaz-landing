@@ -17,6 +17,8 @@ const PrivacyPolicyPage: NextPage = () => {
     <>
       <Head>
         <title>{isEnglish ? 'Privacy Policy — MojUlaz' : 'Politika privatnosti — MojUlaz'}</title>
+        <meta name="description" content={isEnglish ? 'Privacy policy for MojUlaz residential community management software.' : 'Politika privatnosti za MojUlaz softver za upravljanje stambenim zajednicama.'} />
+        <link rel="canonical" href="https://www.moj-ulaz.com/politika-privatnosti/" />
       </Head>
       <div className="bg-white min-h-screen">
         <header className="border-b border-slate-100">

@@ -60,7 +60,7 @@ export default function Footer() {
             </ul>
             <h4 className="text-xs font-semibold text-white uppercase tracking-wider mb-3 mt-5">{t.footer.cities}</h4>
             <ul className="space-y-2.5">
-              {['/upravljanje-zgradama-beograd', '/upravljanje-zgradama-novi-sad', '/upravljanje-zgradama-nis'].map((href, index) => (
+              {['/upravljanje-zgradama-beograd', '/upravljanje-zgradama-novi-sad', '/upravljanje-zgradama-nis', '/upravljanje-zgradama-kragujevac'].map((href, index) => (
                 <li key={href}>
                   <Link href={href} className="text-sm text-slate-400 hover:text-primary-400 transition-colors">{t.footer.cityLinks[index]}</Link>
                 </li>

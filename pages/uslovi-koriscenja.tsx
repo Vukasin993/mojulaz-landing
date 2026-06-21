@@ -17,6 +17,8 @@ const TermsPage: NextPage = () => {
     <>
       <Head>
         <title>{isEnglish ? 'Terms of Service — MojUlaz' : 'Uslovi korišćenja — MojUlaz'}</title>
+        <meta name="description" content={isEnglish ? 'Terms of service for MojUlaz residential community management software.' : 'Uslovi korišćenja za MojUlaz softver za upravljanje stambenim zajednicama.'} />
+        <link rel="canonical" href="https://www.moj-ulaz.com/uslovi-koriscenja/" />
       </Head>
       <div className="bg-white min-h-screen">
         <header className="border-b border-slate-100">

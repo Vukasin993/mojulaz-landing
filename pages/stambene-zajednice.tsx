@@ -98,10 +98,10 @@ const StambeneZajednice: NextPage = () => {
       <Head>
         <title>{c.title}</title>
         <meta name="description" content="Digitalizujte upravljanje stambenom zajednicom. Komunikacija stanara, obaveštenja, prijava kvarova i glasanja — sve u jednoj aplikaciji. Besplatno 30 dana." />
-        <link rel="canonical" href="https://moj-ulaz.com/stambene-zajednice/" />
+        <link rel="canonical" href="https://www.moj-ulaz.com/stambene-zajednice/" />
         <meta property="og:title" content="Upravljanje stambenim zajednicama — MojUlaz" />
         <meta property="og:description" content="Digitalizujte upravljanje stambenom zajednicom. Komunikacija, obaveštenja i glasanja u jednoj aplikaciji." />
-        <meta property="og:url" content="https://moj-ulaz.com/stambene-zajednice/" />
+        <meta property="og:url" content="https://www.moj-ulaz.com/stambene-zajednice/" />
         <meta property="og:type" content="website" />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       </Head>

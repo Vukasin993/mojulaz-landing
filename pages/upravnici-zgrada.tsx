@@ -117,10 +117,10 @@ const UpravniciZgrada: NextPage = () => {
       <Head>
         <title>{c.title}</title>
         <meta name="description" content="MojUlaz je softver za upravnike stambenih zgrada u Srbiji. Prijava kvarova, obaveštenja, finansije i dokumentacija — sve na jednom mestu. Besplatno 30 dana." />
-        <link rel="canonical" href="https://moj-ulaz.com/upravnici-zgrada/" />
+        <link rel="canonical" href="https://www.moj-ulaz.com/upravnici-zgrada/" />
         <meta property="og:title" content="Softver za upravnike zgrada — MojUlaz" />
         <meta property="og:description" content="Alati za upravljanje zgradama koji zamenjuju Viber grupe, papir i Excel. Besplatno 30 dana." />
-        <meta property="og:url" content="https://moj-ulaz.com/upravnici-zgrada/" />
+        <meta property="og:url" content="https://www.moj-ulaz.com/upravnici-zgrada/" />
         <meta property="og:type" content="website" />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       </Head>
