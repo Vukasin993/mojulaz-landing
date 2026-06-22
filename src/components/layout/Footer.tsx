@@ -33,7 +33,17 @@ export default function Footer() {
                 📧 info&#64;moj-ulaz.com
               </a>
             </div>
-            <p className="text-sm text-slate-500">{t.footer.madeIn}</p>
+            <div className="space-y-1">
+              <p className="text-sm text-slate-500">{t.footer.madeIn}</p>
+              <a
+                href="https://convertixdigital.com/en"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block text-sm font-semibold text-slate-400 hover:text-primary-400 transition-colors"
+              >
+                ConvertixDigital
+              </a>
+            </div>
           </div>
 
           {/* Platform */}
@@ -92,7 +102,17 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div className="pt-6 border-t border-slate-800 flex flex-col sm:flex-row justify-between items-center gap-3">
-          <p className="text-xs text-slate-500">© 2026 MojUlaz. {t.footer.rights}</p>
+          <p className="text-xs text-slate-500">
+            © 2026 MojUlaz. {t.footer.rights}{' '}
+            <a
+              href="https://convertixdigital.com/en"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-semibold text-slate-400 hover:text-primary-400 transition-colors"
+            >
+              ConvertixDigital
+            </a>
+          </p>
           <div className="flex gap-5">
             <Link href="/politika-privatnosti" className="text-xs text-slate-500 hover:text-primary-400 transition-colors">{t.footer.privacy}</Link>
             <Link href="/uslovi-koriscenja" className="text-xs text-slate-500 hover:text-primary-400 transition-colors">{t.footer.terms}</Link>

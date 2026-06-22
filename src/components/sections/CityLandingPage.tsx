@@ -171,7 +171,12 @@ export default function CityLandingPage({ content, metaDesc, canonicalPath, ogTi
 
         <footer className="bg-slate-900 py-8 mt-16">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center gap-4">
-            <p className="text-xs text-slate-500">{c.copy}</p>
+            <p className="text-xs text-slate-500">
+              {c.copy}{' '}
+              <a href="https://convertixdigital.com/en" target="_blank" rel="noopener noreferrer" className="font-semibold text-slate-400 hover:text-primary-400 transition-colors">
+                ConvertixDigital
+              </a>
+            </p>
             <div className="flex gap-5">
               <Link href="/politika-privatnosti" className="text-xs text-slate-500 hover:text-primary-400 transition-colors">{c.privacy}</Link>
               <Link href="/uslovi-koriscenja" className="text-xs text-slate-500 hover:text-primary-400 transition-colors">{c.terms}</Link>

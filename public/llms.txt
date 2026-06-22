@@ -17,7 +17,7 @@ MojUlaz je SaaS platforma za upravljanje stambenim zgradama namenjena upravnicim
 
 ## Cene
 
-- 2.190 RSD po zgradi godišnje (1–75 zgrada)
+- 2.190 RSD + PDV po zgradi godišnje, odnosno 2.628 RSD sa PDV-om (1–75 zgrada)
 - Enterprise (76+ zgrada) — prilagođene cene
 - Besplatan probni period od 30 dana bez kreditne kartice
 

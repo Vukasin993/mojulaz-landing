@@ -41,7 +41,7 @@ const content = {
     faq: [
       { q: 'Koliko zgrada u Beogradu koristi MojUlaz?', a: 'MojUlaz koristi preko 500 zgrada u Srbiji, sa značajnim delom u Beogradu — od Novog Beograda i Vračara do Zemuna i Voždovca. Broj korisnika raste svakog meseca.' },
       { q: 'Da li MojUlaz radi za velike zgrade sa 200+ stanova?', a: 'Da. MojUlaz je dizajniran upravo za velike stambene zajednice. Push notifikacije, prijava kvarova i glasanje funkcionišu identično za 20 ili 200 stanova.' },
-      { q: 'Koliko košta MojUlaz za beogradske upravnike?', a: 'MojUlaz košta 2.190 RSD po zgradi godišnje. Za agencije sa više od 75 zgrada nudimo posebne uslove. Probni period od 30 dana je besplatan.' },
+      { q: 'Koliko košta MojUlaz za beogradske upravnike?', a: 'MojUlaz košta 2.190 RSD + PDV po zgradi godišnje (2.628 RSD sa PDV-om). Za agencije sa više od 75 zgrada nudimo posebne uslove. Probni period od 30 dana je besplatan.' },
       { q: 'Kako stanari u Beogradu pristupaju MojUlazu?', a: 'Stanari preuzmu besplatnu mobilnu aplikaciju (iOS/Android) i ukucaju kod zgrade koji dobiju od upravnika. Ceo proces traje par minuta.' },
       { q: 'Da li MojUlaz pomaže sa skupštinama stanara?', a: 'Da. Online glasanje zamenjuje višečasovne skupštine. Upravnik kreira anketu, stanari glasaju sa telefona, a rezultati su transparentni i čuvaju se u evidenciji.' },
       { q: 'Mogu li da upravljam zgradama u različitim opštinama?', a: 'Da. Iz jednog naloga upravljate svim zgradama — bez obzira da li su na Novom Beogradu, Vračaru ili u Zemunu. Svaka ima sopstvenu ploču.' },
@@ -97,7 +97,7 @@ const content = {
     faq: [
       { q: 'How many Belgrade buildings use MojUlaz?', a: 'MojUlaz is used by over 500 buildings in Serbia, with a significant share in Belgrade — from Novi Beograd and Vračar to Zemun and Voždovac. The number grows every month.' },
       { q: 'Does MojUlaz work for large 200+ unit buildings?', a: 'Yes. MojUlaz is designed precisely for large residential communities. Push notifications, issue reporting and voting work identically for 20 or 200 apartments.' },
-      { q: 'How much does MojUlaz cost for Belgrade managers?', a: 'MojUlaz costs 2,190 RSD per building per year. For agencies with more than 75 buildings we offer custom terms. The 30-day trial is free.' },
+      { q: 'How much does MojUlaz cost for Belgrade managers?', a: 'MojUlaz costs 2,190 RSD plus VAT per building per year (2,628 RSD including VAT). For agencies with more than 75 buildings we offer custom terms. The 30-day trial is free.' },
       { q: 'How do Belgrade residents access MojUlaz?', a: 'Residents download the free mobile app (iOS/Android) and enter the building code provided by the manager. The whole process takes a few minutes.' },
       { q: 'Does MojUlaz help with resident meetings?', a: 'Yes. Online voting replaces multi-hour meetings. The manager creates a poll, residents vote from their phones, and results are transparent and stored on record.' },
       { q: 'Can I manage buildings across different municipalities?', a: 'Yes. From one account you manage all buildings — whether in Novi Beograd, Vračar or Zemun. Each has its own dashboard.' },

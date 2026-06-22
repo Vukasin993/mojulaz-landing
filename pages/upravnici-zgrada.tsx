@@ -34,7 +34,7 @@ const content = {
       { q: 'Šta je MojUlaz?', a: 'MojUlaz je softver za upravljanje stambenim zgradama koji zamenjuje Viber grupe, papir i Excel tabele jednom platformom. Namenjen je upravnicima zgrada, predsednicima skupštine stanara i profesionalnim agencijama.' },
       { q: 'Da li mi treba tehničko znanje za korišćenje?', a: 'Ne. MojUlaz je dizajniran za upravnike bez tehničkog iskustva. Interfejs je intuitivan, a podrška na srpskom jeziku je dostupna radnim danima.' },
       { q: 'Koliko zgrada mogu da upravljam?', a: 'Neograničen broj. Svaka zgrada ima sopstvenu ploču, stanare, finansije i istoriju. Sve upravljate iz jednog naloga.' },
-      { q: 'Koliko košta MojUlaz za upravnike?', a: 'MojUlaz košta 2.190 RSD po zgradi godišnje za upravnike sa 1–75 zgrada. Sve funkcionalnosti su uključene. Za veće agencije nudimo posebne uslove.' },
+      { q: 'Koliko košta MojUlaz za upravnike?', a: 'MojUlaz košta 2.190 RSD + PDV po zgradi godišnje (2.628 RSD sa PDV-om) za upravnike sa 1–75 zgrada. Sve funkcionalnosti su uključene. Za veće agencije nudimo posebne uslove.' },
       { q: 'Kako funkcioniše probni period?', a: 'Prvih 30 dana je potpuno besplatno, bez kreditne kartice. Dobijate pristup svim funkcijama. Nakon toga se odlučujete da li želite da nastavite.' },
     ],
     linksTitle: 'Istražite MojUlaz funkcionalnosti',
@@ -79,7 +79,7 @@ const content = {
       { q: 'What is MojUlaz?', a: 'MojUlaz is building management software that replaces Viber groups, paper and Excel with a single platform. Built for building managers, assembly presidents and professional agencies.' },
       { q: 'Do I need technical knowledge?', a: 'No. MojUlaz is designed for managers without technical experience. The interface is intuitive and support is available on business days.' },
       { q: 'How many buildings can I manage?', a: 'Unlimited. Each building has its own dashboard, residents, finances and history. You manage everything from one account.' },
-      { q: 'How much does MojUlaz cost?', a: 'MojUlaz costs 2,190 RSD per building per year for managers with 1–75 buildings. All features are included. For larger agencies we offer custom terms.' },
+      { q: 'How much does MojUlaz cost?', a: 'MojUlaz costs 2,190 RSD plus VAT per building per year (2,628 RSD including VAT) for managers with 1–75 buildings. All features are included. For larger agencies we offer custom terms.' },
       { q: 'How does the trial work?', a: 'The first 30 days are completely free, no credit card required. You get access to all features. After that, you decide whether to continue.' },
     ],
     linksTitle: 'Explore MojUlaz features',
@@ -203,7 +203,10 @@ const UpravniciZgrada: NextPage = () => {
 
         <footer className="bg-slate-900 py-8 mt-16">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center gap-4">
-            <p className="text-xs text-slate-500">{c.copy}</p>
+            <p className="text-xs text-slate-500">
+              {c.copy}{' '}
+              <a href="https://convertixdigital.com/en" target="_blank" rel="noopener noreferrer" className="font-semibold text-slate-400 hover:text-primary-400 transition-colors">ConvertixDigital</a>
+            </p>
             <div className="flex gap-5">
               <Link href="/politika-privatnosti" className="text-xs text-slate-500 hover:text-primary-400 transition-colors">{c.privacy}</Link>
               <Link href="/uslovi-koriscenja" className="text-xs text-slate-500 hover:text-primary-400 transition-colors">{c.terms}</Link>

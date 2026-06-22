@@ -40,7 +40,7 @@ const content = {
     faqTitle: 'Često postavljana pitanja — Niš',
     faq: [
       { q: 'Da li MojUlaz koriste zgrade u Nišu?', a: 'Da. MojUlaz se koristi u stambenim zgradama širom Niša, od centra Medijane do novih naselja na Paliluli. Broj korisnika u Nišu raste iz meseca u mesec.' },
-      { q: 'Koliko košta MojUlaz za niškog upravnika?', a: '2.190 RSD po zgradi godišnje. Sve funkcionalnosti su uključene od prvog dana. Probni period od 30 dana je potpuno besplatan, bez kreditne kartice.' },
+      { q: 'Koliko košta MojUlaz za niškog upravnika?', a: '2.190 RSD + PDV po zgradi godišnje (2.628 RSD sa PDV-om). Sve funkcionalnosti su uključene od prvog dana. Probni period od 30 dana je potpuno besplatan, bez kreditne kartice.' },
       { q: 'Da li MojUlaz radi i za predsednike skupštine?', a: 'Apsolutno. MojUlaz je dizajniran i za profesionalne upravnike i za predsednike skupštine koji to rade volonterski. Interfejs je jednostavan i ne zahteva tehničko znanje.' },
       { q: 'Kako početi sa korišćenjem u Nišu?', a: 'Registrujte se na app.moj-ulaz.com, dodajte zgradu i podelite kod sa stanarima. Stanari preuzmu aplikaciju i ukucaju kod. Podešavanje traje manje od 10 minuta.' },
       { q: 'Da li stariji stanari mogu da koriste aplikaciju?', a: 'Da. Aplikacija je dizajnirana da bude jednostavna za sve uzraste. Instalacija traje manje od minut, a interfejs je na srpskom jeziku sa intuitivnom navigacijom.' },
@@ -96,7 +96,7 @@ const content = {
     faqTitle: 'Frequently asked questions — Niš',
     faq: [
       { q: 'Do Niš buildings use MojUlaz?', a: 'Yes. MojUlaz is used in residential buildings across Niš, from the Medijana centre to new developments in Palilula. The number of Niš users grows every month.' },
-      { q: 'How much does MojUlaz cost for a Niš manager?', a: '2,190 RSD per building per year. All features are included from day one. The 30-day trial is completely free, no credit card required.' },
+      { q: 'How much does MojUlaz cost for a Niš manager?', a: '2,190 RSD plus VAT per building per year (2,628 RSD including VAT). All features are included from day one. The 30-day trial is completely free, no credit card required.' },
       { q: 'Does MojUlaz work for volunteer assembly presidents?', a: 'Absolutely. MojUlaz is designed for both professional managers and volunteer assembly presidents. The interface is simple and requires no technical knowledge.' },
       { q: 'How do I get started in Niš?', a: 'Register at app.moj-ulaz.com, add your building and share the code with residents. Residents download the app and enter the code. Setup takes under 10 minutes.' },
       { q: 'Can older residents use the app?', a: 'Yes. The app is designed to be simple for all ages. Installation takes less than a minute and the interface is intuitive with clear navigation.' },
