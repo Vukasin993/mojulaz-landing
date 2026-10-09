@@ -56,7 +56,7 @@ const softwareSchema = {
   operatingSystem: 'Web, Android, iOS',
   offers: {
     '@type': 'Offer',
-    price: '2628',
+    price: '5900',
     priceCurrency: 'RSD',
     priceValidUntil: '2026-12-31',
     availability: 'https://schema.org/InStock',
@@ -114,7 +114,7 @@ const localBusinessSchema = {
     { '@type': 'City', name: 'Niš' },
     { '@type': 'City', name: 'Kragujevac' },
   ],
-  priceRange: 'od 2.628 RSD godišnje sa PDV-om',
+  priceRange: 'od 5.900 RSD godišnje',
   address: {
     '@type': 'PostalAddress',
     addressCountry: 'RS',

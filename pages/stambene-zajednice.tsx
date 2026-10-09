@@ -32,7 +32,7 @@ const content = {
       { q: 'Da li stanari moraju da instaliraju aplikaciju?', a: 'Da. Stanari koriste MojUlaz mobilnu aplikaciju (iOS i Android) za prijavu kvarova, glasanje i pregled obaveštenja. Admin panel je namenjen isključivo upravnicima.' },
       { q: 'Kako stambena zajednica počinje sa korišćenjem?', a: 'Upravnik se registruje, dodaje zgradu i dobija kod za ulaz u zgradu. Stanari preuzmu aplikaciju i ukucaju kod prilikom prijave. Ceo proces traje par minuta.' },
       { q: 'Da li stariji stanari mogu da koriste MojUlaz?', a: 'Da. Mobilna aplikacija je dizajnirana da bude jednostavna za sve uzraste. Instalacija traje manje od minut, a interfejs je intuitivan i na srpskom jeziku.' },
-      { q: 'Koliko košta digitalizacija stambene zajednice?', a: 'MojUlaz košta 2.190 RSD + PDV po zgradi godišnje (2.628 RSD sa PDV-om). Probni period od 30 dana je besplatan, bez kreditne kartice. Sve funkcionalnosti su uključene od prvog dana.' },
+      { q: 'Koliko košta digitalizacija stambene zajednice?', a: 'MojUlaz košta 5.900 RSD (oko 50 EUR) po zgradi godišnje. Probni period od 30 dana je besplatan, bez kreditne kartice. Sve funkcionalnosti su uključene od prvog dana, uključujući mobilnu aplikaciju za stanare.' },
     ],
     linksTitle: 'Saznajte više',
     links: [
@@ -70,7 +70,7 @@ const content = {
       { q: 'Do residents have to install the app?', a: 'Yes. Residents use the MojUlaz mobile app (iOS and Android) to report issues, vote and read announcements. The admin panel is for managers only.' },
       { q: 'How does a residential community get started?', a: 'The manager registers, adds a building and receives a building entry code. Residents download the app and enter the code when signing in. The entire process takes a few minutes.' },
       { q: 'Can older residents use MojUlaz?', a: 'Yes. The mobile app is designed to be simple for all ages. Installation takes less than a minute and the interface is intuitive.' },
-      { q: 'How much does it cost?', a: 'MojUlaz costs 2,190 RSD plus VAT per building per year (2,628 RSD including VAT). The 30-day trial is free, no credit card required. All features are included from day one.' },
+      { q: 'How much does it cost?', a: 'MojUlaz costs 5,900 RSD (around EUR 50) per building per year. The 30-day trial is free, no credit card required. All features are included from day one, including the resident mobile app.' },
     ],
     linksTitle: 'Learn more',
     links: [

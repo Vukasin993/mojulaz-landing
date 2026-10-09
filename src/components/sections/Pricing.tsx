@@ -3,19 +3,17 @@ import { Check, Star } from '../ui/icons'
 import { REGISTER_URL } from '../../constants/marketing'
 import { useLang } from '../../i18n/LanguageContext'
 
-const NET_PRICE_PER_BUILDING = 2190
-const VAT_RATE = 0.2
+const PRICE_PER_BUILDING_RSD = 5900
+const PRICE_PER_BUILDING_EUR = 50
 const MAX_STANDARD_BUILDINGS = 75
 
 export default function Pricing() {
   const { t, lang } = useLang()
   const [buildingCount, setBuildingCount] = useState(10)
   const isEnterprise = buildingCount > MAX_STANDARD_BUILDINGS
-  const vatPerBuilding = NET_PRICE_PER_BUILDING * VAT_RATE
-  const netTotal = NET_PRICE_PER_BUILDING * buildingCount
-  const vatTotal = vatPerBuilding * buildingCount
-  const annualTotal = netTotal + vatTotal
+  const annualTotal = PRICE_PER_BUILDING_RSD * buildingCount
   const monthlyTotal = annualTotal / 12
+  const euroTotal = PRICE_PER_BUILDING_EUR * buildingCount
   const numberFormatter = new Intl.NumberFormat(lang === 'sr' ? 'sr-Latn-RS' : 'en-US', {
     maximumFractionDigits: 0,
   })
@@ -70,7 +68,7 @@ export default function Pricing() {
               <h3 className="text-xl font-bold text-ink mb-1">{t.pricing.singleTitle}</h3>
               <p className="text-sm text-slate-500 mb-4">{t.pricing.singleScope}</p>
               <div className="flex items-baseline gap-1 mb-2">
-                <span className="text-4xl font-extrabold text-primary-600 tracking-tight">2.190</span>
+                <span className="text-4xl font-extrabold text-primary-600 tracking-tight">5.900</span>
                 <span className="text-sm font-medium text-slate-500">{t.pricing.singleUnit}</span>
               </div>
               <p className="text-xs font-semibold text-slate-500">{t.pricing.vatNote}</p>
@@ -132,15 +130,15 @@ export default function Pricing() {
                 <div className="space-y-2 border-t border-white/15 pt-4 text-sm">
                   <div className="flex justify-between gap-4">
                     <span className="text-primary-100">{t.pricing.netLabel}</span>
-                    <span className="font-semibold">{numberFormatter.format(netTotal)} RSD</span>
-                  </div>
-                  <div className="flex justify-between gap-4">
-                    <span className="text-primary-100">{t.pricing.vatLabel}</span>
-                    <span className="font-semibold">{numberFormatter.format(vatTotal)} RSD</span>
+                    <span className="font-semibold">{numberFormatter.format(PRICE_PER_BUILDING_RSD)} RSD</span>
                   </div>
                   <div className="flex justify-between gap-4">
                     <span className="text-primary-100">{t.pricing.monthlyLabel}</span>
                     <span className="font-semibold">{numberFormatter.format(monthlyTotal)} RSD</span>
+                  </div>
+                  <div className="flex justify-between gap-4">
+                    <span className="text-primary-100">{t.pricing.euroLabel}</span>
+                    <span className="font-semibold">~{numberFormatter.format(euroTotal)} EUR</span>
                   </div>
                 </div>
               </div>
@@ -186,15 +184,11 @@ export default function Pricing() {
               <div className="space-y-2 text-sm">
                 <div className="flex justify-between gap-3 text-slate-600">
                   <span>{t.pricing.netLabel}</span>
-                  <strong className="text-ink">2.190 RSD</strong>
-                </div>
-                <div className="flex justify-between gap-3 text-slate-600">
-                  <span>{t.pricing.vatLabel}</span>
-                  <strong className="text-ink">438 RSD</strong>
+                  <strong className="text-ink">5.900 RSD</strong>
                 </div>
                 <div className="flex justify-between gap-3 border-t border-slate-100 pt-2 text-slate-700">
-                  <span>{t.pricing.totalLabel}</span>
-                  <strong className="text-primary-700">2.628 RSD</strong>
+                  <span>{t.pricing.euroLabel}</span>
+                  <strong className="text-primary-700">~50 EUR</strong>
                 </div>
               </div>
             </div>
@@ -218,6 +212,31 @@ export default function Pricing() {
             </a>
           </div>
 
+        </div>
+
+        <div className="reveal reveal-d3 max-w-5xl mx-auto mt-8 rounded-2xl border border-slate-200 bg-slate-50 p-6 lg:p-8">
+          <div className="mb-6">
+            <h3 className="text-2xl font-extrabold text-ink mb-2">{t.pricing.includedTitle}</h3>
+            <p className="text-sm text-slate-600 leading-relaxed max-w-3xl">{t.pricing.includedSubtitle}</p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-4">
+            {t.pricing.includedGroups.map((group) => (
+              <div key={group.title} className="rounded-xl border border-slate-200 bg-white p-5">
+                <h4 className="text-sm font-extrabold text-ink mb-3">{group.title}</h4>
+                <ul className="space-y-2.5">
+                  {group.items.map((item) => (
+                    <li key={item} className="flex gap-3 text-sm text-slate-600 leading-relaxed">
+                      <span className="mt-0.5 w-4.5 h-4.5 rounded-full bg-primary-50 flex items-center justify-center flex-shrink-0">
+                        <Check className="w-3 h-3 text-primary-600" strokeWidth={2.5} />
+                      </span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
